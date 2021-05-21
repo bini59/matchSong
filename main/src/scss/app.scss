@@ -1,10 +1,12 @@
 .main{
+    position : relative;
     text-align: center;
     margin: {
         left: 10%;
         right: 10%;
         top: 20%; 
     };  
+    z-index: 0;
 }
 
 #mainTitle{
@@ -30,12 +32,16 @@
 	width: 20%;
 	height: 122px;
 	text-align: center;
-	font : bold 39px "Malgun Gothic", serif;
+    font: {
+        weight: bold;
+        family: "Malgun Gothic";
+        size: 39px;
+    }
 	color: #707070;
 	letter-spacing: 0.05px;
-	background-color: rgba(255,255,255,1);
+	background-color: #ffffff;
 	border-radius : 25px;
-	border : solid 1px rgba(112,112,112,1);
+	border : solid 1px rgb(112, 112, 112);
     &:hover{
         background-color: #ECECEC;
     }

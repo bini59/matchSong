@@ -1,15 +1,32 @@
 import React, { Component } from 'react';
 import Select from "./component/select";
-import './scss/app.scss';
+import "./scss/app.scss";
+import "./scss/select.scss"
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      onSelct : false
+    }
+    this.select = this.select.bind(this)
+  }
+
+  select(){
+    this.setState({onSelct : true});
+  }
+
+
 	render() {
+
 		return (
-      <div className="main">
-        <div id="mainTitle"><span>노래 맞추기</span></div>
-        <button className="mainBtn" id="btn1">방 만들기</button>
-        <button className="mainBtn" id="btn2">접속하기</button>
-        <Select />
+      <div>
+        <div className="main">
+          <div id="mainTitle"><span>노래 맞추기</span></div>
+          <button className="mainBtn" id="btn1" onClick={this.select}>방 만들기</button>
+          <button className="mainBtn">접속하기</button>
+        </div>
+        {this.state.onSelct ? <Select closeWindow={()=>{this.setState({onSelct : false})}}/> : ''}
       </div>
 		);
 	}

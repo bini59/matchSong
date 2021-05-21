@@ -1,0 +1,126 @@
+button{
+  cursor: pointer;
+}
+
+.selectMode{
+  position: fixed;
+  top : 0px;
+  left : 0px;
+  margin: {
+      left: 20%;
+      right: 20%;
+      top: 10%;
+      bottom: 20%;
+  }
+  width : 60%;
+  height : 70vh;
+
+  border : {
+      width: 1px;
+      color: black;
+      radius: 5px;
+      style: solid;
+  }
+  z-index: 1;
+  background-color: white;
+}
+
+.close {
+  position: absolute;
+  right: 30px;
+  float: left;
+  width: 1%;
+  height: 1%;
+  opacity: 0.3;
+  &:hover{
+    opacity: 1;
+  };
+  &:before, &:after{
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #333;
+  };
+  &:before{
+    transform: rotate(45deg);
+  };
+  &:after{
+    transform: rotate(-45deg);
+  };
+}
+
+.selSection{
+  & span{
+    filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.161));
+  }
+  color: #707070;
+  font: {
+    weight: bold;
+    family: "Malgun Gothic";
+    size: 20px;
+  }
+  margin: {
+    top: 3%;
+    left: 3%;
+  }
+}
+
+.roomNo{
+  margin : {
+    top: 1%;
+  }
+  font: {
+    size: 2.5vh;
+  };
+  border : {
+    radius: 6px;
+    style: solid;
+    width: 1px;
+    color: black;
+  }
+  height: 3vh;
+}
+
+.selBtn{
+  background-color: white;
+  height: 5vh;
+  border : {
+    radius: 5px;
+    style: solid;
+    width: 1px;
+    color: #489eff;
+  }
+  margin : {
+    bottom: 1%;
+    right: 1%;
+  }
+  &:hover{
+    background-color: #bfddff;
+  }
+}
+.clicked{
+  background-color: #bfddff;
+}
+
+.deciBtn{
+  position: absolute;
+  width: 15%;
+  height: 5vh;
+  bottom: 6px;
+  right: 3px;
+  @at-root #accept{
+    right: 17%;
+  }
+  margin : {
+    top: 3%;
+    right: 1%;
+  }
+  font : {
+    family: "Malgun Gothic";
+    weight: bold;
+    size: 2vh;
+  }
+
+}
