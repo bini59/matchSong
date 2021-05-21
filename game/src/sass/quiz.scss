@@ -1,0 +1,82 @@
+.quiz{
+    text-align: center;
+    & div{
+        text-align: center;
+    }
+    width: 100%;
+    height: 60vh;
+    color: white;
+
+    padding: {
+        top: 20vh;
+        bottom: 20vh;
+    }
+    font: {
+        size: 1.5vh;
+    }
+
+    //for layout
+    & .temp{
+        height: 20vh;
+        padding: {
+            top: 20vh;
+            bottom: 10vh;
+        };
+    }
+
+    //input
+    & .input{
+        width: 40%;
+        height: 2vh;
+        background-color: black;
+        color: white;
+        border: {
+            width: 0.5px;
+            style: solid;
+        }
+        font: {
+            size: 1.5vh;
+        }
+    }
+
+    //chat
+    & .chat{
+        width: 40%;
+        text-align: left;
+        margin: {
+            left: 30%;
+        }
+    }
+
+    //Title
+    & .title{
+        & .remainSong{
+            color: #727284;
+        }
+        & .remainSec{
+            color: #505b53;
+        }
+        & .description{
+            & ._1{ color: #e2e466; }
+            & ._2{ color: #f57d32; }
+        }
+        margin: {
+            bottom: 5%;
+        }
+
+    }
+    
+    //hint
+    & .hint{
+        & .hintMsg{
+            color: chartreuse;
+        }
+    }
+    
+    //ans
+    & .ans{
+        & .ansMsg{
+            color: cyan;
+        }
+    }
+}
