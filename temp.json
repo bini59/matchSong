@@ -1,0 +1,7 @@
+{
+    title : "string",
+    users : ["nickname", "nickname"],
+    Song : [100,100],
+    genre : ["genre1", "genre2"]
+
+}

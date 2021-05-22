@@ -37,8 +37,16 @@ class Select extends Component{
                     {this.genreBtns}
                 </div>
                 <div className="selSection">
-                    <span>방 번호</span><br/>
+                    <span>방 이름</span><br/>
                     <input className="roomNo" type="text" />
+                </div>
+                <div className="selSection">
+                    <span>곡 개수</span><br/>
+                    <input className="songNum" type="text" />
+                </div>
+                <div className="selSection">
+                    <span>닉네임</span><br/>
+                    <input className="nickname" type="text" />
                 </div>
                 <button className="deciBtn" id="accept">확인</button>
                 <button className="deciBtn" onClick={()=>{this.props.closeWindow()}}>취소</button>
