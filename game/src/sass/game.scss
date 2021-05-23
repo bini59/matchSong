@@ -6,6 +6,7 @@
 }
 
 .scoreBoard{
+    position: absolute;
     & .li{
         margin : 0;
         padding: {
@@ -27,4 +28,12 @@
         color : white;
     }
     
+}
+
+.chat{
+    & .chatMsg span{
+        font: {
+            size: 1.8vh;
+        };
+    }
 }

@@ -1,17 +1,48 @@
 import React, {Component} from "react";
 import ReactAudioPlayer from "react-audio-player"
 import Input from "./input"
-import Chat from "./chat"
+
+class Queue{
+    constructor(){
+        this._arr = [
+            <span><br/></span>,
+            <span><br/></span>,
+            <span><br/></span>,
+            <span><br/></span>,
+            <span><br/></span>
+        ];
+    }
+    enqueue(item){
+        this._arr.push(item);
+    }
+    dequeue(){
+        this._arr.shift();
+    }
+    addChat(item){
+        this.enqueue(item);
+        console.log(this._arr)
+        this.dequeue();
+        
+    }
+    getChat(){
+        return this._arr;
+    }
+    
+}
+
 
 
 class Song extends Component{
     constructor(props){
         super(props);
 
+        this.chat = new Queue();
+
         this.state = {
             songNum : 0,
             ansState : false,
             ans : <div className="ans"><span className="ansMsg">답</span> : {this.props.songs[0].title}</div>,
+            chat : this.chat.getChat(),
             hintnum : 0,
             sec : 10,
         }
@@ -19,8 +50,22 @@ class Song extends Component{
         this.hint = []
         this.startTimer = this.startTimer.bind(this);
         this.countdown = this.countdown.bind(this);
+        this.addChat = this.addChat.bind(this);
 
         this.song = document.getElementById("audio");
+    }
+
+    addChat(){
+        let c = {
+            color : "red",
+            nickname : "bini",
+            chat : "TEST CHAT"
+        }
+        let style = {color : c.color}
+        this.chat.addChat(<span className="chatMsg"><span style={style}>{c.nickname}</span> : {c.chat}<br/></span>)
+        this.setState({
+            chat : this.chat.getChat()
+        })
     }
 
     
@@ -98,7 +143,10 @@ class Song extends Component{
                     </div>
                     {this.state.ansState ? this.state.ans : <div className="ans"></div>}
                 </div>
-                <Chat />
+                <div className="chat">
+                    {this.state.chat}
+                </div>
+                <button onClick={this.addChat}>tt</button>
                 <Input />
 
                 <button onClick={this.startTimer}>dd</button>
