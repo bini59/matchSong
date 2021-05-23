@@ -23,7 +23,7 @@ class App extends Component{
         ]
         this.songs = [
             {
-                title : "wego",
+                title : "We go - 프로미스나인",
                 hint : [
                     {
                         category : "가수힌트",
@@ -41,7 +41,7 @@ class App extends Component{
                 duration : 60
             },
             {
-                title : "feelgood",
+                title : "Feel good - 프로미스나인",
                 hint : [
                     {
                         category : "가수힌트",

@@ -10,7 +10,8 @@ class Song extends Component{
 
         this.state = {
             songNum : 0,
-            answer : false,
+            ansState : false,
+            ans : <div className="ans"><span className="ansMsg">답</span> : {this.props.songs[0].title}</div>,
             hintnum : 0,
             sec : 10,
         }
@@ -44,11 +45,16 @@ class Song extends Component{
         if(this.state.sec > 0) this.setState({sec : this.state.sec-1})
         else{
             clearInterval(this.timer)
+            if(!this.state.ansState){
+                this.setState({ansState : true});
+            }
+
             if(this.state.songNum < this.props.songs.length-1){
                 this.setState({
                     songNum : this.state.songNum+1,
                     hintnum : 0,
-                    answer : false,
+                    ansState : false,
+                    ans : <div className="ans"><span className="ansMsg">답</span> : {this.props.songs[this.state.songNum+1].title}</div>,
                     sec : this.props.songs[this.state.songNum+1].duration
                 })
 
@@ -90,9 +96,7 @@ class Song extends Component{
                     <div className="hint">
                         {this.hint}
                     </div>
-                    <div className="ans">
-                        <span className="ansMsg">답</span> : 미니얼라
-                    </div>
+                    {this.state.ansState ? this.state.ans : <div className="ans"></div>}
                 </div>
                 <Chat />
                 <Input />
