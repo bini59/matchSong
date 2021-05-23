@@ -4,3 +4,27 @@
 
     background-color: #1d1d1d;
 }
+
+.scoreBoard{
+    & .li{
+        margin : 0;
+        padding: {
+            top: 3vh;
+            left: 3vw;
+        }
+    }
+}
+
+.Scoreli{
+    list-style: none;
+    & div{
+        display : inline-block;
+        width: 2vh;
+        height: 2vh;
+    }
+    & span{
+        font-size: 2vh;
+        color : white;
+    }
+    
+}
