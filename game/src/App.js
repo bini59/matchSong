@@ -37,7 +37,7 @@ class App extends Component{
                     }
                 ],
                 ans : ["we go", "위 고", "위 고우"],
-                url : "../asset/song/wego.mp3",
+                url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
                 duration : 60
             },
             {
@@ -55,7 +55,7 @@ class App extends Component{
                     }
                 ],
                 ans : ["feel good", "필 굿"],
-                url : "../asset/song/feelgood.mp3",
+                url : "https://docs.google.com/uc?export=open&id=1ioGdk3y1sEy5MipF8I2r1t3vph7Ru0lY",
                 duration : 60
             }
         ]
