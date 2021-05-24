@@ -37,3 +37,40 @@
         };
     }
 }
+
+.chatLog{
+    position: fixed;
+    top: 1vh;
+    right : 1%;
+    width : 7%;
+    height : 4vh;
+    background-color: #7a7a7a;
+    color : white
+}
+
+.logBox{
+    width : 40%;
+    height : 70vh;
+    position : fixed;
+    top : 10vh;
+    left : 30%;
+    background-color: rgb(122, 122, 122);
+    opacity: 0.9;
+
+    & .log{
+        list-style: none;   
+    }
+    & .chat{
+        color : white;
+    }
+    & .closeBox{
+        position : absolute;
+        width : 20%;
+        bottom : 1vh;
+        left : 40%;
+        height: 3vh;
+        background-color: #7a7a7a;
+        opacity: 0.7;
+        color: white;
+    }
+}

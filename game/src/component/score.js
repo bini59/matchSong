@@ -5,9 +5,10 @@ class Score extends Component{
         super(props);
         
         this.users = this.props.users;
-        this.users.sort((a, b)=>{
+        this.props.users.sort((a, b)=>{
             return b.score - a.score;
-        })
+        });
+        
     }
 
     render(){
@@ -17,7 +18,7 @@ class Score extends Component{
                     {this.users.map((user)=>{
                         let style={backgroundColor : user.color};
                         return(
-                            <li className="Scoreli">
+                            <li key={user.score} className="Scoreli">
                                 <div style={style}/><span> {user.score}</span>
                             </li>
                         );

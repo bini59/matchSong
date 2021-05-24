@@ -1,13 +1,17 @@
 import React, {Component} from "react";
 import Song from "./component/SongInfo";
+import Log from "./component/log";
 import Score from "./component/score";
+import Btns from "./component/btns";
 import "./sass/game.scss"
 import "./sass/quiz.scss"
 
 class App extends Component{
     constructor(props){
         super(props)
-
+        this.state = {
+            logOn : false
+        }
         //under two object must be served by server
         this.users = [
             {
@@ -59,12 +63,23 @@ class App extends Component{
                 duration : 60
             }
         ]
+        this.chat = [
+            {
+                username : "holy",
+                color : "red",
+                context : "아 죽고싶다."
+            }
+        ]
     }
     render(){
         return(
             <div className="main">
                 <Score users={this.users}/>
-                <Song songs={this.songs}/>
+                <Song songs={this.songs} />
+                <Btns 
+                    openLog={()=>{this.setState({logOn : true})}}
+                />
+                {this.state.logOn ? <Log logs={this.chat} closeBox={()=>{this.setState({logOn : false})}}/> : ""}
             </div>
         );
     }
