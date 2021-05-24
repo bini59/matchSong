@@ -10,19 +10,22 @@ class App extends Component{
     constructor(props){
         super(props)
         this.state = {
-            logOn : false
+            logOn : false,
+            start : ''
         }
         //under two object must be served by server
         this.users = [
             {
                 nickname : "ㅇㅇ",
                 score : 43,
-                color : "red"
+                color : "red",
+                roomMaster : true
             },
             {
                 nickname : "bini",
                 score : 73,
-                color : "blue"
+                color : "blue",
+                roomMaster : false
             }
         ]
         this.songs = [
@@ -75,9 +78,12 @@ class App extends Component{
         return(
             <div className="main">
                 <Score users={this.users}/>
-                <Song songs={this.songs} />
+                <Song songs={this.songs} setFunc={(func)=>{this.setState({start : func})}}/>
                 <Btns 
                     openLog={()=>{this.setState({logOn : true})}}
+                    startGame={()=>{this.state.start()}}
+                    exitGame={(name)=>{this.users.splice(this.users.findIndex(i=>i.nickname===name), 1);console.log(this.users)}}
+                    addUser={(user)=>{this.users.push(user)}}
                 />
                 {this.state.logOn ? <Log logs={this.chat} closeBox={()=>{this.setState({logOn : false})}}/> : ""}
             </div>

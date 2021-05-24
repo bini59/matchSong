@@ -53,6 +53,8 @@ class Song extends Component{
         this.addChat = this.addChat.bind(this);
 
         this.song = document.getElementById("audio");
+
+        this.props.setFunc(this.startTimer);
     }
 
     addChat(){

@@ -38,16 +38,7 @@
     }
 }
 
-.chatLog{
-    position: fixed;
-    top: 1vh;
-    right : 1%;
-    width : 7%;
-    height : 4vh;
-    background-color: #7a7a7a;
-    color : white
-}
-
+//log window
 .logBox{
     width : 40%;
     height : 70vh;
@@ -72,5 +63,69 @@
         background-color: #7a7a7a;
         opacity: 0.7;
         color: white;
+    }
+}
+
+//boxes
+.btns{
+    & button{
+        width : 7%;
+        height : 4vh;
+        background-color: #7a7a7a;
+        color : white
+    }
+
+    & .chatLog{
+        position: fixed;
+        top: 1vh;
+        right : 1%;
+    }
+    & .gameStart{
+        position:fixed;
+        bottom: 1vh;
+        right: 10%;
+    }
+    & .gameExit{
+        position:fixed;
+        bottom: 1vh;
+        right: 1%;
+    }
+}
+
+//user name box
+.addUsr{
+    position : fixed;
+    top : 40vh;
+    left : 30%;
+    width: 40%;
+    height: 20vh;
+
+    background-color: #7a7a7a;
+    opacity: 0.9;
+
+    text-align: center;
+
+    & .nameInfo{
+        color : white;
+        font: {
+            size: 3vh;
+        };
+    }
+
+    & #newNickname{
+        margin: {
+            top: 2vh;
+            bottom : 2vh;
+        }
+        width: 60%;
+        height: 5vh;
+        font: {
+            size: 4.7vh;
+        }
+        text-align: center;
+    }
+
+    & .nameOk{
+        width: 20%;
     }
 }
