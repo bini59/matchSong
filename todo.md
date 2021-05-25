@@ -9,3 +9,5 @@
 (I) Implete game start btn, exit btn #front {cm:2021-05-24}
 (J) In main, Receive room list from server #server
 (L) When server finished Check btns.js:24 #server
+(M) Refactoring class to function #re {due:2021-05-25} {cm:2021-05-25}
+(N) Refactoring with redux 
