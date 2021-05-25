@@ -68,7 +68,7 @@
     width: 86%;
     height: 32vh;
     text-align: center;
-    box-shadow: 2px 4px 0 rgb(0,0,0,0.5);
+    
     
     margin: {
         left : 7%;
@@ -76,15 +76,14 @@
         bottom: 5vh;
     }
 
-    &:active{
-        box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
-    }
+
 
     & .addroom{
         background-color: #8f8f8f;
         opacity: 0.8;
         width: 94%;
         height: 26vh;
+        box-shadow: 2px 4px 0 rgb(0,0,0,0.5);
 
         padding: {
             top: 3%;
@@ -94,6 +93,9 @@
         };
 
         font: {size: 18vh};
+        &:active{
+            box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+        }
     }
 
     & .room{
@@ -102,6 +104,7 @@
         opacity: 0.8;
         width: 94%;
         height: 26vh;
+        box-shadow: 2px 4px 0 rgb(0,0,0,0.5);
 
         padding: {
             top: 3%;
@@ -138,6 +141,9 @@
         & .remainsong{
             display: inline-block;
             width: 60%;
+        }
+        &:active{
+            box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
         }
     }
     

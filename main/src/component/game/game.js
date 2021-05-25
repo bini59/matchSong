@@ -1,12 +1,13 @@
 import React, {useState} from "react";
-import Song from "./component/SongInfo";
-import Log from "./component/log";
-import Score from "./component/score";
-import Btns from "./component/btns";
-import "./sass/game.scss"
-import "./sass/quiz.scss"
+import Song from  "./SongInfo";
+import Btns from  "./btns";
+import Log from   "./log";
+import Score from "./score";
 
-const App = ()=>{
+import "../../scss/game.scss"
+import "../../scss/quiz.scss"
+
+const Game = ()=>{
     const [logTrigger, setTrigger] = useState(false);
     const [start, setStart] = useState(null);
 
@@ -71,7 +72,7 @@ const App = ()=>{
     ]
 
     return(
-        <div className="main">
+        <div className="game">
             <Score users={users}/>
             <Song songs={songs} setFunc={(func)=>{setStart(func)}}/>
             <Btns 
@@ -170,4 +171,4 @@ const App = ()=>{
 //     }
 // }
 
-export default App;
+export default Game;

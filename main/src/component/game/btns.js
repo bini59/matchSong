@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Link} from "react-router-dom";
 
 const Btns = (props)=>{
     //user info
@@ -48,10 +49,13 @@ const Btns = (props)=>{
         <div className="btns">
             {name ? nameWindow : ''}
             {user.roomMaster?<button className="gameStart" onClick={props.startGame}>게임 시작</button>: ""}
-            <button className="gameExit" onClick={()=>{
-                props.exitGame(user.nickname);
-                //go to home code
-            }}>나가기</button>
+            <Link to="/">
+                <button className="gameExit" onClick={()=>{
+                    props.exitGame(user.nickname);
+                    //go to home code
+                }}>나가기</button>
+            </Link>
+
             <button className="chatLog" onClick={props.openLog}>로그</button>
         </div>
     );
