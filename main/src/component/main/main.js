@@ -12,7 +12,7 @@ const Main = ()=>{
     const [clicked, setClick] = useState("");
   
     //roomlist(must served by server)
-    let roomTitles = [
+    const [roomTitles, setRoom] = useState([
       {
         title : "2015년까지 아이돌노래",
         users : ["", "nickname"],
@@ -25,11 +25,13 @@ const Main = ()=>{
         Song : [100, 100],
         genre : ["롤스킬 이펙트", "2010~2015 아이돌"]
       }
-    ];
-    let rooms = roomTitles.map((room)=>{
+    ]);
+    const rooms = ()=> {return roomTitles.map((room)=>{
       return (
         <li key={room.title} className="roomli">
+            {/* Link => check btn */}
             <Link to="/game">
+            {/* room.title => room.num */}
             <div className="room" onClick={()=>{setClick(room.title)}}>
               <div className="title">{room.title}</div>
               <div className="genre">[{room.genre.map((genre)=>{return(<span>{genre}, </span>)})}]</div><br></br>
@@ -39,7 +41,7 @@ const Main = ()=>{
             </Link>
         </li>
       );
-    });
+    });}
   
   
     return (
@@ -47,11 +49,14 @@ const Main = ()=>{
         <div id="mainTitle"><span>노래 맞추기</span></div>
         <div className="roomlist">
               <ul>
-                {rooms}
+                {rooms()}
                 <li className="roomli" onClick={()=>{setSelect(true)}}><div className="addroom">+</div></li>
               </ul>
         </div><br/>
-        {onSelect ? <Select closeWindow={()=>{setSelect(false)}}/> : ''}
+        {onSelect ? <Select 
+          closeWindow={()=>{setSelect(false)}}
+          addRoom={(room)=>{setRoom(()=>{return roomTitles.concat([room])})}}
+        /> : ''}
       </div>
     );
   }

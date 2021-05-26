@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useRef} from "react";
+import {Link} from "react-router-dom";
 import Selbtn from "./btn";
 
 const Select = (props)=>{
@@ -15,18 +16,25 @@ const Select = (props)=>{
         "롤 스킬 이펙트"
     ]
 
-    const selected = {
-        genre : []
+    let rooms = {
+        title : "",
+        users : [],
+        genre : [],
+        Song : [0, 0]
     }
 
     let genreBtns = btns.map((genre, idx)=>{
         return <Selbtn key={idx} name={genre} onselected={()=>{
-            let index = selected.genre.indexOf(genre)
-            if(index >-1){selected.genre.splice(index,1)}
-            else{selected.genre.push(genre)}
+            let index = rooms.genre.indexOf(genre)
+            if(index >-1){rooms.genre.splice(index,1)}
+            else{rooms.genre.push(genre)}
             //console.log(this.selected)
         }}/>
     });
+
+    let info = [
+        useRef(), useRef()
+    ]
 
     return (
         <div className="selectMode">
@@ -36,17 +44,20 @@ const Select = (props)=>{
             </div>
             <div className="selSection">
                 <span>방 이름</span><br/>
-                <input className="roomNo" type="text" />
+                <input className="roomNo" type="text" ref={info[0]}/>
             </div>
             <div className="selSection">
                 <span>곡 개수</span><br/>
-                <input className="songNum" type="text" />
+                <input className="songNum" type="text" ref={info[1]}/>
             </div>
-            <div className="selSection">
-                <span>닉네임</span><br/>
-                <input className="nickname" type="text" />
-            </div>
-            <button className="deciBtn" id="accept">확인</button>
+            <Link to="/game">
+            <button className="deciBtn" id="accept" onClick={()=>{
+                rooms.title = info[0].current.value;
+                rooms.Song[1] = info[1].current.value;
+                props.addRoom(rooms)
+                props.closeWindow();
+            }}>확인</button>
+            </Link>
             <button className="deciBtn" onClick={()=>{props.closeWindow()}}>취소</button>
         </div>
     );
