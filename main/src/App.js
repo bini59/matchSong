@@ -8,9 +8,6 @@ import {
 import Main from "./component/main/main"
 import Game from "./component/game/game"
 
-
-
-
 const App = ()=>{
   return (
   <Router>
@@ -18,7 +15,7 @@ const App = ()=>{
       <Route exact path="/">
         <Main />
       </Route>
-      <Route path="/game">
+      <Route path="/game/:id">
         <Game />
       </Route>
     </Switch>

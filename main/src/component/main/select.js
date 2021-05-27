@@ -1,9 +1,21 @@
-import React, {useRef} from "react";
+import React, {useState, useRef} from "react";
+import {useSelector, useDispatch} from "react-redux"
 import {Link} from "react-router-dom";
+import {
+    changeRooms,
+    selectRoom
+} from "../../redux/roomSlice"
 import Selbtn from "./btn";
 
-const Select = (props)=>{
 
+const Select = (props)=>{
+    const dispatch = useDispatch();
+    let x = useSelector(selectRoom)
+    
+    const [check, setCheck] = useState((''))
+    let info = [useRef(), useRef()]
+
+    console.log(props)
     //Genres
     const btns = [
         "K-POP(2000-2005)",
@@ -18,9 +30,32 @@ const Select = (props)=>{
 
     let rooms = {
         title : "",
-        users : [],
+        users : [{
+            nickname : "ㅇㅇ",
+            score : 43,
+            color : "red",
+            roomMaster : true
+        }],
         genre : [],
-        Song : [0, 0]
+        songN : [0, 0],
+        Song : [{
+            title : "We go - 프로미스나인",
+            hint : [
+                {
+                    category : "가수힌트",
+                    context : "프로미스나인",
+                    time : 55
+                },
+                {
+                    category : "초성힌트",
+                    context : "ㅇ ㄱㅇ",
+                    time : 50
+                }
+            ],
+            ans : ["we go", "위 고", "위 고우"],
+            url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
+            duration : 60
+        }]
     }
 
     let genreBtns = btns.map((genre, idx)=>{
@@ -32,9 +67,22 @@ const Select = (props)=>{
         }}/>
     });
 
-    let info = [
-        useRef(), useRef()
-    ]
+    
+
+    const sendServer = (room)=>{
+        const recipeUrl = "https://3001-blush-wolverine-2p0rzvu8.ws-us07.gitpod.io/room/add";
+        const requestMetadata = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(room)
+        };
+        fetch(recipeUrl, requestMetadata)
+        .then(res => res.json())
+        .then(json=>dispatch(changeRooms(JSON.parse(json))))
+    }
 
     return (
         <div className="selectMode">
@@ -50,14 +98,26 @@ const Select = (props)=>{
                 <span>곡 개수</span><br/>
                 <input className="songNum" type="text" ref={info[1]}/>
             </div>
-            <Link to="/game">
             <button className="deciBtn" id="accept" onClick={()=>{
                 rooms.title = info[0].current.value;
-                rooms.Song[1] = info[1].current.value;
-                props.addRoom(rooms)
-                props.closeWindow();
+                rooms.songN[1] = info[1].current.value;
+                setCheck(
+                    <Link to={{
+                        pathname: "/game/"+rooms.title,
+                        state: {rooms : props.rooms}
+                    }}
+                         room={rooms}>
+                        <div className="checkMade">
+                            <button className="checkBtn" onClick={()=>{
+                                sendServer(rooms)
+                                props.renewRooms(x);
+                            }}>확인</button>
+                            <button className="checkBtn" onClick={()=>{setCheck('')}}>취소</button>
+                        </div>
+                    </Link>
+                    );
             }}>확인</button>
-            </Link>
+            {check}
             <button className="deciBtn" onClick={()=>{props.closeWindow()}}>취소</button>
         </div>
     );

@@ -1,7 +1,13 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux"
+
+import {
+    changeRoom
+} from "../../redux/roomSlice"
 
 const Btns = (props)=>{
+    const dispatch = useDispatch();
     //user info
     const [user, setUser] = useState({
         nickname : "bini",
@@ -23,21 +29,24 @@ const Btns = (props)=>{
                     user : {receive user data}
                 })
             */
-            setUser({user : {
+            setUser({
                 nickname : name,
                 color : "red",
-                roomMaster : false,
-                score : 0
-            }})
+                score : 0,
+                roomMaster : false
+            })
     
             //property function add user
             //need to Edit with redux
-            props.addUser(user)
+            dispatch(changeRoom,{
+                title : props.title,
+                room : {}
+            })
             setName(false);
        }
     }
 
-    let nameWindow = (
+    const nameWindow = (
         <div className="addUsr">
             <span className="nameInfo">닉네임 입력</span><br/>
             <input type="text" id="newNickname"/><br/>

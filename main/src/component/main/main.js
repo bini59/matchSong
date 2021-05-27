@@ -1,61 +1,71 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from "./select";
 import {Link} from "react-router-dom";
+
+import {useSelector, useDispatch} from "react-redux"
+import {
+  selectRoom,
+  changeRooms
+} from "../../redux/roomSlice"
 
 import "../../scss/app.scss";
 import "../../scss/select.scss"
 
-const Main = ()=>{
+
+const Main = (props)=>{
+    const dispatch = useDispatch();
     //State that turn on Make room(Select)
     const [onSelect, setSelect] = useState(false);
-    //Selected room
-    const [clicked, setClick] = useState("");
-  
     //roomlist(must served by server)
-    const [roomTitles, setRoom] = useState([
-      {
-        title : "2015년까지 아이돌노래",
-        users : ["", "nickname"],
-        Song : [100, 100],
-        genre : ["2005~2010 아이돌", "2010~2015 아이돌"]
-      },
-      {
-        title : "집가고 싶다",
-        users : ["", "nickname", "asdf"],
-        Song : [100, 100],
-        genre : ["롤스킬 이펙트", "2010~2015 아이돌"]
-      }
-    ]);
-    const rooms = ()=> {return roomTitles.map((room)=>{
+    const roomTitles = useSelector(selectRoom);
+
+    
+    
+    const rooms = (roomlist)=> {return roomlist.map((room)=>{
       return (
         <li key={room.title} className="roomli">
             {/* Link => check btn */}
-            <Link to="/game">
+            <Link to={"/game/"+room.title}>
             {/* room.title => room.num */}
-            <div className="room" onClick={()=>{setClick(room.title)}}>
+            <div className="room">
               <div className="title">{room.title}</div>
-              <div className="genre">[{room.genre.map((genre)=>{return(<span>{genre}, </span>)})}]</div><br></br>
+              <div className="genre">[{room.genre.map((genre, t)=>{return(<span key={t}>{genre}, </span>)})}]</div><br></br>
               <div className="users">{room.users.map((user)=>{return('ጿ')})}</div>
-              <div className="remainsong">{room.Song[0]}/{room.Song[1]}</div>
+              <div className="remainsong">{room.songN[0]}/{room.songN[1]}</div>
             </div>
             </Link>
         </li>
       );
     });}
-  
+
+    
+    useEffect(()=>{
+      const recipeUrl = "https://3001-blush-wolverine-2p0rzvu8.ws-us07.gitpod.io/room";
+      const requestMetadata = {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          body: JSON.stringify({})
+      };
+      fetch(recipeUrl, requestMetadata).then(res => res.json())
+      .then(json => dispatch(changeRooms(JSON.parse(json).rooms)))
+    }, [dispatch])
   
     return (
-      <div className="main">
+      <div className="main" >
         <div id="mainTitle"><span>노래 맞추기</span></div>
         <div className="roomlist">
               <ul>
-                {rooms()}
+                {rooms(roomTitles)}
                 <li className="roomli" onClick={()=>{setSelect(true)}}><div className="addroom">+</div></li>
               </ul>
         </div><br/>
         {onSelect ? <Select 
           closeWindow={()=>{setSelect(false)}}
-          addRoom={(room)=>{setRoom(()=>{return roomTitles.concat([room])})}}
+          renewRooms={(roomlist)=>{rooms(roomlist)}}
+          rooms={roomTitles}
         /> : ''}
       </div>
     );

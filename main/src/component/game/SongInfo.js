@@ -56,11 +56,10 @@ const Hint = (props)=>{
     const [hint, setHint] = useState([])
 
     useEffect(()=>{
-    
         if(props.sec === props.hints[hintN].time){
             setHint(()=>{
                 hint.push(
-                    <div key={hintN}>
+                    <div key={props.hints[hintN].time}>
                         <span className="hintMsg">{props.hints[hintN].category} : </span>
                         <span>{props.hints[hintN].context}</span>
                     </div>
@@ -84,7 +83,7 @@ const Song = (props)=>{
     //Answer show trigger
     const [ansState, setAnstrigger] = useState(false);
     //Answer
-    const [ans, setAns] = useState(<div className="ans"><span className="ansMsg">답</span> : {props.songs[0].title}</div>)
+    const [ans, setAns] = useState(<div className="ans"><span className="ansMsg">답</span> : {props.songs[songNum].title}</div>)
     //ontimer
     const [onTimer, setTimer] = useState(false);
 
@@ -94,7 +93,7 @@ const Song = (props)=>{
     useEffect(()=>{
         if(temp === 0){
             if(!ansState) setAnstrigger(true);
-            song.pause()
+            {song ? song.pause() : song = document.getElementById("audio")}
             if(songNum < props.songs.length-1){
                 setSongnum(songNum+1);
                 song.src = props.songs[songNum].url;
@@ -103,7 +102,6 @@ const Song = (props)=>{
             }
         }
     }, [temp, ansState, props.songs, song, songNum]);
-
     
     return(
         <div className="quiz">
@@ -113,7 +111,7 @@ const Song = (props)=>{
                     <span className="description"><span className="_1">음악</span>을 듣고 <span className="_2">답</span>을 입력하세요</span><br/>
                     <span className="remainSec">- {temp}초 -</span><br/>
                     <ReactAudioPlayer 
-                        src={props.songs[0].url}
+                        src={props.songs[0].url ? props.songs[0].url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap"}
                         id="audio"
                         type="mpeg"
                         onLoadedMetadata={()=>{song = document.getElementById("audio")}}
