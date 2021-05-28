@@ -107,3 +107,34 @@ button{
   }
 
 }
+
+.checkMade{
+  position: fixed;
+  left : 35%;
+  top : 45vh;
+
+  background-color: #c2c2c2;
+
+  width: 30%;
+  height : 10vh;
+  border: {
+    width : 1px;
+    style : solid;
+    color : #808080;
+  };
+  text-align: center;
+  & span{
+    position : relative;
+    left : 23%;
+    top : 2vh;
+  }
+
+  & button{
+    position : relative;
+    right : 25%;
+    top : 5.5vh;
+    width: 20%;
+    height: 3vh;
+    margin : 0 2.5%;
+  }
+}

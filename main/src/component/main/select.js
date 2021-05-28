@@ -15,7 +15,6 @@ const Select = (props)=>{
     const [check, setCheck] = useState((''))
     let info = [useRef(), useRef()]
 
-    console.log(props)
     //Genres
     const btns = [
         "K-POP(2000-2005)",
@@ -81,7 +80,7 @@ const Select = (props)=>{
         };
         fetch(recipeUrl, requestMetadata)
         .then(res => res.json())
-        .then(json=>dispatch(changeRooms(JSON.parse(json))))
+        .then(json=>dispatch(changeRooms(JSON.parse(json).rooms)))
     }
 
     return (
@@ -102,19 +101,22 @@ const Select = (props)=>{
                 rooms.title = info[0].current.value;
                 rooms.songN[1] = info[1].current.value;
                 setCheck(
-                    <Link to={{
-                        pathname: "/game/"+rooms.title,
-                        state: {rooms : props.rooms}
-                    }}
-                         room={rooms}>
+                    // <Link to={{
+                    //     pathname: "/game/"+rooms.title,
+                    //     state: {rooms : props.rooms}
+                    // }}
+                    //      room={rooms}>
                         <div className="checkMade">
+                            <span>정말로 생성하시겠습니까?</span>
                             <button className="checkBtn" onClick={()=>{
                                 sendServer(rooms)
                                 props.renewRooms(x);
+                                setCheck('');
+                                props.closeWindow()
                             }}>확인</button>
                             <button className="checkBtn" onClick={()=>{setCheck('')}}>취소</button>
                         </div>
-                    </Link>
+                    // </Link>
                     );
             }}>확인</button>
             {check}

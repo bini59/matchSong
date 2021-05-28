@@ -18,15 +18,15 @@ const Main = (props)=>{
     const [onSelect, setSelect] = useState(false);
     //roomlist(must served by server)
     const roomTitles = useSelector(selectRoom);
-
     
     
     const rooms = (roomlist)=> {return roomlist.map((room)=>{
       return (
         <li key={room.title} className="roomli">
-            {/* Link => check btn */}
-            <Link to={"/game/"+room.title}>
-            {/* room.title => room.num */}
+                <Link to={{
+                  pathname: "/game/"+room.title,
+                  state: {rooms : roomlist}
+                }}>      
             <div className="room">
               <div className="title">{room.title}</div>
               <div className="genre">[{room.genre.map((genre, t)=>{return(<span key={t}>{genre}, </span>)})}]</div><br></br>
@@ -65,7 +65,6 @@ const Main = (props)=>{
         {onSelect ? <Select 
           closeWindow={()=>{setSelect(false)}}
           renewRooms={(roomlist)=>{rooms(roomlist)}}
-          rooms={roomTitles}
         /> : ''}
       </div>
     );

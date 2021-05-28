@@ -23,7 +23,7 @@ const Game = (props)=>{
 
     const location = useLocation();
     
-    console.log(props)
+    console.log(location)
     let rooms = location.state.rooms;
     console.log(rooms)
     let idx = rooms.findIndex(i => i.title === id);
