@@ -3,6 +3,9 @@ let usercolor = [
   ]
 
 module.exports = (app, socket)=>{
+    socket.on("join-room", (data)=>{
+        socket.join(data.title);
+    })
     socket.on("add-user", (data)=>{
         let idx = room.rooms.findIndex(i => i.title === data.room.title)
         let userN = room.rooms[idx].users.length
@@ -16,7 +19,7 @@ module.exports = (app, socket)=>{
 
         room.rooms[idx].users.push(user);
 
-        app.io.emit("AddUsr", room.rooms[idx])
+        app.io.in(data.room.title).emit("AddUsr", room.rooms[idx])
     })
 
 
@@ -29,7 +32,7 @@ module.exports = (app, socket)=>{
         }
         console.log("disconnected : ", room.rooms[idx].users)
 
-        app.io.emit("remove-user", room.rooms[idx]);
+        app.io.in(data.room.title).emit("remove-user", room.rooms[idx]);
     })
     socket.on("disconnect", (data)=>{
         console.log("disconnect",data);
@@ -37,6 +40,6 @@ module.exports = (app, socket)=>{
 
     socket.on("send-chat-client", (data)=>{
         console.log(data);
-        app.io.emit("send-chat-server", data)
+        app.io.in(data.title).emit("send-chat-server", data)
     })
 }

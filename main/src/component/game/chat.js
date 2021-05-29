@@ -34,7 +34,8 @@ const Message = (props)=>{
         let input = document.getElementsByClassName("input")[0]
         props.socket.emit("send-chat-client", {
             user : props.user,
-            chat : input.value
+            chat : input.value,
+            title : props.title
         })
         input.value = "";
     }
@@ -65,6 +66,10 @@ const Chat = (props)=>{
     const idx = props.idx;
 
     const [test, setTest] = useState(false)
+
+    useEffect(()=>{
+        props.socket.emit("join-room", {title : rooms[idx].title})
+    }, [])
 
     useEffect(()=>{
         if(test){
@@ -131,7 +136,7 @@ const Chat = (props)=>{
             </div>
             {user.nickname === "NONE" ? nameWindow : ""}
             <div>
-                <Message socket={props.socket} user={user}/>
+                <Message socket={props.socket} user={user} title={rooms[idx].title}/>
             </div>
         </div>
     );
