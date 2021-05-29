@@ -13,7 +13,6 @@ global.room = {
   rooms : []
 }
 
-
 const app = express();
 
 
@@ -63,7 +62,6 @@ let usercolor = [
 app.io.on('connection', (socket)=>{
   console.log("user connect")
   socket.on("add-user", (data)=>{
-    console.log(data)
     let idx = room.rooms.findIndex(i => i.title === data.room.title)
     let userN = room.rooms[idx].users.length
     let user = {
@@ -75,12 +73,22 @@ app.io.on('connection', (socket)=>{
     if(userN == 0) user.roomMaster = true;
 
     room.rooms[idx].users.push(user);
-    console.log(data)
 
     app.io.emit("AddUsr", room.rooms[idx])
   })
 
 
+  socket.on("remove-user", (data)=>{
+    let idx = room.rooms.findIndex(i => i.title === data.room.title)
+    let usrIdx = room.rooms[idx].users.findIndex(i => i.nickname === data.username)
+    room.rooms[idx].users.splice(usrIdx, 1);
+    if(usrIdx === 0 && room.rooms[idx].users.length > 0){
+      room.rooms[idx].users[0].roomMaster = true;
+    }
+    console.log("disconnected : ", room.rooms[idx].users)
+
+    app.io.emit("remove-user", room.rooms[idx]);
+  })
   socket.on("disconnect", (data)=>{
     console.log("disconnect",data);
   })

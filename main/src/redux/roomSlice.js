@@ -9,7 +9,6 @@ export const roomSlice = createSlice({
         changeRoom : (state, action)=>{
 
             let idx = state.rooms.findIndex(i => i.title === action.payload.title)
-            console.log(action.payload)
             state.rooms[idx] = action.payload.room
         },
         changeRooms : (state, action)=>{

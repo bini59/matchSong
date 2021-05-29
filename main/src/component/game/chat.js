@@ -63,17 +63,12 @@ const Chat = (props)=>{
 
     const rooms = useSelector(selectRoom)
     const idx = props.idx;
-    
 
-    const adduser = ()=>{
-        let Name = document.getElementById("newNickname").value;
+    const [test, setTest] = useState(false)
 
-        //when nickname exist
-        if(Name !== ""){
-            props.socket.emit("add-user", {
-                room : rooms[idx],
-                username : Name
-            });
+    useEffect(()=>{
+        if(test){
+            let Name = document.getElementById("newNickname").value;
             props.socket.on("AddUsr", (Room)=>{
                 dispatch(changeRoom({
                     title : rooms[idx].title,
@@ -83,14 +78,40 @@ const Chat = (props)=>{
                     setUser(Room.users[Room.users.length-1])
                 }
             })
-       }
-    }
+            //when nickname exist
+            if(Name !== ""){
+                props.socket.emit("add-user", {
+                    room : rooms[idx],
+                    username : Name
+                });
+            }
+            return ()=>{
+                props.socket.emit("remove-user",{
+                    room : rooms[idx],
+                    username : Name
+                })
+                props.socket.disconnect()
+            }
+
+        }
+
+    }, [test])
+
+    useEffect(()=>{
+        props.socket.on("remove-user", (Room)=>{
+            dispatch(changeRoom({
+                title : rooms[idx].title,
+                room : Room
+            }))
+        })
+    })
+
 
     const nameWindow = (
         <div className="addUsr">
             <span className="nameInfo">닉네임 입력</span><br/>
             <input type="text" id="newNickname"/><br/>
-            <button className="nameOk" onClick={adduser}>확인</button>
+            <button className="nameOk" onClick={()=>{setTest(true)}}>확인</button>
         </div>
     )
 
@@ -99,7 +120,7 @@ const Chat = (props)=>{
         <div>
             <Score idx={idx}/>
             <div className="chatBtn">
-                {user.roomMaster?<button className="gameStart" onClick={props.startGame}>게임 시작</button>: ""}
+                {user.roomMaster?<button className="gameStart" onClick={()=>{}}>게임 시작</button>: ""}
                 <Link to="/">
                     <button className="gameExit" onClick={()=>{
                         props.exitGame(user.nickname);
