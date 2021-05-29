@@ -1,7 +1,34 @@
-{
-    title : "string",
-    users : ["nickname", "nickname"],
-    Song : [100,100],
-    genre : ["genre1", "genre2"]
+chat : {
+    username : string,
+    context : string,
+    color : string
+}
 
+room : {
+    genre : Array(string),
+    title : string,
+    users : Array(user),
+    Song : Array(song),
+    songN : Arrary(int)
+}
+
+song : {
+    title : string,
+    url : string,
+    hint : Array(hint),
+    ans : Array(string),
+    duration : int
+}
+
+hint : {
+    category : string,
+    context : string,
+    time : int
+}
+
+user : {
+    nickname : stirng,
+    color : string,
+    roomMaster : bool,
+    score : int
 }

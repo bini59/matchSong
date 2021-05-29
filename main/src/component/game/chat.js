@@ -14,13 +14,6 @@ import {
 
 const Message = (props)=>{
     console.log(props)
-    const [chat, setChat] = useState([
-        <span key={0}><br/></span>,
-        <span key={1}><br/></span>,
-        <span key={2}><br/></span>,
-        <span key={3}><br/></span>,
-        <span key={4}><br/></span>
-    ])
 
     const chatt = useRef()
 
@@ -60,7 +53,7 @@ const Message = (props)=>{
 
 
 const Chat = (props)=>{
-    const [name, setName] = useState(true);
+    
     const dispatch = useDispatch();
     //user info
     const [user, setUser] = useState({
@@ -69,15 +62,6 @@ const Chat = (props)=>{
         score : 73,
         roomMaster : true
     })
-    const [chat, setChat] = useState([
-        <span key={0}><br/></span>,
-        <span key={1}><br/></span>,
-        <span key={2}><br/></span>,
-        <span key={3}><br/></span>,
-        <span key={4}><br/></span>
-    ]);
-
-    const [t, forceupdate] = useState(0)
 
     const rooms = useSelector(selectRoom)
     const idx = props.idx;
