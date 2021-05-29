@@ -1,10 +1,13 @@
 import React, {useState, useEffect, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux"
 import {useParams, useLocation} from "react-router-dom"
+import socketio from 'socket.io-client';
 import Song from  "./SongInfo";
-import Btns from  "./btns";
+import Chat from  "./chat";
 import Log from   "./log";
 import Score from "./score";
+
+
 
 
 import {
@@ -20,6 +23,8 @@ const Game = (props)=>{
     let {id} = useParams();
     const [logTrigger, setTrigger] = useState(false);
     const [start, setStart] = useState(null);
+
+    const socket = useRef(socketio.connect("https://3001-blush-wolverine-2p0rzvu8.ws-us07.gitpod.io"))
 
     const location = useLocation();
     
@@ -54,6 +59,7 @@ const Game = (props)=>{
         return info
     }
 
+    // Receive Room to server
     useEffect(()=>{
         const recipeUrl = "https://3001-blush-wolverine-2p0rzvu8.ws-us07.gitpod.io/room";
         const requestMetadata = {
@@ -68,33 +74,14 @@ const Game = (props)=>{
         .then(json => {
             dispatch(changeRooms(JSON.parse(json).rooms))
         })
-        // const getRoom = async ()=>{
-        //     const recipeUrl = "https://3001-blush-wolverine-2p0rzvu8.ws-us07.gitpod.io/room";
-        //     const requestMetadata = {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Accept': 'application/json'
-        //         },
-        //         body: JSON.stringify({})
-        //     };
-        //     const res = await fetch(recipeUrl, requestMetadata)
-        //     const json = await res.json()
-        //     dispatch(changeRooms(JSON.parse(json).rooms))      
-        // }
-        // getRoom();
       }, [dispatch])
+
 
     return(
         <div className="game">
-            <Score users={songInfos(rooms[idx]).users}/>
-            <Song songs={songInfos(rooms[idx]).Song} setFunc={(func)=>{setStart(func)}}/>
-            <Btns 
-                openLog={()=>{setTrigger(true)}}
-                startGame={()=>{start()}}
-                exitGame={(name)=>{rooms[idx] ? songInfos(rooms[idx]).users.splice(songInfos(rooms[idx]).users.findIndex(i=>i.nickname===name), 1) : console.log("not loaded!!")}}
-                title={songInfos(rooms[idx]).title}
-            />
+            
+            <Song songs={songInfos(rooms[idx]).Song} setFunc={(func)=>{setStart(func)}} socket={socket.current} room={rooms[idx]}/>
+            <button className="chatLog" onClick={()=>{setTrigger(true)}}>로그</button>
             {logTrigger ? <Log logs={chat} closeBox={()=>{setTrigger(false)}}/> : ""}
         </div>
     );

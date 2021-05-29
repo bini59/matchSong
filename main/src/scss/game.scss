@@ -66,8 +66,13 @@
     }
 }
 
+.chatLog{
+    position: fixed;
+    top: 1vh;
+    right : 1%;
+}
 //boxes
-.btns{
+.chatBtn{
     & button{
         width : 7%;
         height : 4vh;
@@ -75,11 +80,7 @@
         color : white
     }
 
-    & .chatLog{
-        position: fixed;
-        top: 1vh;
-        right : 1%;
-    }
+
     & .gameStart{
         position:fixed;
         bottom: 1vh;

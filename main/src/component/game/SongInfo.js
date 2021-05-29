@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import ReactAudioPlayer from "react-audio-player"
 
+import Chat from "./chat"
+
 
 const Timer = (props)=>{
     const [sec, setSec] = useState(props.duration);
@@ -17,37 +19,6 @@ const Timer = (props)=>{
     })
 
     return sec;
-}
-
-const Chat = (props)=>{
-    const [chat, setChat] = useState([
-        <span key={0}><br/></span>,
-        <span key={1}><br/></span>,
-        <span key={2}><br/></span>,
-        <span key={3}><br/></span>,
-        <span key={4}><br/></span>
-    ]);
-    const [count, setCount] = useState(5)
-
-    return(
-        <div>
-            <div className="chat">{chat}</div>
-            <input className="input" type="text" />
-            <button onClick={()=>{
-                //from props
-                let c = {
-                    color : "red",
-                    nickname : "bini",
-                    chat : "TEST CHAT"
-                }
-                let Chat = chat;
-                Chat.push(<span key={count} className="chatMsg"><span style={{color : c.color}}>{c.nickname}</span> : {c.chat}<br/></span>)
-                Chat.shift();
-                setCount(count+1);
-                setChat(Chat);
-            }}>chatTest</button>
-        </div>
-    );
 }
 
 //show hint
@@ -90,6 +61,8 @@ const Song = (props)=>{
     let temp = Timer({duration : props.songs[songNum].duration, onTimer:onTimer});
     let song = document.getElementById("audio");
 
+
+    //일단 기달려 이거 굉장히 잘못되었어....
     useEffect(()=>{
         if(temp === 0){
             if(!ansState) setAnstrigger(true);
@@ -125,7 +98,7 @@ const Song = (props)=>{
                 </div>
                 {ansState ? ans : <div className="ans"></div>}
             </div>
-            <Chat />
+            <Chat room={props.room} socket={props.socket}/>
             <button onClick={()=>{
                 setTimer(true);
                 song.play();

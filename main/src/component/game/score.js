@@ -1,17 +1,43 @@
 import React from "react";
+import {useSelector} from "react-redux"
+
+import{
+    
+} from "../../redux/roomSlice"
 
 const Score = (props)=>{
-    let users = props.users;
+    let room = props.room
+    
+    const songInfos = (room)=>{
+        let info = {
+            users : [],
+            Song :  [{title : "", duration : 0, url: false, hint : [{category : "", context : "", time : 0}], ans : [""]}],
+            title : "",
+            genre : "",
+            songN : [0, 0]
+        }
+        if (room){
+            info.users = room.users;
+            info.Song = room.Song;
+            info.title = room.title;
+            info.genre = room.genre;
+            info.songN = room.songN;
+        }
+        return info
+    }
+    let users = songInfos(room).users
     users.sort((a, b)=>{
         return b.score - a.score;
     });
+
+    console.log(props)
 
     return(
         <div className="scoreBoard">
             <ul className="li">
                 {users.map((user)=>{
                     return(
-                        <li key={user.score} className="Scoreli">
+                        <li key={user.nickname} className="Scoreli">
                             <div style={{backgroundColor : user.color}}/><span> {user.score}</span>
                         </li>
                     );

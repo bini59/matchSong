@@ -7,7 +7,9 @@ export const roomSlice = createSlice({
     },
     reducers : {
         changeRoom : (state, action)=>{
-            let idx = state.findIndex(i => i.title === action.payload.title)
+
+            let idx = state.rooms.findIndex(i => i.title === action.payload.title)
+            console.log(action.payload)
             state.rooms[idx] = action.payload.room
         },
         changeRooms : (state, action)=>{
@@ -16,7 +18,7 @@ export const roomSlice = createSlice({
     }
 })
 
-export const {Check, changeRoom, changeRooms} = roomSlice.actions;
+export const {changeRoom, changeRooms} = roomSlice.actions;
 
 export const selectRoom = state => state.rooms.rooms;
 
