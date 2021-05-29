@@ -13,7 +13,6 @@ import {
 } from "../../redux/roomSlice"
 
 const Message = (props)=>{
-    console.log(props)
 
     const chatt = useRef()
 
@@ -27,7 +26,6 @@ const Message = (props)=>{
                     : ${data.chat}<br/>
                 </span>
             `
-            console.log(chatt.current.scrollHeight)
             $(".chat")[0].scrollTop = chatt.current.scrollHeight
         })
     }, [])
@@ -81,7 +79,6 @@ const Chat = (props)=>{
                     title : rooms[idx].title,
                     room : Room
                 }))
-                console.log(Room)
                 if(Name === Room.users[Room.users.length-1].nickname){
                     setUser(Room.users[Room.users.length-1])
                 }
