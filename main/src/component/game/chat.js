@@ -28,7 +28,7 @@ const Message = (props)=>{
             `
             $(".chat")[0].scrollTop = chatt.current.scrollHeight
         })
-    }, [])
+    }, [props.socket])
 
     const sendMsg = ()=>{
         let input = document.getElementsByClassName("input")[0]

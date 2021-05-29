@@ -1,6 +1,5 @@
 import React, {useState, useRef} from "react";
 import {useSelector, useDispatch} from "react-redux"
-import {Link} from "react-router-dom";
 import {
     changeRooms,
     selectRoom
