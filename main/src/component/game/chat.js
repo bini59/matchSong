@@ -1,59 +1,109 @@
-import React, {useState, useRef} from "react";
-import {useDispatch} from "react-redux"
+import React, {useState, useRef, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux"
 import {Link} from "react-router-dom";
+
+import $ from "jquery"
 
 import Score from "./score"
 
 
 import {
+    selectRoom,
     changeRoom
 } from "../../redux/roomSlice"
 
+const Message = (props)=>{
+    console.log(props)
+    const [chat, setChat] = useState([
+        <span key={0}><br/></span>,
+        <span key={1}><br/></span>,
+        <span key={2}><br/></span>,
+        <span key={3}><br/></span>,
+        <span key={4}><br/></span>
+    ])
+
+    const chatt = useRef()
+
+    useEffect(()=>{
+        props.socket.on("send-chat-server", (data)=>{
+            chatt.current.innerHTML += `
+                <span className="chatMsg">
+                    <span style="color : ${data.user.color}">
+                        ${data.user.nickname}
+                    </span> 
+                    : ${data.chat}<br/>
+                </span>
+            `
+            console.log(chatt.current.scrollHeight)
+            $(".chat")[0].scrollTop = chatt.current.scrollHeight
+        })
+    }, [])
+
+    const sendMsg = ()=>{
+        let input = document.getElementsByClassName("input")[0]
+        props.socket.emit("send-chat-client", {
+            user : props.user,
+            chat : input.value
+        })
+        input.value = "";
+    }
+
+    return (
+        <div>
+            <div className="chat" style={{overflow:"auto"}} ref={chatt}></div>
+            <input className="input" type="text" onKeyDown={(e)=>{if(e.key==="Enter"){sendMsg()}}}/>
+            <button onClick={sendMsg}>chatTest</button>
+        </div>
+    )
+}
+
+
 
 const Chat = (props)=>{
-    console.log(props)
     const [name, setName] = useState(true);
     const dispatch = useDispatch();
     //user info
     const [user, setUser] = useState({
-        nickname : "bini",
+        nickname : "NONE",
         color : "red",
         score : 73,
         roomMaster : true
     })
-    const [room, setRoom] = useState(props.room)
-    //window input nickname
+    const [chat, setChat] = useState([
+        <span key={0}><br/></span>,
+        <span key={1}><br/></span>,
+        <span key={2}><br/></span>,
+        <span key={3}><br/></span>,
+        <span key={4}><br/></span>
+    ]);
+
+    const [t, forceupdate] = useState(0)
+
+    const rooms = useSelector(selectRoom)
+    const idx = props.idx;
     
 
     const adduser = ()=>{
-        let name = document.getElementById("newNickname").value;
+        let Name = document.getElementById("newNickname").value;
 
         //when nickname exist
-        if(name !== ""){
-            /*
-                submit name to server and receive User data and
-                this.setState({
-                    user : {receive user data}
-                })
-            */
+        if(Name !== ""){
             props.socket.emit("add-user", {
-                room : room,
-                username : name
+                room : rooms[idx],
+                username : Name
             });
             props.socket.on("AddUsr", (Room)=>{
                 dispatch(changeRoom({
-                    title : room.title,
+                    title : rooms[idx].title,
                     room : Room
                 }))
+                console.log(Room)
+                if(Name === Room.users[Room.users.length-1].nickname){
+                    setUser(Room.users[Room.users.length-1])
+                }
             })
-            //property function add user
-            //need to Edit with redux
-            setName(false);
-            console.log(room)
        }
     }
-
-
 
     const nameWindow = (
         <div className="addUsr">
@@ -62,44 +112,24 @@ const Chat = (props)=>{
             <button className="nameOk" onClick={adduser}>확인</button>
         </div>
     )
-    const [chat, setChat] = useState([
-        <span key={0}><br/></span>,
-        <span key={1}><br/></span>,
-        <span key={2}><br/></span>,
-        <span key={3}><br/></span>,
-        <span key={4}><br/></span>
-    ]);
-    const [count, setCount] = useState(5)
+
 
     return(
         <div>
-            <Score rooms={props.room}/>
+            <Score idx={idx}/>
             <div className="chatBtn">
                 {user.roomMaster?<button className="gameStart" onClick={props.startGame}>게임 시작</button>: ""}
                 <Link to="/">
                     <button className="gameExit" onClick={()=>{
                         props.exitGame(user.nickname);
                         //go to home code
+                        props.socket.disconnect();
                     }}>나가기</button>
                 </Link>
             </div>
+            {user.nickname === "NONE" ? nameWindow : ""}
             <div>
-                {name ? nameWindow : ""}
-                <div className="chat">{chat}</div>
-                <input className="input" type="text" />
-                <button onClick={()=>{
-                    //from props
-                    let c = {
-                        color : "red",
-                        nickname : "bini",
-                        chat : "TEST CHAT"
-                    }
-                    let Chat = chat;
-                    Chat.push(<span key={count} className="chatMsg"><span style={{color : c.color}}>{c.nickname}</span> : {c.chat}<br/></span>)
-                    Chat.shift();
-                    setCount(count+1);
-                    setChat(Chat);
-                }}>chatTest</button>
+                <Message socket={props.socket} user={user}/>
             </div>
         </div>
     );

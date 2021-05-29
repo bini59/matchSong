@@ -29,12 +29,7 @@ const Select = (props)=>{
 
     let rooms = {
         title : "",
-        users : [{
-            nickname : "ㅇㅇ",
-            score : 43,
-            color : "red",
-            roomMaster : true
-        }],
+        users : [],
         genre : [],
         songN : [0, 0],
         Song : [{
@@ -69,7 +64,7 @@ const Select = (props)=>{
     
 
     const sendServer = (room)=>{
-        const recipeUrl = "https://3001-blush-wolverine-2p0rzvu8.ws-us07.gitpod.io/room/add";
+        const recipeUrl = "https://3001-blush-wolverine-2p0rzvu8.ws-us08.gitpod.io/room/add";
         const requestMetadata = {
             method: 'POST',
             headers: {

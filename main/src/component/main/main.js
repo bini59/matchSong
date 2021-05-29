@@ -14,33 +14,36 @@ import "../../scss/select.scss"
 
 const Main = (props)=>{
     const dispatch = useDispatch();
-    //State that turn on Make room(Select)
+    // get Room list from redux Store 
+    // first get from Store
+    // rooms = []
+    const rooms = useSelector(selectRoom)
+
+    // For select on/off
     const [onSelect, setSelect] = useState(false);
-    //roomlist(must served by server)
-    const roomTitles = useSelector(selectRoom);
-    
-    
-    const rooms = (roomlist)=> {return roomlist.map((room)=>{
+
+    // Construct room list with (rooms)
+    const roomList = (Rooms) => {return Rooms.map((room)=>{
+      let to = {
+        pathname : "/game/" + room.title,
+        state : {rooms : Rooms}
+      }
       return (
         <li key={room.title} className="roomli">
-                <Link to={{
-                  pathname: "/game/"+room.title,
-                  state: {rooms : roomlist}
-                }}>      
+          <Link to={to}>
             <div className="room">
               <div className="title">{room.title}</div>
               <div className="genre">[{room.genre.map((genre, t)=>{return(<span key={t}>{genre}, </span>)})}]</div><br></br>
               <div className="users">{room.users.map((user)=>{return('ጿ')})}</div>
               <div className="remainsong">{room.songN[0]}/{room.songN[1]}</div>
             </div>
-            </Link>
+          </Link>
         </li>
-      );
-    });}
+      )
+    })};
 
-    
     useEffect(()=>{
-      const recipeUrl = "https://3001-blush-wolverine-2p0rzvu8.ws-us07.gitpod.io/room";
+      const recipeUrl = "https://3001-blush-wolverine-2p0rzvu8.ws-us08.gitpod.io/room";
       const requestMetadata = {
           method: 'POST',
           headers: {
@@ -52,22 +55,23 @@ const Main = (props)=>{
       fetch(recipeUrl, requestMetadata).then(res => res.json())
       .then(json => dispatch(changeRooms(JSON.parse(json).rooms)))
     }, [dispatch])
-  
+
+
     return (
-      <div className="main" >
+        <div className="main" >
         <div id="mainTitle"><span>노래 맞추기</span></div>
         <div className="roomlist">
               <ul>
-                {rooms(roomTitles)}
+                {roomList(rooms)}
                 <li className="roomli" onClick={()=>{setSelect(true)}}><div className="addroom">+</div></li>
               </ul>
         </div><br/>
         {onSelect ? <Select 
           closeWindow={()=>{setSelect(false)}}
-          renewRooms={(roomlist)=>{rooms(roomlist)}}
+          renewRooms={(roomlist)=>{roomList(roomlist)}}
         /> : ''}
       </div>
-    );
+    )
   }
   
   // class App extends Component {

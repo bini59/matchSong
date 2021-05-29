@@ -1,36 +1,40 @@
 import React from "react";
-import {useSelector} from "react-redux"
+import {useSelector} from "react-redux";
 
-import{
-    
+import {
+    selectRoom,
+    changeRoom
 } from "../../redux/roomSlice"
 
 const Score = (props)=>{
-    let room = props.room
+
+    const rooms = useSelector(selectRoom)
+    const idx = props.idx
+
+
     
-    const songInfos = (room)=>{
-        let info = {
-            users : [],
-            Song :  [{title : "", duration : 0, url: false, hint : [{category : "", context : "", time : 0}], ans : [""]}],
-            title : "",
-            genre : "",
-            songN : [0, 0]
-        }
-        if (room){
-            info.users = room.users;
-            info.Song = room.Song;
-            info.title = room.title;
-            info.genre = room.genre;
-            info.songN = room.songN;
-        }
-        return info
-    }
-    let users = songInfos(room).users
-    users.sort((a, b)=>{
+    // const songInfos = (room)=>{
+    //     let info = {
+    //         users : [],
+    //         Song :  [{title : "", duration : 0, url: false, hint : [{category : "", context : "", time : 0}], ans : [""]}],
+    //         title : "",
+    //         genre : "",
+    //         songN : [0, 0]
+    //     }
+    //     if (room){
+    //         info.users = room.users;
+    //         info.Song = room.Song;
+    //         info.title = room.title;
+    //         info.genre = room.genre;
+    //         info.songN = room.songN;
+    //     }
+    //     return info
+    // }
+
+    let users = rooms[idx].users.slice(0).sort((a, b)=>{
         return b.score - a.score;
     });
 
-    console.log(props)
 
     return(
         <div className="scoreBoard">
@@ -38,7 +42,8 @@ const Score = (props)=>{
                 {users.map((user)=>{
                     return(
                         <li key={user.nickname} className="Scoreli">
-                            <div style={{backgroundColor : user.color}}/><span> {user.score}</span>
+                            <div className="scoreColor" style={{backgroundColor : user.color}}/>
+                            <div className="score"> {user.score}</div>
                         </li>
                     );
                 })}

@@ -24,15 +24,20 @@ const Game = (props)=>{
     const [logTrigger, setTrigger] = useState(false);
     const [start, setStart] = useState(null);
 
-    const socket = useRef(socketio.connect("https://3001-blush-wolverine-2p0rzvu8.ws-us07.gitpod.io"))
-
-    const location = useLocation();
+    const [socket, setSocket] = useState(null);
+    useEffect(()=>{
+        setSocket(socketio.connect("https://3001-blush-wolverine-2p0rzvu8.ws-us08.gitpod.io"))
+    }, [])
     
-    console.log(location)
-    let rooms = location.state.rooms;
-    console.log(rooms)
+
+    // get room from redux store
+    // current room
+    const rooms = useSelector(selectRoom)
     let idx = rooms.findIndex(i => i.title === id);
-    console.log(idx)
+
+    console.log(rooms, idx)
+
+    // chat log temp data
     let chat = [
         {
             username : "holy",
@@ -41,46 +46,47 @@ const Game = (props)=>{
         }
     ]
 
-    const songInfos = (room)=>{
-        let info = {
-            users : [],
-            Song :  [{title : "", duration : 0, url: false, hint : [{category : "", context : "", time : 0}], ans : [""]}],
-            title : "",
-            genre : "",
-            songN : [0, 0]
-        }
-        if (room){
-            info.users = room.users;
-            info.Song = room.Song;
-            info.title = room.title;
-            info.genre = room.genre;
-            info.songN = room.songN;
-        }
-        return info
-    }
+
+    // song info 
+    // const songInfos = (room)=>{
+    //     let info = {
+    //         users : [],
+    //         Song :  [{title : "", duration : 0, url: false, hint : [{category : "", context : "", time : 0}], ans : [""]}],
+    //         title : "",
+    //         genre : "",
+    //         songN : [0, 0]
+    //     }
+    //     if (room){
+    //         info.users = room.users;
+    //         info.Song = room.Song;
+    //         info.title = room.title;
+    //         info.genre = room.genre;
+    //         info.songN = room.songN;
+    //     }
+    //     return info
+    // }
 
     // Receive Room to server
-    useEffect(()=>{
-        const recipeUrl = "https://3001-blush-wolverine-2p0rzvu8.ws-us07.gitpod.io/room";
-        const requestMetadata = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({})
-        };
-        fetch(recipeUrl, requestMetadata).then(res => res.json())
-        .then(json => {
-            dispatch(changeRooms(JSON.parse(json).rooms))
-        })
-      }, [dispatch])
+    // useEffect(()=>{
+    //     const recipeUrl = "https://3001-blush-wolverine-2p0rzvu8.ws-us08.gitpod.io/room";
+    //     const requestMetadata = {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Accept': 'application/json'
+    //         },
+    //         body: JSON.stringify({})
+    //     };
+    //     fetch(recipeUrl, requestMetadata).then(res => res.json())
+    //     .then(json => {
+    //         dispatch(changeRooms(JSON.parse(json).rooms))
+    //     })
+    //   }, [dispatch])
 
 
     return(
-        <div className="game">
-            
-            <Song songs={songInfos(rooms[idx]).Song} setFunc={(func)=>{setStart(func)}} socket={socket.current} room={rooms[idx]}/>
+        <div className="game"> 
+            {socket ? <Song songs={rooms[idx].Song} setFunc={(func)=>{setStart(func)}} socket={socket} idx={idx}/> : ""}
             <button className="chatLog" onClick={()=>{setTrigger(true)}}>로그</button>
             {logTrigger ? <Log logs={chat} closeBox={()=>{setTrigger(false)}}/> : ""}
         </div>

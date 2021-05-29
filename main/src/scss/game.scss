@@ -6,7 +6,8 @@
 }
 
 .scoreBoard{
-    position: absolute;
+    position: fixed;
+    top : 0;
     & .li{
         margin : 0;
         padding: {
@@ -18,14 +19,27 @@
 
 .Scoreli{
     list-style: none;
+    height: 2vh;
+    width: 6vh;
+    margin : {
+        bottom: 0.5vh;
+    }
     & div{
         display : inline-block;
-        width: 2vh;
-        height: 2vh;
     }
     & span{
         font-size: 2vh;
         color : white;
+    }
+
+    & .scoreColor{
+        position :relative;
+        left: 0;
+        width: 2vh;
+        height: 2vh;
+    }
+    & .score{
+        width: 3vh;
     }
     
 }

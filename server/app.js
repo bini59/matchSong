@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/room', RoomRouter);
+app.use('/room', cors(),RoomRouter);
 app.use('/chat', chatRouter);
 app.get('/', (req,res)=>{})
 
@@ -49,19 +49,26 @@ app.use(function(err, req, res, next) {
 
 app.io = io('', {
   cors: {
-      origin: ["https://3000-blush-wolverine-2p0rzvu8.ws-us07.gitpod.io"],
+      origin: ["https://3000-blush-wolverine-2p0rzvu8.ws-us08.gitpod.io"],
       methods:["GET","POST"]
   }
-  });
+});
 
+
+
+let usercolor = [
+  "red", "blue", "yellow", "green", "purple", "white", "chocolate", "cyan"
+]
+  
 app.io.on('connection', (socket)=>{
   console.log("user connect")
   socket.on("add-user", (data)=>{
+    console.log(data)
     let idx = room.rooms.findIndex(i => i.title === data.room.title)
     let userN = room.rooms[idx].users.length
     let user = {
       nickname : data.username,
-      color : "blue",
+      color : usercolor[userN],
       roomMaster : false,
       score : 0
     }
@@ -71,6 +78,16 @@ app.io.on('connection', (socket)=>{
     console.log(data)
 
     app.io.emit("AddUsr", room.rooms[idx])
+  })
+
+
+  socket.on("disconnect", (data)=>{
+    console.log("disconnect",data);
+  })
+
+  socket.on("send-chat-client", (data)=>{
+    console.log(data);
+    app.io.emit("send-chat-server", data)
   })
 })
 

@@ -42,10 +42,25 @@
     //chat
     & .chat{
         width: 40%;
-        height: 15vh;
+        height: 14.5vh;
         text-align: left;
         margin: {
             left: 30%;
+            bottom : 1vh;
+        }
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        &::-webkit-scrollbar-track {
+        background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background-color: gray;
+        }
+        &::-webkit-scrollbar-button {
+        width: 0;
+        height: 0;
         }
     }
 

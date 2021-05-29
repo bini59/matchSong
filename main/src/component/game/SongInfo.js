@@ -1,7 +1,13 @@
 import React, {useState, useEffect} from "react";
+import {useSelector} from "react-redux"
 import ReactAudioPlayer from "react-audio-player"
 
 import Chat from "./chat"
+
+import {
+    changeRooms,
+    selectRoom
+} from "../../redux/roomSlice"
 
 
 const Timer = (props)=>{
@@ -49,12 +55,16 @@ const Hint = (props)=>{
 
 const Song = (props)=>{
 
+    // room
+    const rooms = useSelector(selectRoom)
+    const idx = props.idx
+
     //current Song number
     const [songNum, setSongnum] = useState(0);
     //Answer show trigger
     const [ansState, setAnstrigger] = useState(false);
     //Answer
-    const [ans, setAns] = useState(<div className="ans"><span className="ansMsg">답</span> : {props.songs[songNum].title}</div>)
+    const [ans, setAns] = useState(<div className="ans"><span className="ansMsg">답</span> : {rooms[idx].Song[songNum].title}</div>)
     //ontimer
     const [onTimer, setTimer] = useState(false);
 
@@ -98,7 +108,7 @@ const Song = (props)=>{
                 </div>
                 {ansState ? ans : <div className="ans"></div>}
             </div>
-            <Chat room={props.room} socket={props.socket}/>
+            <Chat room={props.room} socket={props.socket} idx={idx}/>
             <button onClick={()=>{
                 setTimer(true);
                 song.play();
