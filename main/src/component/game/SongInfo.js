@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import ReactAudioPlayer from "react-audio-player"
+import $ from "jquery"
 
 import Chat from "./chat"
 
@@ -9,8 +10,15 @@ import {
 } from "../../redux/roomSlice"
 
 
-const Timer = (props)=>{
-    const [sec, setSec] = useState(props.duration);
+const useTimer = (props)=>{
+    const [sec, setSec] = useState(5000);
+
+    const idx = props.idx
+
+    useEffect(()=>{
+        if (sec===0 || sec===5000)
+            setSec(props.rooms[idx].Song[props.songIdx].duration)
+    }, [props.onTimer])
 
     useEffect(()=>{
         if(props.onTimer){
@@ -30,6 +38,10 @@ const Timer = (props)=>{
 const Hint = (props)=>{
     const [hintN, setHintN] = useState(0);
     const [hint, setHint] = useState([])
+
+    useEffect(()=>{
+        setHintN(0)
+    }, [props.hints])
 
     useEffect(()=>{
         if(props.sec === props.hints[hintN].time){
@@ -53,47 +65,59 @@ const Hint = (props)=>{
 
 
 const Song = (props)=>{
-
+    const dispatch = useDispatch();
     // room
     const rooms = useSelector(selectRoom)
     const idx = props.idx
 
-    //current Song number
-    const [songNum, setSongnum] = useState(0);
     //Answer show trigger
     const [ansState, setAnstrigger] = useState(false);
     //Answer
-    const [ans, setAns] = useState(<div className="ans"><span className="ansMsg">답</span> : {rooms[idx].Song[songNum].title}</div>)
+    const [ans, setAns] = useState(<div className="ans"><span className="ansMsg">답</span> : {rooms[idx].Song[rooms[idx].songN[0]].title}</div>)
     //ontimer
     const [onTimer, setTimer] = useState(false);
 
-    let temp = Timer({duration : props.songs[songNum].duration, onTimer:onTimer});
+    let temp = useTimer({rooms : rooms, idx : idx, songIdx : rooms[idx].songN[0], onTimer:onTimer});
     let song = document.getElementById("audio");
 
 
     //일단 기달려 이거 굉장히 잘못되었어....
     useEffect(()=>{
         if(temp === 0){
-            if(!ansState) setAnstrigger(true);
-            {song ? song.pause() : song = document.getElementById("audio")}
-            if(songNum < props.songs.length-1){
-                setSongnum(songNum+1);
-                song.src = props.songs[songNum].url;
-                setAnstrigger(false);
-                setAns(<div className="ans"><span className="ansMsg">답</span> : {props.songs[songNum].title}</div>)
+            if(!ansState) {
+                setAnstrigger(true)
+                props.socket.emit("send-chat-client", {
+                    user : {nickname : "UNDEFINE"},
+                    chat : rooms[idx].Song[rooms[idx].songN[0]].ans[0],
+                    title : rooms[idx].title,
+                    idx : idx
+                })
             }
+            {song ? song.pause() : song = document.getElementById("audio")}
+            song.src = rooms[idx].Song[rooms[idx].songN[0]].url
+            setTimer(false)
+            setTimeout(()=>{
+                setAnstrigger(false);
+                $(".hint")[0].innerHTML = "";
+                setAns(<div className="ans"><span className="ansMsg">답</span> : {rooms[idx].Song[rooms[idx].songN[0]].title}</div>)
+                
+                song.play()
+                setTimer(true)
+                props.socket.emit("start-game", {room : rooms[idx].title})
+            }, 4000)
+
         }
-    }, [temp, ansState, props.songs, song, songNum]);
+    }, [temp]);
     
     return(
         <div className="quiz">
             <div className="temp">
                 <div className="title">
-                    <span className="remainSong">남은곡 ( 100 / 100 )</span><br/>
+                    <span className="remainSong">남은곡 ( {rooms[idx].songN[1]-rooms[idx].songN[0]} / {rooms[idx].songN[1]} )</span><br/>
                     <span className="description"><span className="_1">음악</span>을 듣고 <span className="_2">답</span>을 입력하세요</span><br/>
                     <span className="remainSec">- {temp}초 -</span><br/>
                     <ReactAudioPlayer 
-                        src={props.songs[0].url ? props.songs[0].url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap"}
+                        src={rooms[idx].Song[rooms[idx].songN[0]].url}
                         id="audio"
                         type="mpeg"
                         onLoadedMetadata={()=>{song = document.getElementById("audio")}}
@@ -102,12 +126,18 @@ const Song = (props)=>{
                 <div className="hint">
                     <Hint 
                         sec={temp}
-                        hints={props.songs[songNum].hint}
+                        hints={rooms[idx].Song[rooms[idx].songN[0]].hint}
                     />
                 </div>
                 {ansState ? ans : <div className="ans"></div>}
             </div>
-            <Chat room={props.room} socket={props.socket} idx={idx}/>
+            <Chat 
+                room={props.room}
+                socket={props.socket} 
+                idx={idx} 
+                correct={()=>{
+                    setAnstrigger(true)
+                }}/>
             <button onClick={()=>{
                 setTimer(true);
                 song.play();

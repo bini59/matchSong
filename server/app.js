@@ -17,7 +17,6 @@ global.room = {
 
 const app = express();
 
-
 app.use(cors());
 
 app.use(logger('dev'));
@@ -34,6 +33,7 @@ app.get('/', (req,res)=>{})
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
 
 
 // error handler

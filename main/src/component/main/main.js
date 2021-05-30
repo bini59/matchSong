@@ -35,7 +35,7 @@ const Main = (props)=>{
               <div className="title">{room.title}</div>
               <div className="genre">[{room.genre.map((genre, t)=>{return(<span key={t}>{genre}, </span>)})}]</div><br></br>
               <div className="users">{room.users.map((user)=>{return('ጿ')})}</div>
-              <div className="remainsong">{room.songN[0]}/{room.songN[1]}</div>
+              <div className="remainsong">{room.songN[1]-room.songN[0]}/{room.songN[1]}</div>
             </div>
           </Link>
         </li>

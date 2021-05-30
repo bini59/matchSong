@@ -31,24 +31,7 @@ const Select = (props)=>{
         users : [],
         genre : [],
         songN : [0, 0],
-        Song : [{
-            title : "We go - 프로미스나인",
-            hint : [
-                {
-                    category : "가수힌트",
-                    context : "프로미스나인",
-                    time : 55
-                },
-                {
-                    category : "초성힌트",
-                    context : "ㅇ ㄱㅇ",
-                    time : 50
-                }
-            ],
-            ans : ["we go", "위 고", "위 고우"],
-            url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-            duration : 60
-        }]
+        Song : []
     }
 
     let genreBtns = btns.map((genre, idx)=>{

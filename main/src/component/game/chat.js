@@ -71,11 +71,16 @@ const Chat = (props)=>{
     useEffect(()=>{
         props.socket.emit("join-room", {title : rooms[idx].title})
         props.socket.on("correct", (data)=>{
-            $(".chat")[0].innerHTML += `<span><span style="color : ${data.user.color}; font-weigth:bold">${data.user.nickname}</span><span> 정답입니다</span></span></br>`
+            props.correct();
+            if(data.user !== "UNDEFINE"){
+                $(".chat")[0].innerHTML += `<span><span style="color : ${data.user.color}; font-weigth:bold">${data.user.nickname}</span><span> 정답입니다</span></span></br>`        
+                $(".chat")[0].scrollTop = $(".chat")[0].scrollHeight;
+            }
             dispatch(changeRoom({
                 title : rooms[idx].title,
                 room : data.room
             }))
+            
         })
     }, [])
 

@@ -3,7 +3,7 @@ var router = express.Router();
 
 let songs = [
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인1",
         hint : [
             {
                 category : "가수힌트",
@@ -18,10 +18,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 30
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인2",
         hint : [
             {
                 category : "가수힌트",
@@ -36,10 +36,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 31
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인3",
         hint : [
             {
                 category : "가수힌트",
@@ -54,10 +54,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 29
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인4",
         hint : [
             {
                 category : "가수힌트",
@@ -72,10 +72,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 28
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인5",
         hint : [
             {
                 category : "가수힌트",
@@ -90,10 +90,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 27
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인6",
         hint : [
             {
                 category : "가수힌트",
@@ -108,10 +108,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 26
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인7",
         hint : [
             {
                 category : "가수힌트",
@@ -126,10 +126,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 25
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인8",
         hint : [
             {
                 category : "가수힌트",
@@ -144,10 +144,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 24
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인9",
         hint : [
             {
                 category : "가수힌트",
@@ -162,10 +162,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 23
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인10",
         hint : [
             {
                 category : "가수힌트",
@@ -180,10 +180,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 22
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인11",
         hint : [
             {
                 category : "가수힌트",
@@ -198,10 +198,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 21
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인12",
         hint : [
             {
                 category : "가수힌트",
@@ -216,10 +216,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 20
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인13",
         hint : [
             {
                 category : "가수힌트",
@@ -234,10 +234,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 19
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인14",
         hint : [
             {
                 category : "가수힌트",
@@ -252,10 +252,10 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 18
     },
     {
-        title : "We go - 프로미스나인",
+        title : "We go - 프로미스나인15",
         hint : [
             {
                 category : "가수힌트",
@@ -270,7 +270,7 @@ let songs = [
         ],
         ans : ["we go", "위 고", "위 고우"],
         url : "https://docs.google.com/uc?export=open&id=1Kb3-8vxRbpm5Lw8N86tbchJPOevg5iap",
-        duration : 60
+        duration : 17
     },
 
 ]
