@@ -17,6 +17,11 @@ const Message = (props)=>{
     const chatt = useRef()
 
     useEffect(()=>{
+        console.log(props)
+        $("#totalUsr")[0].innerHTML = props.room[props.idx].users.length
+    }, [props.room])
+
+    useEffect(()=>{
         props.socket.on("send-chat-server", (data)=>{
             chatt.current.innerHTML += `
                 <span className="chatMsg">
@@ -27,6 +32,10 @@ const Message = (props)=>{
                 </span>
             `
             $(".chat")[0].scrollTop = chatt.current.scrollHeight
+        })
+
+        props.socket.on("notice-skip", (data)=>{
+            $("#skipProgress")[0].innerHTML = data.num;
         })
     }, [props.socket])
 
@@ -41,11 +50,26 @@ const Message = (props)=>{
         input.value = "";
     }
 
+    const skip = ()=>{
+        props.socket.emit("vote-skip", {
+            user : props.user,
+            title : props.title,
+            idx : props.idx,
+        })
+    }
+
     return (
         <div>
             <div className="chat" style={{overflow:"auto"}} ref={chatt}></div>
-            <input className="input" type="text" onKeyDown={(e)=>{if(e.key==="Enter"){sendMsg()}}}/>
-            <button onClick={sendMsg}>chatTest</button>
+            <input className="input" type="text" onKeyDown={(e)=>{
+                if(e.key==="Enter"){
+                    sendMsg()
+                }
+                else if(e.ctrlKey===true && e.code ==="Slash" ){
+                    skip()
+                }
+            }}/>
+            <div className="skip">스킵에 투표하시려면 ctrl+K를 누르세요 ( <span id="skipProgress">0</span> / <span id="totalUsr"></span> )</div>
         </div>
     )
 }
@@ -70,7 +94,7 @@ const Chat = (props)=>{
 
     useEffect(()=>{
         props.socket.emit("join-room", {title : rooms[idx].title})
-        props.socket.on("correct", (data)=>{
+                props.socket.on("correct", (data)=>{
             props.correct();
             if(data.user !== "UNDEFINE"){
                 $(".chat")[0].innerHTML += `<span><span style="color : ${data.user.color}; font-weigth:bold">${data.user.nickname}</span><span> 정답입니다</span></span></br>`        
@@ -138,7 +162,7 @@ const Chat = (props)=>{
         <div>
             <Score idx={idx}/>
             <div className="chatBtn">
-                {user.roomMaster?<button className="gameStart" onClick={()=>{}}>게임 시작</button>: ""}
+                {user.roomMaster?<button className="gameStart" onClick={props.startGame}>게임 시작</button>: ""}
                 <Link to="/">
                     <button className="gameExit" onClick={()=>{
                         props.exitGame(user.nickname);
@@ -149,7 +173,7 @@ const Chat = (props)=>{
             </div>
             {user.nickname === "NONE" ? nameWindow : ""}
             <div>
-                <Message socket={props.socket} user={user} idx={idx} title={rooms[idx].title}/>
+                <Message socket={props.socket} user={user} idx={idx} room={rooms} title={rooms[idx].title}/>
             </div>
         </div>
     );

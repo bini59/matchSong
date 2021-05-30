@@ -16,18 +16,22 @@ const useTimer = (props)=>{
     const idx = props.idx
 
     useEffect(()=>{
-        if (sec===0 || sec===5000)
-            setSec(props.rooms[idx].Song[props.songIdx].duration)
+        setSec(props.rooms[idx].Song[props.songIdx].duration)
     }, [props.onTimer])
 
     useEffect(()=>{
         if(props.onTimer){
             const countdown = setInterval(()=>{
                 if(sec > 0) setSec(sec-1)
-                else clearInterval(countdown)
+                else {
+
+                    clearInterval(countdown)
+                }
             }, 1000)
     
-            return ()=>{clearInterval(countdown)}
+            return ()=>{
+                clearInterval(countdown)
+            }
         }
     })
 
@@ -65,7 +69,6 @@ const Hint = (props)=>{
 
 
 const Song = (props)=>{
-    const dispatch = useDispatch();
     // room
     const rooms = useSelector(selectRoom)
     const idx = props.idx
@@ -77,15 +80,14 @@ const Song = (props)=>{
     //ontimer
     const [onTimer, setTimer] = useState(false);
 
-    let temp = useTimer({rooms : rooms, idx : idx, songIdx : rooms[idx].songN[0], onTimer:onTimer});
+    let temp = useTimer({rooms : rooms, idx : idx, songIdx : rooms[idx].songN[0], onTimer:onTimer, socket:props.socket});
     let song = document.getElementById("audio");
+    
 
-
-    //일단 기달려 이거 굉장히 잘못되었어....
     useEffect(()=>{
-        if(temp === 0){
+        props.socket.on("skipped", (data)=>{
+            setTimer(false)
             if(!ansState) {
-                setAnstrigger(true)
                 props.socket.emit("send-chat-client", {
                     user : {nickname : "UNDEFINE"},
                     chat : rooms[idx].Song[rooms[idx].songN[0]].ans[0],
@@ -95,17 +97,50 @@ const Song = (props)=>{
             }
             {song ? song.pause() : song = document.getElementById("audio")}
             song.src = rooms[idx].Song[rooms[idx].songN[0]].url
-            setTimer(false)
             setTimeout(()=>{
                 setAnstrigger(false);
                 $(".hint")[0].innerHTML = "";
-                setAns(<div className="ans"><span className="ansMsg">답</span> : {rooms[idx].Song[rooms[idx].songN[0]].title}</div>)
-                
+                $("#skipProgress")[0].innerHTML = 0;
                 song.play()
                 setTimer(true)
+                setSongT(true)
                 props.socket.emit("start-game", {room : rooms[idx].title})
+                
             }, 4000)
+        })
+    }, [rooms])
 
+    const [songT, setSongT] = useState(true)
+    //일단 기달려 이거 굉장히 잘못되었어....
+    useEffect(()=>{
+        if(song){
+            if(song.played && song.currentTime > 0 && songT){
+                setAns(<div className="ans"><span className="ansMsg">답</span> : {rooms[idx].Song[rooms[idx].songN[0]].title}</div>); console.log(ans)
+                setSongT(false);
+            }
+        }
+        if(temp === 0){
+            setTimer(false)
+            if(!ansState) {
+                props.socket.emit("send-chat-client", {
+                    user : {nickname : "UNDEFINE"},
+                    chat : rooms[idx].Song[rooms[idx].songN[0]].ans[0],
+                    title : rooms[idx].title,
+                    idx : idx
+                })
+            }
+            {song ? song.pause() : song = document.getElementById("audio")}
+            song.src = rooms[idx].Song[rooms[idx].songN[0]].url
+            setTimeout(()=>{
+                setAnstrigger(false);
+                $(".hint")[0].innerHTML = "";
+                $("#skipProgress")[0].innerHTML = 0;
+                song.play()
+                setTimer(true)
+                setSongT(true)
+                props.socket.emit("start-game", {room : rooms[idx].title})
+                
+            }, 4000)
         }
     }, [temp]);
     
@@ -137,11 +172,13 @@ const Song = (props)=>{
                 idx={idx} 
                 correct={()=>{
                     setAnstrigger(true)
-                }}/>
-            <button onClick={()=>{
-                setTimer(true);
-                song.play();
-            }}>뭐지 이거 맞나?</button>
+                }}
+                startGame={()=>{
+                    setTimer(true);
+                    song.play();
+                }}
+                />
+
         </div>
     );
 }
