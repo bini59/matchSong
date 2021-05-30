@@ -43,7 +43,7 @@ const Main = (props)=>{
     })};
 
     useEffect(()=>{
-      const recipeUrl = "https://3001-blush-wolverine-2p0rzvu8.ws-us08.gitpod.io/room";
+      const recipeUrl = "https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/room";
       const requestMetadata = {
           method: 'POST',
           headers: {

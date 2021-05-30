@@ -35,7 +35,8 @@ const Message = (props)=>{
         props.socket.emit("send-chat-client", {
             user : props.user,
             chat : input.value,
-            title : props.title
+            title : props.title,
+            idx : props.idx
         })
         input.value = "";
     }
@@ -69,6 +70,13 @@ const Chat = (props)=>{
 
     useEffect(()=>{
         props.socket.emit("join-room", {title : rooms[idx].title})
+        props.socket.on("correct", (data)=>{
+            $(".chat")[0].innerHTML += `<span><span style="color : ${data.user.color}; font-weigth:bold">${data.user.nickname}</span><span> 정답입니다</span></span></br>`
+            dispatch(changeRoom({
+                title : rooms[idx].title,
+                room : data.room
+            }))
+        })
     }, [])
 
     useEffect(()=>{
@@ -136,7 +144,7 @@ const Chat = (props)=>{
             </div>
             {user.nickname === "NONE" ? nameWindow : ""}
             <div>
-                <Message socket={props.socket} user={user} title={rooms[idx].title}/>
+                <Message socket={props.socket} user={user} idx={idx} title={rooms[idx].title}/>
             </div>
         </div>
     );

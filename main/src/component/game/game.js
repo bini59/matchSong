@@ -17,7 +17,7 @@ const Game = (props)=>{
 
     const [socket, setSocket] = useState(null);
     useEffect(()=>{
-        setSocket(socketio.connect("https://3001-blush-wolverine-2p0rzvu8.ws-us08.gitpod.io"))
+        setSocket(socketio.connect("https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/"))
     }, [])
 
     // get room from redux store

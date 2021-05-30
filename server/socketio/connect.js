@@ -5,6 +5,7 @@ let usercolor = [
 module.exports = (app, socket)=>{
     socket.on("join-room", (data)=>{
         socket.join(data.title);
+        
     })
     socket.on("add-user", (data)=>{
         let idx = room.rooms.findIndex(i => i.title === data.room.title)
@@ -39,7 +40,22 @@ module.exports = (app, socket)=>{
     })
 
     socket.on("send-chat-client", (data)=>{
-        console.log(data);
+        console.log(room.rooms[data.idx].Song);
         app.io.in(data.title).emit("send-chat-server", data)
+        room.rooms[data.idx].Song[room.rooms[data.idx].songN[0]].ans.map((i)=>{
+            if(i===data.chat){
+                if(room.rooms[data.idx].songN[0] < room.rooms[data.idx].songN[1])
+                    room.rooms[data.idx].songN[0]+=1
+                room.rooms[data.idx].users.map(i => {
+                    if(i.nickname === data.user.nickname){
+                        i.score += 1
+                        app.io.in(data.title).emit("correct", {
+                            room : room.rooms[data.idx],
+                            user : data.user
+                        })
+                    }
+                })
+            }
+        })
     })
 }

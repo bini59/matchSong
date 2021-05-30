@@ -50,7 +50,7 @@ app.use(function(err, req, res, next) {
 
 app.io = io('', {
   cors: {
-      origin: ["https://3000-blush-wolverine-2p0rzvu8.ws-us08.gitpod.io"],
+      origin: ["https://3000-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io"],
       methods:["GET","POST"]
   }
 });
