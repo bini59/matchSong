@@ -36,6 +36,11 @@ module.exports = (app, socket)=>{
         console.log("disconnected : ", room.rooms[idx].users)
 
         app.io.in(data.room.title).emit("remove-user", room.rooms[idx]);
+
+        if(room.rooms[idx].users.length === 0){
+            room.rooms.splice(idx, 1)
+            console.log(room)
+        }
     })
     socket.on("disconnect", (data)=>{
         console.log("disconnect",data);
