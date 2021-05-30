@@ -18,17 +18,37 @@ const Main = (props)=>{
     // first get from Store
     // rooms = []
     const rooms = useSelector(selectRoom)
+	
+	// fetch rooms from server
+	// when room dispatched, This effect run
+	useEffect(()=>{
+		const recipeUrl = "https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/room";
+		const requestMetadata = {
+			method: 'POST',
+			headers: {
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		},
+		body: JSON.stringify({})
+		};
+		//rendering Main
+		fetch(recipeUrl, requestMetadata).then(res => res.json())
+		.then(json => dispatch(changeRooms(JSON.parse(json).rooms)))
+    }, [dispatch])
 
     // For select on/off
     const [onSelect, setSelect] = useState(false);
 
     // Construct room list with (rooms)
+	// Rooms => room list
+	// room  => item of Rooms
     const roomList = (Rooms) => {return Rooms.map((room)=>{
       let to = {
         pathname : "/game/" + room.title,
         state : {rooms : Rooms}
       }
       return (
+		//key room title => not allow same room name 
         <li key={room.title} className="roomli">
           <Link to={to}>
             <div className="room">
@@ -42,36 +62,22 @@ const Main = (props)=>{
       )
     })};
 
-    useEffect(()=>{
-      const recipeUrl = "https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/room";
-      const requestMetadata = {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-          },
-          body: JSON.stringify({})
-      };
-      fetch(recipeUrl, requestMetadata).then(res => res.json())
-      .then(json => dispatch(changeRooms(JSON.parse(json).rooms)))
-    }, [dispatch])
-
 
     return (
         <div className="main" >
-        <div id="mainTitle"><span>노래 맞추기</span></div>
-        <div className="roomlist">
-              <ul>
-                {roomList(rooms)}
-                <li className="roomli" onClick={()=>{setSelect(true)}}><div className="addroom">+</div></li>
-              </ul>
-        </div><br/>
-        {onSelect ? <Select 
-          closeWindow={()=>{setSelect(false)}}
-          renewRooms={(roomlist)=>{roomList(roomlist)}}
-        /> : ''}
-      </div>
+          <div id="mainTitle"><span>노래 맞추기</span></div>
+          <div className="roomlist">
+		    <ul>
+			  {roomList(rooms)}
+			  <li className="roomli" onClick={()=>{setSelect(true)}}><div className="addroom">+</div></li>
+		    </ul>
+          </div><br/>
+          {onSelect ? <Select 
+            closeWindow={()=>{setSelect(false)}}
+            renewRooms={()=>{roomList(rooms)}}
+          /> : ''}
+        </div>
     )
-  }
+}
 
 export default Main;

@@ -1,17 +1,17 @@
 import React, {useState, useRef} from "react";
-import {useSelector, useDispatch} from "react-redux"
+import {useDispatch} from "react-redux"
 import {
-    changeRooms,
-    selectRoom
+    changeRooms
 } from "../../redux/roomSlice"
 import Selbtn from "./btn";
 
 
 const Select = (props)=>{
     const dispatch = useDispatch();
-    let x = useSelector(selectRoom)
     
+	// final check that make a room
     const [check, setCheck] = useState((''))
+	// room info selector
     let info = [useRef(), useRef()]
 
     //Genres
@@ -25,7 +25,8 @@ const Select = (props)=>{
         "4세대 여자아이돌",
         "롤 스킬 이펙트"
     ]
-
+	
+	// initial room state
     let rooms = {
         title : "",
         users : [],
@@ -33,7 +34,10 @@ const Select = (props)=>{
         songN : [0, 0],
         Song : []
     }
-
+	
+	// genre btns
+	// when click genre, genre is added room
+	// when genre added room, click genre, genre removed room
     let genreBtns = btns.map((genre, idx)=>{
         return <Selbtn key={idx} name={genre} onselected={()=>{
             let index = rooms.genre.indexOf(genre)
@@ -44,7 +48,7 @@ const Select = (props)=>{
     });
 
     
-
+	// when Add room=> dispatch room
     const sendServer = (room)=>{
         const recipeUrl = "https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/room/add";
         const requestMetadata = {
@@ -55,6 +59,8 @@ const Select = (props)=>{
             },
             body: JSON.stringify(room)
         };
+		
+		// rendering Main
         fetch(recipeUrl, requestMetadata)
         .then(res => res.json())
         .then(json=>dispatch(changeRooms(JSON.parse(json).rooms)))
@@ -77,24 +83,20 @@ const Select = (props)=>{
             <button className="deciBtn" id="accept" onClick={()=>{
                 rooms.title = info[0].current.value;
                 rooms.songN[1] = info[1].current.value;
+				//create Check window and send room data to server
                 setCheck(
-                    // <Link to={{
-                    //     pathname: "/game/"+rooms.title,
-                    //     state: {rooms : props.rooms}
-                    // }}
-                    //      room={rooms}>
-                        <div className="checkMade">
-                            <span>정말로 생성하시겠습니까?</span>
-                            <button className="checkBtn" onClick={()=>{
-                                sendServer(rooms)
-                                props.renewRooms(x);
-                                setCheck('');
-                                props.closeWindow()
-                            }}>확인</button>
-                            <button className="checkBtn" onClick={()=>{setCheck('')}}>취소</button>
-                        </div>
-                    // </Link>
-                    );
+					<div className="checkMade">
+						<span>정말로 생성하시겠습니까?</span>
+						<button className="checkBtn" onClick={()=>{
+							sendServer(rooms)
+							// randering Main
+							props.renewRooms();
+							setCheck('');
+							props.closeWindow()
+						}}>확인</button>
+						<button className="checkBtn" onClick={()=>{setCheck('')}}>취소</button>
+					</div>
+				);
             }}>확인</button>
             {check}
             <button className="deciBtn" onClick={()=>{props.closeWindow()}}>취소</button>
