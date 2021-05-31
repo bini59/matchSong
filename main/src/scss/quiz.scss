@@ -1,4 +1,5 @@
 .quiz{
+    background-color: #1d1d1d;
     text-align: center;
     & div{
         text-align: center;
@@ -13,15 +14,6 @@
     }
     font: {
         size: 1.5vh;
-    }
-
-    //for layout
-    & .temp{
-        height: 20vh;
-        padding: {
-            top: 20vh;
-            bottom: 10vh;
-        };
     }
 
     //input
@@ -84,6 +76,7 @@
     
     //hint
     & .hint{
+        height: 13vh;
         & .hintMsg{
             color: chartreuse;
         }
@@ -91,6 +84,7 @@
     
     //ans
     & .ans{
+        height: 7vh;
         & .ansMsg{
             color: cyan;
         }
