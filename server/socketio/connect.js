@@ -56,7 +56,17 @@ module.exports = (app, socket)=>{
         correct[data.title] = false;
         skip[data.title] = [];
         if (data.first !== -1){
-            room.rooms[data.idx].songN[0] += 1;
+            console.log(data)
+            if(room.rooms[data.idx].songN[0] === room.rooms[data.idx].songN[1]-1){
+                room.rooms[data.idx].songN[0];
+                room.rooms[data.idx].Song[room.rooms[data.idx].Song.length-1].duration = 9999;
+                room.rooms[data.idx].Song[room.rooms[data.idx].Song.length-1].hint[0].time = 9997;
+                room.rooms[data.idx].Song[room.rooms[data.idx].Song.length-1].hint[0].category = "게임 상태";
+                room.rooms[data.idx].Song[room.rooms[data.idx].Song.length-1].hint[0].context = "게임 종료";
+            }
+            else{
+                room.rooms[data.idx].songN[0] += 1;
+            }
             app.io.in(data.title).emit("end-game", {
                 room : room.rooms[data.idx]
             })

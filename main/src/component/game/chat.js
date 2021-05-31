@@ -23,11 +23,12 @@ const Message = (props)=>{
             $(".chat")[0].innerHTML += `<span>스킵하셨습니다</span></br>`        
             $(".chat")[0].scrollTop = $(".chat")[0].scrollHeight;
             props.timerOff();
-            props.socket.emit("req-start-game", {
-                title : props.room[props.idx].title,
-                idx : props.idx,
-                first : 0
-            })
+            if(props.user.roomMaster)
+                props.socket.emit("req-start-game", {
+                    title : props.room[props.idx].title,
+                    idx : props.idx,
+                    first : 0
+                })
         })
     }, [props.room])
 

@@ -1,4 +1,4 @@
-(A) Run Timer in server (1sec) #server
+(A) Run Timer in server (1sec) #server  {cm:2021-05-31}
 (B) All data move to SQL #sql #server
 (C) Implete Express #server {cm:2021-05-30}
 (D) Implete chatting by socket.io #server  {cm:2021-05-30}
@@ -11,3 +11,6 @@
 (L) When server finished Check btns.js:24 #server {cm:2021-05-30}
 (M) Refactoring class to function #re {due:2021-05-25} {cm:2021-05-25}
 (N) Refactoring with redux  {cm:2021-05-30}
+(O) Add Song Many Many
+(P) Implete Genre Select 
+(Q) When game end, Show Ending screen {cm:2021-05-31}
