@@ -67,7 +67,8 @@ const Message = (props)=>{
                 if(e.key==="Enter"){sendMsg()}
                 else if(e.ctrlKey===true && e.code ==="Slash" ){skip()}
             }}/>
-            <div className="skip">스킵에 투표하시려면 ctrl+K를 누르세요 ( <span id="skipProgress">0</span> / <span id="totalUsr"></span> )</div>
+            <button className="skipBtn" onClick={()=>{skip()}}>스킵</button>
+            <div className="skip">스킵에 투표하시려면 ctrl+/를 누르세요 ( <span id="skipProgress">0</span> / <span id="totalUsr"></span> )</div>
         </div>
     )
 }
