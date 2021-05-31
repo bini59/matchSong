@@ -56,7 +56,6 @@ module.exports = (app, socket)=>{
         correct[data.title] = false;
         skip[data.title] = [];
         if (data.first !== -1){
-            console.log(data)
             if(room.rooms[data.idx].songN[0] === room.rooms[data.idx].songN[1]-1){
                 room.rooms[data.idx].songN[0];
                 room.rooms[data.idx].Song[room.rooms[data.idx].Song.length-1].duration = 9999;
