@@ -27,8 +27,7 @@ module.exports = (app, socket)=>{
     })
 
     socket.on("send-chat", (data)=>{
-        if(data.user.nickname !== "UNDEFINE")
-            app.io.in(data.title).emit("receive-chat", data)
+        app.io.in(data.title).emit("receive-chat", data)
 
         room.rooms[data.idx].Song[room.rooms[data.idx].songN[0]].ans.map((i)=>{
             if(i===data.chat && !correct[data.title]){
@@ -42,12 +41,6 @@ module.exports = (app, socket)=>{
                         user : data.user
                     })
                 }
-                else{
-                    app.io.in(data.title).emit("correct", {
-                        room : room.rooms[data.idx],
-                        user : "UNDEFINE"
-                    })
-                }
             }
         })
     })
@@ -56,10 +49,10 @@ module.exports = (app, socket)=>{
         correct[data.title] = false;
         skip[data.title] = [];
         if (data.first !== -1){
+            console.log(room.rooms[data.idx].songN[0], room.rooms[data.idx].songN[1])
             if(room.rooms[data.idx].songN[0] === room.rooms[data.idx].songN[1]-1){
-                room.rooms[data.idx].songN[0];
                 room.rooms[data.idx].Song[room.rooms[data.idx].Song.length-1].duration = 9999;
-                room.rooms[data.idx].Song[room.rooms[data.idx].Song.length-1].hint[0].time = 9997;
+                room.rooms[data.idx].Song[room.rooms[data.idx].Song.length-1].hint[0].time = 9998;
                 room.rooms[data.idx].Song[room.rooms[data.idx].Song.length-1].hint[0].category = "게임 상태";
                 room.rooms[data.idx].Song[room.rooms[data.idx].Song.length-1].hint[0].context = "게임 종료";
             }

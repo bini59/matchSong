@@ -20,7 +20,7 @@ const Message = (props)=>{
         $("#totalUsr")[0].innerHTML = props.room[props.idx].users.length
         props.socket.off("skipped");
         props.socket.on("skipped", (data)=>{
-            $(".chat")[0].innerHTML += `<span>스킵하셨습니다</span></br>`        
+            $(".chat")[0].innerHTML += `<span><span style="color:red">!</span> 스킵하셨습니다</span></br>`        
             $(".chat")[0].scrollTop = $(".chat")[0].scrollHeight;
             props.timerOff();
             if(props.user.roomMaster)
@@ -98,10 +98,8 @@ const Chat = (props)=>{
 
         props.socket.on("correct", (data)=>{
             props.correct();
-            if(data.user !== "UNDEFINE"){
-                $(".chat")[0].innerHTML += `<span><span style="color : ${data.user.color}; font-weigth:bold">${data.user.nickname}</span><span> 정답입니다</span></span></br>`        
-                $(".chat")[0].scrollTop = $(".chat")[0].scrollHeight;
-            }
+            $(".chat")[0].innerHTML += `<span><span style="color : ${data.user.color}; font-weigth:bold">${data.user.nickname}</span><span> 정답입니다</span></span></br>`        
+            $(".chat")[0].scrollTop = $(".chat")[0].scrollHeight;
             dispatch(changeRoom({
                 title : rooms[idx].title,
                 room : data.room
@@ -236,7 +234,10 @@ const Chat = (props)=>{
                     idx={idx} 
                     room={rooms} 
                     title={rooms[idx].title}
-                    timerOff={props.timerOff}
+                    timerOff={()=>{
+                        props.timerOff()
+                        props.correct()
+                    }}
                 />
             </div>
         </div>

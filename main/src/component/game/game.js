@@ -25,7 +25,6 @@ import "../../scss/game.scss"
 import "../../scss/quiz.scss"
 
 const Game = (props)=>{
-    const dispatch = useDispatch();
     let {id} = useParams();
 
     // Set socket
@@ -33,7 +32,6 @@ const Game = (props)=>{
     useEffect(()=>{
         setSocket(socketio.connect("https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/"))
     }, [])
-
 
     // Start game
     useEffect(()=>{
@@ -50,21 +48,6 @@ const Game = (props)=>{
     const rooms = useSelector(selectRoom)
     let idx = rooms.findIndex(i => i.title === id);
 
-    useEffect(()=>{
-        if(rooms[idx].songN[0] === rooms[idx].songN[1]){
-            let room = rooms[idx];
-            room.songN[0] -= 1;
-            room.Song[room.Song.length-1].duration = 9999;
-            room.Song[room.song.length-1].hint[0].time = 9997;
-            room.Song[room.song.length-1].hint[0].category = "게임 상태";
-            room.Song[room.song.length-1].hint[0].context = "게임 종료";
-            dispatch(changeRoom({
-                title : room.title,
-                room : room
-            }))
-        }
-    }, [rooms])
-
     //Answer show trigger
     const [ansState, setAnstrigger] = useState(false);
     //Answer
@@ -73,8 +56,6 @@ const Game = (props)=>{
     const [onTimer, setTimer] = useState(false);
 
     const time = useTimer({onTimer : onTimer, idx : idx, rooms : rooms});
-
-
 
     /*
         remove Ans

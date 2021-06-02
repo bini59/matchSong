@@ -14,3 +14,4 @@
 (O) Add Song Many Many
 (P) Implete Genre Select 
 (Q) When game end, Show Ending screen {cm:2021-05-31}
+(R) In game, sometime remain sec change 9999. I must fixed it
