@@ -90,6 +90,25 @@ exports.module = ()=>{
                 ans : ["드라마 트루기", "드라마 츠루기", "드라마트루기", "드라마츠루기"],
                 url : "https://docs.google.com/uc?export=open&id=192aj1LJy4Rl3d6oFgGAnJulilFyzCHgC",
                 duration : 40
+            },
+            {
+                title : "폭탄마 - 요루시카",
+                hint : [
+                    {
+                        category : "가수힌트",
+                        context : "요루시카",
+                        time : 40 
+                    },
+                    {
+                        category : "초성힌트",
+                        context : "ㅍㅌㅁ",
+                        time : 25
+                    }
+                ],
+                ans : ["폭탄마", "바쿠단마"],
+                url : "https://docs.google.com/uc?export=open&id=1224xc1LS-hmCieCi3SniLdlbdDh5j8Tl",
+                duration : 55,
+                genre : "jpop"
             }
         ]
     )

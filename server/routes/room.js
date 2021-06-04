@@ -2,6 +2,25 @@ var express = require('express');
 var router = express.Router();
 var songs = require("./songs").module()
 
+const ending = {
+    title : "게임 종료",
+    hint : [
+        {
+            category : "게임 상태",
+            context : "게임 종료",
+            time : 9998
+        },
+        {
+            category : "엔딩곡",
+            context : "아이묭 - 사랑을 전하고 싶다던가",
+            time : 9995
+        }
+    ],
+    ans : ["사랑을 전하고 싶다던가"],
+    url : "https://docs.google.com/uc?export=open&id=1224xc1LS-hmCieCi3SniLdlbdDh5j8Tl",
+    duration : 9999
+}
+
 const random = (num)=>{
     let arr = []
     while(arr.length < num){
@@ -23,6 +42,7 @@ router.post('/add', function(req, res, next) {
     for(let i = 0; i < Room.songN[1]; i++){
         Room.Song.push(songs[songNum[i]]);
     }
+    Room.Song.push(ending)
     room.rooms.push(Room);
     console.log(room)
     res.json(JSON.stringify(room))
