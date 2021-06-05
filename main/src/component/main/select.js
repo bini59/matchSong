@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import {useDispatch} from "react-redux"
 import {
     changeRooms
@@ -14,18 +14,52 @@ const Select = (props)=>{
 	// room info selector
     let info = [useRef(), useRef()]
 
+    // For input genres
+    const [genre, setGenre] = useState('');
+
+    const maxNum = async (genre)=>{
+        const recipeUrl = "https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/room/genres";
+        const requestMetadata = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(genre)
+        };
+        
+        // rendering Main
+        let res = await fetch(recipeUrl, requestMetadata)
+        let json = await res.json()
+        let genreNum = JSON.parse(json)["genre"]
+
+        
+        setGenre(Genres.map((genre, idx)=>{
+            return (
+                <div key={idx} className="genreSel">
+                    <span className="genreName">{genre} : </span>
+                    <input className="genreInput" id={genre} />
+                    <span> (max : {genreNum[idx]})</span>
+                </div>
+                
+            )
+        }))
+    }
+
+    
     //Genres
-    const btns = [
-        "K-POP(2000-2005)",
-        "K-POP(2005-2010)",
-        "K-POP(2010-2015)",
-        "K-POP(2015-2021)",
-        "2세대 여자아이돌",
-        "3세대 여자아이돌",
-        "4세대 여자아이돌",
-        "롤 스킬 이펙트"
+    const Genres = [
+        "JPOP",
+        "여돌(2015~2020)",
+        "여돌(~2020)",
+        "testgenre",
+        "testgenre2"
     ]
 	
+    useEffect(()=>{
+        maxNum({genre : Genres})
+    }, [])
+
 	// initial room state
     let rooms = {
         title : "",
@@ -35,17 +69,6 @@ const Select = (props)=>{
         Song : []
     }
 	
-	// genre btns
-	// when click genre, genre is added room
-	// when genre added room, click genre, genre removed room
-    let genreBtns = btns.map((genre, idx)=>{
-        return <Selbtn key={idx} name={genre} onselected={()=>{
-            let index = rooms.genre.indexOf(genre)
-            if(index >-1){rooms.genre.splice(index,1)}
-            else{rooms.genre.push(genre)}
-            //console.log(this.selected)
-        }}/>
-    });
 
     
 	// when Add room=> dispatch room
@@ -69,20 +92,23 @@ const Select = (props)=>{
     return (
         <div className="selectMode">
             <div className="selSection">
+                <span>방 이름 : </span><input className="roomNo" type="text" ref={info[0]}/>
+            </div>
+            <div className="selSection">
                 <span>장르</span><br/>
-                {genreBtns}
-            </div>
-            <div className="selSection">
-                <span>방 이름</span><br/>
-                <input className="roomNo" type="text" ref={info[0]}/>
-            </div>
-            <div className="selSection">
-                <span>곡 개수</span><br/>
-                <input className="songNum" type="text" ref={info[1]}/>
+                {genre}
             </div>
             <button className="deciBtn" id="accept" onClick={()=>{
                 rooms.title = info[0].current.value;
-                rooms.songN[1] = info[1].current.value;
+                let n = 0
+                Genres.map((g, idx)=>{
+                    rooms.genre.push(document.getElementsByClassName("genreInput")[idx].value)
+                    if(rooms.genre[idx] == "") rooms.genre[idx] = 0
+                    n += Math.ceil(rooms.genre[idx])
+                })
+                rooms.songN[1] = n;
+                console.log(rooms)
+
 				//create Check window and send room data to server
                 setCheck(
 					<div className="checkMade">

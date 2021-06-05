@@ -38,7 +38,6 @@ button{
   }
   margin: {
     top: 3%;
-    left: 3%;
   }
 }
 
@@ -54,9 +53,10 @@ button{
     radius: 6px;
     style: solid;
     width: 1px;
-    color: black;
+    color: rgb(184, 184, 184);
   }
   height: 3vh;
+  background-color: #c9c9c9;
 }
 
 .selBtn{
@@ -78,6 +78,33 @@ button{
 }
 .clicked{
   background-color: #bfddff;
+}
+
+
+.genreSel{
+  display: inline-block;
+  width : 35%;
+  height: 5vh;
+  margin : {
+    left: 5%;
+    right: 5%;
+  }
+  font: {
+    weight: bold;
+    family: "Malgun Gothic";
+    size: 15px;
+  }
+  & .genreInput{
+    width: 20%;
+    background-color: #c9c9c9;
+    border : {
+      radius: 6px;
+      style: solid;
+      width: 1px;
+      color: rgb(184, 184, 184);
+    }
+  }
+  
 }
 
 .deciBtn{

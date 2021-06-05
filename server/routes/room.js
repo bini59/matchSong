@@ -21,11 +21,13 @@ const ending = {
     duration : 9999
 }
 
-const random = (num)=>{
+const genre = ["jpop", "animeSongName", "animeSong", "characterSong", "girlIdol2020"]
+
+const random = (num, g)=>{
     let arr = []
     while(arr.length < num){
         let x= Math.random()
-        let t = Math.floor(x*songs.length)
+        let t = Math.floor(x*songs[g].length)
         if(arr.indexOf(t) === -1) arr.push(t)
     }
     return arr
@@ -36,12 +38,25 @@ router.post('/', (req, res)=>{
     res.json(JSON.stringify(room))
 })
 
+
+router.post('/genres', (req, res)=>{
+    let num = []
+    genre.map((g)=>{
+        num.push(songs[g].length)
+    })
+
+    res.json(JSON.stringify({genre : num}))
+})
+
+
 router.post('/add', function(req, res, next) {
     let Room = req.body;
-    let songNum = random(Room.songN[1]);
-    for(let i = 0; i < Room.songN[1]; i++){
-        Room.Song.push(songs[songNum[i]]);
-    }
+    
+    Room.genre.map((n, idx)=>{
+        let songN = random(Math.ceil(n), genre[idx])
+        for(let i=0;i<songN.length;i++) Room.Song.push(songs[genre[idx]][songN[i]])
+    })
+
     Room.Song.push(ending)
     room.rooms.push(Room);
     console.log(room)
