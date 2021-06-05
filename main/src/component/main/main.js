@@ -11,6 +11,16 @@ import {
 import "../../scss/app.scss";
 import "../../scss/select.scss"
 
+//Genres
+const Genres = [
+  "JPOP",
+  "여돌(2015~2020)",
+  "여돌(~2020)",
+  "testgenre",
+  "testgenre2"
+]
+
+
 
 const Main = (props)=>{
     const dispatch = useDispatch();
@@ -53,7 +63,7 @@ const Main = (props)=>{
           <Link to={to}>
             <div className="room">
               <div className="title">{room.title}</div>
-              <div className="genre">[{room.genre.map((genre, t)=>{return(<span key={t}>{genre}, </span>)})}]</div><br></br>
+              <div className="genre">[{room.genre.map((genre, t)=>{return(<span key={t}>{Genres[t]}, </span>)})}]</div><br></br>
               <div className="users">{room.users.map((user)=>{return('ጿ')})}</div>
               <div className="remainsong">{room.songN[1]-room.songN[0]}/{room.songN[1]}</div>
             </div>
