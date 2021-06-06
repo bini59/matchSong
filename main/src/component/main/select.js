@@ -3,7 +3,6 @@ import {useDispatch} from "react-redux"
 import {
     changeRooms
 } from "../../redux/roomSlice"
-import Selbtn from "./btn";
 
 
 const Select = (props)=>{
@@ -50,10 +49,10 @@ const Select = (props)=>{
     //Genres
     const Genres = [
         "JPOP",
-        "여돌(2015~2020)",
-        "여돌(~2020)",
-        "testgenre",
-        "testgenre2"
+        "애니(노래이름)",
+        "애니(애니이름)",
+        "캐릭터송(캐릭터)",
+        "여돌(~2020)"
     ]
 	
     useEffect(()=>{
@@ -107,12 +106,10 @@ const Select = (props)=>{
                     n += Math.ceil(rooms.genre[idx])
                 })
                 rooms.songN[1] = n;
-                console.log(rooms)
-
 				//create Check window and send room data to server
                 setCheck(
 					<div className="checkMade">
-						<span>정말로 생성하시겠습니까?</span>
+						<span>정말로 생성하시겠습니까?</span><br/>
 						<button className="checkBtn" onClick={()=>{
 							sendServer(rooms)
 							// randering Main
