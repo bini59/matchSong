@@ -24,11 +24,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public/build')));
 
 app.use('/room', cors(),RoomRouter);
 app.use('/chat', chatRouter);
-app.get('/', (req,res)=>{})
+app.get('/', (req,res)=>{
+  res.sendFile(path.join(__dirname, '/public/build/index.html'))
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
