@@ -1,6 +1,6 @@
 //Hooks
 import React, {useState, useEffect} from "react";
-import { useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 import {useParams} from "react-router-dom"
 import useTimer from "./timer"
 
@@ -17,7 +17,6 @@ import Chat from "./chat"
 import $ from "jquery"
 
 import {
-    changeRoom,
     selectRoom
 } from "../../redux/roomSlice"
 

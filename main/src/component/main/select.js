@@ -102,8 +102,9 @@ const Select = (props)=>{
                 let n = 0
                 Genres.map((g, idx)=>{
                     rooms.genre.push(document.getElementsByClassName("genreInput")[idx].value)
-                    if(rooms.genre[idx] == "") rooms.genre[idx] = 0
+                    if(rooms.genre[idx] === "") rooms.genre[idx] = 0
                     n += Math.ceil(rooms.genre[idx])
+                    return idx
                 })
                 rooms.songN[1] = n;
 				//create Check window and send room data to server
