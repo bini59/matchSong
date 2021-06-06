@@ -56,7 +56,9 @@ router.post('/add', function(req, res, next) {
         let songN = random(Math.ceil(n), genre[idx])
         for(let i=0;i<songN.length;i++) Room.Song.push(songs[genre[idx]][songN[i]])
     })
-
+    Room.Song.sort((a)=>{
+        return Math.random()-Math.random()
+    })
     Room.Song.push(ending)
     room.rooms.push(Room);
     console.log(room)
