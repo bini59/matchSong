@@ -60,8 +60,7 @@ module.exports = (app, socket)=>{
         setTimeout(()=>{
             app.io.in(data.title).emit("res-start-game")
             gameStarted = true
-        },3500)
-        
+        },4000)  
     })
     // join room
     socket.on("join-room", (data)=>{
