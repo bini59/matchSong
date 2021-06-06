@@ -14,6 +14,7 @@ const Hint = (props)=>{
             setHint(()=>{
                 hint.push(
                     <div key={Math.ceil(Math.random()*999999999)}>
+
                         <span className="hintMsg">{props.hints[hintN].category} : </span>
                         <span>{props.hints[hintN].context}</span>
                     </div>
