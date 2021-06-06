@@ -13,7 +13,7 @@ const Hint = (props)=>{
         if(props.sec === props.hints[hintN].time){
             setHint(()=>{
                 hint.push(
-                    <div key={props.hints[hintN].context}>
+                    <div key={Math.ceil(Math.random()*999999999)}>
                         <span className="hintMsg">{props.hints[hintN].category} : </span>
                         <span>{props.hints[hintN].context}</span>
                     </div>
