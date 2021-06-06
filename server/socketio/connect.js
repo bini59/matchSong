@@ -11,7 +11,7 @@ module.exports = (app, socket)=>{
 
 
     socket.on("disconnect", (data)=>{
-        console.log("disconnect",data);
+        console.log("disconnected");
     })
 
     socket.on("vote-skip", (data)=>{

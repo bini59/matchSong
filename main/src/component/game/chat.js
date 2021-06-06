@@ -174,7 +174,7 @@ const Chat = (props)=>{
             return ()=>{
                 props.socket.emit("remove-user",{
                     room : rooms[idx],
-                    username : Name
+                    username : name
                 })
                 props.socket.disconnect()
             }
