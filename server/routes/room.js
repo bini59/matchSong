@@ -17,7 +17,7 @@ const ending = {
         }
     ],
     ans : ["사랑을 전하고 싶다던가"],
-    url : "https://docs.google.com/uc?export=open&id=1224xc1LS-hmCieCi3SniLdlbdDh5j8Tl",
+    url : "https://docs.google.com/uc?export=open&id=19hXH9w6LzYg0WSfmW6TfKJnH2JjJs-xq",
     duration : 9999
 }
 

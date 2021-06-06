@@ -5,6 +5,8 @@ let usercolor = [
 let correct = {};
 let skip = {}
 
+let gameStarted = false
+
 module.exports = (app, socket)=>{
 
 
@@ -30,7 +32,7 @@ module.exports = (app, socket)=>{
         app.io.in(data.title).emit("receive-chat", data)
 
         room.rooms[data.idx].Song[room.rooms[data.idx].songN[0]].ans.map((i)=>{
-            if(i===data.chat && !correct[data.title]){
+            if(i===data.chat && !correct[data.title] && gameStarted){
                 correct[data.title] = true;
                 // to increase user score
                 let usIdx = room.rooms[data.idx].users.findIndex(i => i.nickname===data.user.nickname)
@@ -54,8 +56,10 @@ module.exports = (app, socket)=>{
         app.io.in(data.title).emit("end-game", {
             room : room.rooms[data.idx]
         })
+        gameStarted = false
         setTimeout(()=>{
             app.io.in(data.title).emit("res-start-game")
+            gameStarted = true
         },3500)
         
     })
