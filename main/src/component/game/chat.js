@@ -15,25 +15,27 @@ const Message = (props)=>{
 
     const chatt = useRef()
 
+    const room = props.room
+    const socket = props.socket
+
     useEffect(()=>{
-        console.log(props)
-        $("#totalUsr")[0].innerHTML = props.room[props.idx].users.length
-        props.socket.off("skipped");
-        props.socket.on("skipped", (data)=>{
+        $("#totalUsr")[0].innerHTML = room.users.length
+        socket.off("skipped");
+        socket.on("skipped", (data)=>{
             $(".chat")[0].innerHTML += `<span><span style="color:red">!</span> 스킵하셨습니다</span></br>`        
             $(".chat")[0].scrollTop = $(".chat")[0].scrollHeight;
             props.timerOff();
             if(props.user.roomMaster)
-                props.socket.emit("req-start-game", {
-                    title : props.room[props.idx].title,
+                socket.emit("req-start-game", {
+                    title : room.title,
                     idx : props.idx,
                     first : 0
                 })
         })
-    }, [props.room])
+    }, [room])
 
     useEffect(()=>{
-        props.socket.on("notice-skip", (data)=>{
+        socket.on("notice-skip", (data)=>{
             console.log($("#skipProgress"))
             $("#skipProgress")[0].innerHTML = data.num;
         })
@@ -43,19 +45,19 @@ const Message = (props)=>{
 
     const sendMsg = ()=>{
         let input = document.getElementsByClassName("input")[0]
-        props.socket.emit("send-chat", {
+        socket.emit("send-chat", {
             user : props.user,
             chat : input.value,
-            title : props.title,
+            title : room.title,
             idx : props.idx
         })
         input.value = "";
     }
 
     const skip = ()=>{
-        props.socket.emit("vote-skip", {
+        socket.emit("vote-skip", {
             user : props.user,
-            title : props.title,
+            title : room.title,
             idx : props.idx,
         })
     }
@@ -86,22 +88,22 @@ const Chat = (props)=>{
         roomMaster : true
     })
 
-    const rooms = props.rooms;
     const idx = props.idx;
+    const room = props.room
 
     // For Add user
     const [usr, setUsr] = useState(false)
     const [name, setName] = useState("")
 
     useEffect(()=>{
-        props.socket.emit("join-room", {title : rooms[idx].title})
+        props.socket.emit("join-room", {title : room.title})
 
         props.socket.on("correct", (data)=>{
             props.correct();
             $(".chat")[0].innerHTML += `<span><span style="color : ${data.user.color}; font-weigth:bold">${data.user.nickname}</span><span> 정답입니다</span></span></br>`        
             $(".chat")[0].scrollTop = $(".chat")[0].scrollHeight;
             dispatch(changeRoom({
-                title : rooms[idx].title,
+                title : room.title,
                 room : data.room
             }))      
         })
@@ -113,7 +115,7 @@ const Chat = (props)=>{
         props.socket.on("res-add-user", (Room)=>{
             // rendering Game
             dispatch(changeRoom({
-                title : rooms[idx].title,
+                title : room.title,
                 room : Room
             }))
             if(Room.users[Room.users.length-1].nickname === name)
@@ -126,7 +128,7 @@ const Chat = (props)=>{
         props.socket.on("remove-user", (Room)=>{
             // rendering Game
             dispatch(changeRoom({
-                title : rooms[idx].title,
+                title : room.title,
                 room : Room
             }))
         })
@@ -146,7 +148,7 @@ const Chat = (props)=>{
         
         props.socket.on("end-game", (data)=>{
           dispatch(changeRoom({
-              title : rooms[idx].title,
+              title : room.title,
               room : data.room
           }))  
         })
@@ -165,7 +167,7 @@ const Chat = (props)=>{
             // add user
             if(Name !== ""){
                 props.socket.emit("req-add-user", {
-                    room : rooms[idx],
+                    room : room,
                     username : Name
                 });
             }
@@ -173,7 +175,7 @@ const Chat = (props)=>{
             // when Chat unmount, remove user from server
             return ()=>{
                 props.socket.emit("remove-user",{
-                    room : rooms[idx],
+                    room : room,
                     username : name
                 })
                 props.socket.disconnect()
@@ -186,14 +188,14 @@ const Chat = (props)=>{
         props.socket.off("res-start-game")
         // start game
         props.socket.on("res-start-game", (data)=>{
-            props.FuncstartGame(rooms[idx]);
+            props.FuncstartGame(room);
         })
-    }, [rooms])
+    }, [room])
 
     useEffect(()=>{
         if(props.time===0 && user.roomMaster){
             props.socket.emit("req-start-game", {
-                title : rooms[idx].title,
+                title : room.title,
                 idx : idx,
                 first : 0
             })
@@ -212,13 +214,16 @@ const Chat = (props)=>{
 
     return(
         <div className="chatBox">
-            <Score idx={idx}/>
+            <Score room={props.room} idx={idx}/>
             <div className="chatBtn">
-                {user.roomMaster?<button className="gameStart" onClick={()=>{props.startGame()}}>게임 시작</button>: ""}
+                {user.roomMaster?<button className="gameStart" onClick={()=>{
+                    props.startGame()
+                    $('.gameStart')[0].style="display:none";
+                }}>게임 시작</button>: ""}
                 <Link to="/">
                     <button className="gameExit" onClick={()=>{
                         props.socket.emit("remove-user",{
-                            room : rooms[idx],
+                            room : room,
                             username : name
                         })
                         //go to home code
@@ -231,9 +236,8 @@ const Chat = (props)=>{
                 <Message 
                     socket={props.socket} 
                     user={user} 
-                    idx={idx} 
-                    room={rooms} 
-                    title={rooms[idx].title}
+                    idx={idx}
+                    room={room} 
                     timerOff={()=>{
                         props.timerOff()
                         props.correct()

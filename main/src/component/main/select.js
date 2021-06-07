@@ -113,8 +113,6 @@ const Select = (props)=>{
 						<span>정말로 생성하시겠습니까?</span><br/>
 						<button className="checkBtn" onClick={()=>{
 							sendServer(rooms)
-							// randering Main
-							props.renewRooms();
 							setCheck('');
 							props.closeWindow()
 						}}>확인</button>
