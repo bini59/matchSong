@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 import {useSelector, useDispatch} from "react-redux"
 import {
-  selectRoom,
+  selectRooms,
   changeRooms
 } from "../../redux/roomSlice"
 
@@ -27,7 +27,7 @@ const Main = (props)=>{
     // get Room list from redux Store 
     // first get from Store
     // rooms = []
-    const rooms = useSelector(selectRoom)
+    const rooms = useSelector(selectRooms)
 	
 	// fetch rooms from server
 	// when room dispatched, This effect run
@@ -78,14 +78,12 @@ const Main = (props)=>{
           <div id="mainTitle"><span>노래 맞추기</span></div>
           <div className="roomlist">
 		    <ul>
+        {/* list of room */}
 			  {roomList(rooms)}
 			  <li className="roomli" onClick={()=>{setSelect(true)}}><div className="addroom">+</div></li>
 		    </ul>
           </div><br/>
-          {onSelect ? <Select 
-            closeWindow={()=>{setSelect(false)}}
-            renewRooms={()=>{roomList(rooms)}}
-          /> : ''}
+          {onSelect ? <Select closeWindow={()=>{setSelect(false)}}/> : ''}
         </div>
     )
 }

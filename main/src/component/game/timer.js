@@ -3,11 +3,10 @@ import {useState, useEffect} from "react"
 const useTimer = (props)=>{
     const [sec, setSec] = useState(5000);
 
-    const idx = props.idx
-    const rooms = props.rooms
+    const room = props.room
 
     useEffect(()=>{
-        setSec(rooms[idx].Song[rooms[idx].songN[0]].duration)
+        setSec(room.Song[room.songN[0]].duration)
     }, [props.onTimer])
 
     useEffect(()=>{
