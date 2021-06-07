@@ -50,6 +50,8 @@ module.exports = (app, socket)=>{
     socket.on("req-start-game", (data)=>{
         correct[data.title] = false;
         skip[data.title] = [];
+
+        
         if (room.rooms[data.idx].songN[0] != room.rooms[data.idx].songN[1] && data.first !== -1){
             room.rooms[data.idx].songN[0] += 1;
         }

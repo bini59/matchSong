@@ -17,7 +17,7 @@ import Chat from "./chat"
 import $ from "jquery"
 
 import {
-    selectRoom
+    selectRooms
 } from "../../redux/roomSlice"
 
 import "../../scss/game.scss"
@@ -52,8 +52,9 @@ const Game = (props)=>{
 
     // get room from redux store
     // current room
-    const rooms = useSelector(selectRoom)
+    const rooms = useSelector(selectRooms)
     let idx = rooms.findIndex(i => i.title === id);
+    const room = rooms[idx];
 
     //Answer show trigger
     const [ansState, setAnstrigger] = useState(false);
@@ -62,7 +63,7 @@ const Game = (props)=>{
     //ontimer
     const [onTimer, setTimer] = useState(false);
 
-    const time = useTimer({onTimer : onTimer, idx : idx, rooms : rooms});
+    const time = useTimer({onTimer : onTimer, room : room});
 
     /*
         remove Ans
@@ -89,11 +90,11 @@ const Game = (props)=>{
     return(
         <div className="quiz">
             <div className="title">
-                <span className="remainSong">남은곡 ( {rooms[idx].songN[1]-rooms[idx].songN[0]} / {rooms[idx].songN[1]} )</span><br/>
-                <span className="description"><span className="_1">음악</span>을 듣고 <span className="_2">{quizS[rooms[idx].Song[rooms[idx].songN[0]].genre]}</span>을 입력하세요</span><br/>
+                <span className="remainSong">남은곡 ( {room.songN[1]-room.songN[0]} / {room.songN[1]} )</span><br/>
+                <span className="description"><span className="_1">음악</span>을 듣고 <span className="_2">{quizS[room.Song[room.songN[0]].genre]}</span>을 입력하세요</span><br/>
                 <span className="remainSec">- {time}초 -</span><br/>
                 <ReactAudioPlayer 
-                    src={rooms[idx].Song[rooms[idx].songN[0]].url}
+                    src={room.Song[room.songN[0]].url}
                     id="audio"
                     type="mpeg"
                 />
@@ -101,19 +102,19 @@ const Game = (props)=>{
             <div className="hint">
                 <Hint 
                     sec={time}
-                    hints={rooms[idx].Song[rooms[idx].songN[0]].hint}
+                    hints={room.Song[room.songN[0]].hint}
                 />
             </div>
             {ansState ? ans : <div className="ans"></div>}
             {/* if socket, rendering Chat */}
             {socket ?
             <Chat 
+                room={room}
                 socket={socket} 
-                rooms={rooms}
                 idx={idx} 
                 time={time}
                 correct={()=>{setAnstrigger(true)}}
-                startGame={()=>{socket.emit("req-start-game", {title : rooms[idx].title, idx : idx, first : -1})}}
+                startGame={()=>{socket.emit("req-start-game", {title : room.title, idx : idx, first : -1})}}
                 FuncstartGame={(Room)=>{startGame(Room)}}
                 timerOff={()=>{setTimer(false)}}
                 />
