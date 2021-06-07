@@ -79,13 +79,13 @@ exports.module = () => {
                 // 향수
                 {title : '향수-코바솔로',hint : [{category : '가수힌트',context : '코바솔로',time : 30},{category : '초성힌트',context : 'ㅎㅅ',time : 20}],ans : ['향수','코수이',],url : 'https://docs.google.com/uc?export=open&id=1MuKTiZ0WZsBSE3ImOqmu8VEVhaZ9mZuO',duration : 50,genre : 'jpop'},
                 // 다른사람의 여자친구가 됐어
-                {title : '다른사람의 여자친구가 됐어-Lefty hand Cream',hint : [{category : '가수힌트',context : 'Lefty hand Cream',time : 30},{category : '초성힌트',context : 'ㄷㄹ ㅅㄹㅇ ㅇㅈㅊㄱㄱ ㄷㅇ',time : 20}],ans : ['다른사람의여자친구가됐어','베츠노히토노카노죠니낫타요',],url : 'https://docs.google.com/uc?export=open&id=1CTPUD9CNnLPiMEcvWzyortJbSL2vc_2n',duration : 50,genre : 'J-POP'},
+                {title : '다른사람의 여자친구가 됐어-Lefty hand Cream',hint : [{category : '가수힌트',context : 'Lefty hand Cream',time : 30},{category : '초성힌트',context : 'ㄷㄹ ㅅㄹㅇ ㅇㅈㅊㄱㄱ ㄷㅇ',time : 20}],ans : ['다른사람의여자친구가됐어','베츠노히토노카노죠니낫타요',],url : 'https://docs.google.com/uc?export=open&id=1CTPUD9CNnLPiMEcvWzyortJbSL2vc_2n',duration : 50,genre : 'jpop'},
                 // 계속 한밤중이면,,
-                {title : 'Dear my F-계속 한밤중이면 좋을 텐데',hint : [{category : '가수힌트',context : '계속 한밤중이면 좋을 텐데',time : 30},{category : '초성힌트',context : 'ㄷㅇ ㅁㅇ ㅇㅍ',time : 20}],ans : ['디어마이에프','디아마이에후',],url : 'https://docs.google.com/uc?export=open&id=1FJV3rwAdgK2vEWSwR8JzexzZmdm6ec8K',duration : 50,genre : 'J-POP'},
+                {title : 'Dear my F-계속 한밤중이면 좋을 텐데',hint : [{category : '가수힌트',context : '계속 한밤중이면 좋을 텐데',time : 30},{category : '초성힌트',context : 'ㄷㅇ ㅁㅇ ㅇㅍ',time : 20}],ans : ['디어마이에프','디아마이에후',],url : 'https://docs.google.com/uc?export=open&id=1FJV3rwAdgK2vEWSwR8JzexzZmdm6ec8K',duration : 50,genre : 'jpop'},
                 // 마음에 구멍이 뚫렸어
-                {title : '마음에 구멍이 뚫렸어- 요루시카',hint : [{category : '가수힌트',context : '요루시카',time : 30},{category : '초성힌트',context : 'ㅁㅇㅇ ㄱㅁㅇ ㄸㄹㅇ',time : 20}],ans : ['마음에구멍이뚫렸어','코코로니아나가아이타',],url : 'https://docs.google.com/uc?export=open&id=1BG63X7QXcqPUgSzAUNeaQXNUHM0dXfzW',duration : 50,genre : 'J-POP'},
+                {title : '마음에 구멍이 뚫렸어- 요루시카',hint : [{category : '가수힌트',context : '요루시카',time : 30},{category : '초성힌트',context : 'ㅁㅇㅇ ㄱㅁㅇ ㄸㄹㅇ',time : 20}],ans : ['마음에구멍이뚫렸어','코코로니아나가아이타',],url : 'https://docs.google.com/uc?export=open&id=1BG63X7QXcqPUgSzAUNeaQXNUHM0dXfzW',duration : 50,genre : 'jpop'},
                 // 무풍 누군가 꽃에 ㅜ치하다
-                {title : '무풍, 누군가, 꽃에취하다-요루시카',hint : [{category : '가수힌트',context : '요루시카',time : 30},{category : '초성힌트',context : 'ㅁㅍ, ㄴㄱㄱ, ㄲㅇㅊㅎㄷ',time : 20}],ans : ['무풍누군가꽃에취하다','요우나기보우하나마',],url : 'https://docs.google.com/uc?export=open&id=1plG4U0NlzaWG4o8Dp3qESRJws5pU0qBK',duration : 50,genre : 'J-POP'},
+                {title : '무풍, 누군가, 꽃에취하다-요루시카',hint : [{category : '가수힌트',context : '요루시카',time : 30},{category : '초성힌트',context : 'ㅁㅍ, ㄴㄱㄱ, ㄲㅇㅊㅎㄷ',time : 20}],ans : ['무풍누군가꽃에취하다','요우나기보우하나마',],url : 'https://docs.google.com/uc?export=open&id=1plG4U0NlzaWG4o8Dp3qESRJws5pU0qBK',duration : 50,genre : 'jpop'},
                 // 초계반
                 {title : '내일의 밤하늘 초계반 - 월피스카터',hint : [{category : '가수힌트',context : '월피스카터',time : 35},{category : '초성힌트',context : 'ㄴㅇㅇ ㅂㅎㄴ ㅊㄱㅂ',time : 25}],ans : ['내일의밤하늘초계반','아스노요조라쇼카이한',],url : 'https://docs.google.com/uc?export=open&id=1q5WQWh_uO9C6qCTk4NwNmiqi-btZ3PAW',duration : 45,genre : 'jpop'},
                 // 미래가 되지못한그밤에
@@ -165,21 +165,21 @@ exports.module = () => {
             ],
             animeSong : [
                 // 사에카노
-                {title : '시원찮은 그녀를 위한 육성방법 - 계절을 안고서',hint : [{category : '노래 힌트',context : '계절을 안고서 - 야스노 키요노',time : 25},{category : '초성힌트',context : 'ㅅㅇㅊㅇ ㄱㄴㄹ ㅇㅎ ㅇㅅㅂㅂ',time : 15}],ans : ['사에카노','시원찮은 그녀를 위한 육성방법','사에나이','시원찮은그녀를위한육성방법','사에나이카노죠노소다테가타','사에나이 카노죠노 소다테카타'],url : 'https://docs.google.com/uc?export=open&id=1fUJfCOfe2dOJRy6TqjkwLtMtIyV_4IoI',duration : 35,genre : '애니-이름'},
+                {title : '시원찮은 그녀를 위한 육성방법 - 계절을 안고서',hint : [{category : '노래 힌트',context : '계절을 안고서 - 야스노 키요노',time : 25},{category : '초성힌트',context : 'ㅅㅇㅊㅇ ㄱㄴㄹ ㅇㅎ ㅇㅅㅂㅂ',time : 15}],ans : ['사에카노','시원찮은 그녀를 위한 육성방법','사에나이','시원찮은그녀를위한육성방법','사에나이카노죠노소다테가타','사에나이 카노죠노 소다테카타'],url : 'https://docs.google.com/uc?export=open&id=1fUJfCOfe2dOJRy6TqjkwLtMtIyV_4IoI',duration : 35,genre : '애니이름'},
                 // 강연금
-                {title : '강철의 연금술사 리메이크 - Again',hint : [{category : '노래 힌트',context : 'Again - Yui',time : 45},{category : '초성힌트',context : 'ㄱㅊㅇ ㅇㄱㅅㅅ ㄹㅁㅇㅋ',time : 35}],ans : ['강연금','강연금리메이크','강철의 연금술사','강철의연금술사','강철의 연금술사 리메이크','강철의연금술사리메이크','강연','하가네노넨신즈추시'],url : 'https://docs.google.com/uc?export=open&id=1K1DLH_nYRnoLtZX_zUPfI0GlUZyg8doS',duration : 60,genre : '애니-이름'},
+                {title : '강철의 연금술사 리메이크 - Again',hint : [{category : '노래 힌트',context : 'Again - Yui',time : 45},{category : '초성힌트',context : 'ㄱㅊㅇ ㅇㄱㅅㅅ ㄹㅁㅇㅋ',time : 35}],ans : ['강연금','강연금리메이크','강철의 연금술사','강철의연금술사','강철의 연금술사 리메이크','강철의연금술사리메이크','강연','하가네노넨신즈추시'],url : 'https://docs.google.com/uc?export=open&id=1K1DLH_nYRnoLtZX_zUPfI0GlUZyg8doS',duration : 60,genre : '애니이름'},
                 // 나히아
-                {title : '나의 히어로 아카데미 - 피스 사인',hint : [{category : '노래 힌트',context : '피스 사인 - 요네즈 켄시',time : 35},{category : '초성힌트',context : 'ㄱㅊㅇ ㅇㄱㅅㅅ ㄹㅁㅇㅋ',time : 20}],ans : ['나히아','나히아2기','나의 히어로 아카데미','나의히어로아카데미','보쿠노히로아카데미아'],url : 'https://docs.google.com/uc?export=open&id=1sAIrBCoBzCqESSlqD6OVCcrZgKqf9aAA',duration : 45,genre : '애니-이름'},
+                {title : '나의 히어로 아카데미 - 피스 사인',hint : [{category : '노래 힌트',context : '피스 사인 - 요네즈 켄시',time : 35},{category : '초성힌트',context : 'ㄱㅊㅇ ㅇㄱㅅㅅ ㄹㅁㅇㅋ',time : 20}],ans : ['나히아','나히아2기','나의 히어로 아카데미','나의히어로아카데미','보쿠노히로아카데미아'],url : 'https://docs.google.com/uc?export=open&id=1sAIrBCoBzCqESSlqD6OVCcrZgKqf9aAA',duration : 45,genre : '애니이름'},
                 // 혈계전선
-                {title : '혈계전선 - Hello, World!',hint : [{category : '노래 힌트',context : 'Hello world - Bump of chicken',time : 35},{category : '초성힌트',context : 'ㅎㄱㅈㅅ',time : 25}],ans : ['혈계전선','켓카이센센'],url : 'https://docs.google.com/uc?export=open&id=1BlQ7qBK6TzccqLoatH7a_pxUslfvh0wH',duration : 50,genre : '애니-이름'},
+                {title : '혈계전선 - Hello, World!',hint : [{category : '노래 힌트',context : 'Hello world - Bump of chicken',time : 35},{category : '초성힌트',context : 'ㅎㄱㅈㅅ',time : 25}],ans : ['혈계전선','켓카이센센'],url : 'https://docs.google.com/uc?export=open&id=1BlQ7qBK6TzccqLoatH7a_pxUslfvh0wH',duration : 50,genre : '애니이름'},
                 // 스즈미야
-                {title : '스즈미야 하루히의 우울 - God knows',hint : [{category : '노래 힌트',context : 'God knows - 히라노 아야',time : 25},{category : '초성힌트',context : 'ㅅㅈㅁㅇ ㅎㄹㅎㅇ ㅇㅇ',time : 15}],ans : ['스즈미야','스즈미야 하루히의 우울','스즈미야하루히의우울','하루히','스즈미야하루히노유우츠'],url : 'https://docs.google.com/uc?export=open&id=1t6d7fTnXolk6S8jzRTcY-2m-gcruxXnQ',duration : 40,genre : '애니-이름'},
+                {title : '스즈미야 하루히의 우울 - God knows',hint : [{category : '노래 힌트',context : 'God knows - 히라노 아야',time : 25},{category : '초성힌트',context : 'ㅅㅈㅁㅇ ㅎㄹㅎㅇ ㅇㅇ',time : 15}],ans : ['스즈미야','스즈미야 하루히의 우울','스즈미야하루히의우울','하루히','스즈미야하루히노유우츠'],url : 'https://docs.google.com/uc?export=open&id=1t6d7fTnXolk6S8jzRTcY-2m-gcruxXnQ',duration : 40,genre : '애니이름'},
                 // 주술회전
-                {title : '주술회전 - 회회기담',hint : [{category : '노래 힌트',context : '회회기담 - Eve',time : 30},{category : '초성힌트',context : 'ㅈㅅㅎ',time : 20}],ans : ['주술회전','즈즈추카이센'],url : 'https://docs.google.com/uc?export=open&id=1mopxXJW0GTysQcjqoLvRcE8jpkIi9yfP',duration : 45,genre : '애니-이름'},
+                {title : '주술회전 - 회회기담',hint : [{category : '노래 힌트',context : '회회기담 - Eve',time : 30},{category : '초성힌트',context : 'ㅈㅅㅎ',time : 20}],ans : ['주술회전','즈즈추카이센'],url : 'https://docs.google.com/uc?export=open&id=1mopxXJW0GTysQcjqoLvRcE8jpkIi9yfP',duration : 45,genre : '애니이름'},
                 // 노겜노라
-                {title : '노 게임 노 라이프 - This game',hint : [{category : '노래 힌트',context : 'This game - 스즈키 코노미',time : 45},{category : '초성힌트',context : 'ㄴ ㄱㅇ ㄴ ㄹㅇㅍ',time : 35}],ans : ['노 게임 노 라이프','노게임노라이프','노겜노라',],url : 'https://docs.google.com/uc?export=open&id=1f5SRrFwziJHSbPEfgl0zU1-MNke2LB5j',duration : 60,genre : '애니-이름'},
+                {title : '노 게임 노 라이프 - This game',hint : [{category : '노래 힌트',context : 'This game - 스즈키 코노미',time : 45},{category : '초성힌트',context : 'ㄴ ㄱㅇ ㄴ ㄹㅇㅍ',time : 35}],ans : ['노 게임 노 라이프','노게임노라이프','노겜노라',],url : 'https://docs.google.com/uc?export=open&id=1f5SRrFwziJHSbPEfgl0zU1-MNke2LB5j',duration : 60,genre : '애니이름'},
                 // 초속 5cm
-                {title : '초속 5cm - one more time one more chance',hint : [{category : '노래 힌트',context : 'one more time one more chance - 야마자키 마사요시',time : 25},{category : '초성힌트',context : 'ㅊㅅ ㅇ ㅅㅊㅁㅌ',time : 15}],ans : ['초속 5cm','초속5cm','초속오센치미터',],url : 'https://docs.google.com/uc?export=open&id=1R10Vd5UbNEoNd-eA6al_NNXtZgERy-Lm',duration : 35,genre : '애니-이름'},
+                {title : '초속 5cm - one more time one more chance',hint : [{category : '노래 힌트',context : 'one more time one more chance - 야마자키 마사요시',time : 25},{category : '초성힌트',context : 'ㅊㅅ ㅇ ㅅㅊㅁㅌ',time : 15}],ans : ['초속 5cm','초속5cm','초속오센치미터',],url : 'https://docs.google.com/uc?export=open&id=1R10Vd5UbNEoNd-eA6al_NNXtZgERy-Lm',duration : 35,genre : '애니이름'},
 
             ],
             characterSong : [
