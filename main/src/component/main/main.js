@@ -32,7 +32,7 @@ const Main = (props)=>{
 	// fetch rooms from server
 	// when room dispatched, This effect run
 	useEffect(()=>{
-		const recipeUrl = "https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/room";
+		const recipeUrl = "https://3001-orange-vicuna-9uo5wxk0.ws-us09.gitpod.io/room";
 		const requestMetadata = {
 			method: 'POST',
 			headers: {
