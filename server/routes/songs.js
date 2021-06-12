@@ -29,7 +29,7 @@ exports.module = () => {
                 // 히치콕
                 {title : '히치콕 - 요루시카',hint : [{category : '가수힌트',context : '요루시카',time : 35},{category : '초성힌트',context : 'ㅎㅊㅋ',time : 20}],ans : ['히치콕',],url : 'https://docs.google.com/uc?export=open&id=1tzJ6DsvAzZ8zlGc1N7W02CVmDXkw4cg-',duration : 45,genre : 'jpop'},
                 // 그래서 나는 음악을 그만두었다
-                {title : '그래서 나는 음악을 그만두었다 - 요루시카',hint : [{category : '가수힌트',context : '요루시카',time : 35},{category : '초성힌트',context : '그래서 나는 음악을 그만두었다.',time : 20}],ans : ['그래서나는음악을그만두었다','그래서 나는 음악을 그만두었다','다카라 보쿠와 온가쿠오 야메타','다카라보쿠와온가쿠오야메타',],url : 'https://docs.google.com/uc?export=open&id=16oWCZzDAZyhJ6cIBVCu_-oYw76KZYrec',duration : 45,genre : 'jpop'},
+                {title : '그래서 나는 음악을 그만두었다 - 요루시카',hint : [{category : '가수힌트',context : '요루시카',time : 35},{category : '초성힌트',context : 'ㄱㄹㅅ ㄴㄴ ㅇㅇㅇ ㄱㅁㄷㅇㄷ',time : 20}],ans : ['그래서나는음악을그만두었다','그래서 나는 음악을 그만두었다','다카라 보쿠와 온가쿠오 야메타','다카라보쿠와온가쿠오야메타',],url : 'https://docs.google.com/uc?export=open&id=16oWCZzDAZyhJ6cIBVCu_-oYw76KZYrec',duration : 45,genre : 'jpop'},
                 // 굿바이 선언
                 {title : '굿바이선언 - 카노',hint : [{category : '가수힌트',context : '카노',time : 35},{category : '초성힌트',context : 'ㄱㅂㅇ ㅅㅇ',time : 25}],ans : ['굿바이선언','굿바이센겐',],url : 'https://docs.google.com/uc?export=open&id=1caOoeQt8Z8EMDmgt2xZ6kRg9FkVWk3-d',duration : 45,genre : 'jpop'},
                 // 새벽과 반딧불이
@@ -149,7 +149,7 @@ exports.module = () => {
                 // 로미오와 신데렐라
                 {title : '로미오와 신데렐라 - 하나땅',hint : [{category : '가수 힌트',context : '하나땅',time : 35},{category : '초성 힌트',context : 'ㄹㅁㅇㅇ ㅅㄷㄹㄹ',time : 25}],ans : ['로미오와신데렐라','로미오토신데렐라',],url : 'https://docs.google.com/uc?export=open&id=1GXoAUd7rcBy9r8pfbLLagCBZm2Bsyra2',duration : 45,genre : 'jpop'},
                 // 장난기 기능
-                {title : '장난기 기능 - 론',hint : [{category : '가수 힌트',context : '론',time : 35},{category : '초성 힌트',context : 'ㅈㅇㄱ ㄱㄴ',time : 25}],ans : ['오챠메키노','장난기기능','장난기 기능',],url : 'https://docs.google.com/uc?export=open&id=1aPghGLbnitggmAdn1joi19VZSMf4AKyw',duration : 45,genre : 'jpop'},
+                {title : '장난기 기능 - 론',hint : [{category : '가수 힌트',context : '론',time : 35},{category : '초성 힌트',context : 'ㅈㄴㄱ ㄱㄴ',time : 25}],ans : ['오챠메키노','장난기기능','장난기 기능',],url : 'https://docs.google.com/uc?export=open&id=1aPghGLbnitggmAdn1joi19VZSMf4AKyw',duration : 45,genre : 'jpop'},
                 
                 
                 

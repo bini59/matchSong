@@ -48,7 +48,6 @@ module.exports = (app, socket)=>{
     socket.on("send-chat", (data)=>{
         app.io.in(data.title).emit("receive-chat", data)
 
-        console.log(app.io.in(data.title).adapter.sids[0])
 
         room.rooms[data.idx].Song[room.rooms[data.idx].songN[0]].ans.map((i)=>{
             if(i===data.chat && !correct[data.title] && gameStarted){

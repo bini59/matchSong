@@ -34,6 +34,7 @@ app.use('/chat', chatRouter);
 app.get('/', (req,res)=>{
   res.sendFile(path.join(__dirname, '../main/build/index.html'))
 })
+app.use('/game', (req, res)=>{})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
