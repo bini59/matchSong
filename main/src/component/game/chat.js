@@ -100,7 +100,7 @@ const Chat = (props)=>{
 
         props.socket.on("correct", (data)=>{
             props.correct();
-            $(".chat")[0].innerHTML += `<span><span style="color : ${data.user.color}; font-weigth:bold">${data.user.nickname}</span><span> 정답입니다</span></span></br>`        
+            $(".chat")[0].innerHTML += `<span><span style="color :#15f7f7">◆</span><span style="color : ${data.user.color}; font-weigth:bold">${data.user.nickname}</span><span> 정답입니다</span></span></br>`        
             $(".chat")[0].scrollTop = $(".chat")[0].scrollHeight;
             dispatch(changeRoom({
                 title : room.title,
@@ -193,7 +193,11 @@ const Chat = (props)=>{
     }, [room])
 
     useEffect(()=>{
+        if(props.time===0){
+            props.correct();
+        }
         if(props.time===0 && user.roomMaster){
+            
             props.socket.emit("req-start-game", {
                 title : room.title,
                 idx : idx,

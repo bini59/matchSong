@@ -120,14 +120,48 @@ exports.module = () => {
                 {title : 'Maybe the next waltz - 코마츠 미카코',hint : [{category : '가수힌트',context : '코마츠 미카코',time : 35},{category : '초성힌트',context : 'ㅁㅇㅂ ㄷ ㄴㅅㅌ ㅇㅊ',time : 25}],ans : ['메이비더넥스트왈츠','maybethenextwaltz',],url : 'https://docs.google.com/uc?export=open&id=1a4XbW1q_XtOk7_axzU-RYVQjy8FefWDT',duration : 45,genre : 'jpop'},
                 // 아마노자쿠
                 {title : '천성의 약함 - Afterglow',hint : [{category : '가수힌트',context : 'Afterglow',time : 35},{category : '초성힌트',context : 'ㅊㅅㅇ ㅇㅎ',time : 25}],ans : ['천성의약함','아마노자쿠','아마노쟈쿠',],url : 'https://docs.google.com/uc?export=open&id=1I6dc0MVFoqnrgkOAZGwtvP8V0VzmEf2h',duration : 45,genre : 'jpop'},
+                // 감 그레이
+                {title : '감 그레이 - ZUTOMAYO',hint : [{category : '가수힌트',context : 'ZUTOMAYO',time : 35},{category : '초성힌트',context : 'ㄱ ㄱㄹㅇ',time : 25}],ans : ['감그레이','칸그레이','hunchgray',],url : 'https://docs.google.com/uc?export=open&id=1C5I75GaOxNREneNhODhCYTWGycnA-yyG',duration : 45,genre : 'jpop'},
+                // 공부해줘
+                {title : '공부해 줘 - ZUTOMAYO',hint : [{category : '가수힌트',context : 'ZUTOMAYO',time : 35},{category : '초성힌트',context : 'ㄱㅂㅎ ㅈ',time : 25}],ans : ['공부해줘','studyme','오벵쿄시토이테요','오뱅쿄시토이테요',],url : 'https://docs.google.com/uc?export=open&id=1TcmKcgpX6K09ZZyP8t9Z1tzgoQfFcSrw',duration : 45,genre : 'jpop'},
+                // 올바르게 될 수 없어
+                {title : '올바르게 될 수 없어 - ZUTOMAYO',hint : [{category : '가수힌트',context : 'ZUTOMAYO',time : 35},{category : '초성힌트',context : 'ㅇㅂㄹㄱ ㄷ ㅅ ㅇㅇ',time : 25}],ans : ['올바르게될수없어','타다시쿠나레나이',],url : 'https://docs.google.com/uc?export=open&id=1_9fHWkDpUPfHBourVaj3UZaYQyMAFsBI',duration : 45,genre : 'jpop'},
+                // 족빛제곱
+                {title : '쪽빛 제곱 - 요루시카',hint : [{category : '가수힌트',context : '요루시카',time : 35},{category : '초성힌트',context : 'ㅉㅂ ㅈㄱ ',time : 25}],ans : ['쪽빛제곱','아이니죠',],url : 'https://docs.google.com/uc?export=open&id=1FQlJymmUlgrqUxDl6WqtS1oExTvAfEaD',duration : 45,genre : 'jpop'},
+                //타바코
+                {title : '담배 - 코레사와',hint : [{category : '가수힌트',context : '코레사와',time : 35},{category : '초성힌트',context : 'ㄷㅂ',time : 25}],ans : ['담배','타바코',],url : 'https://docs.google.com/uc?export=open&id=1hc6CyOhUvkp5sWk4OuVPWQCPyD0pXmrt',duration : 45,genre : 'jpop'},
+                // 코이비토싯케이
+                {title : '연인실격 - 코레사와',hint : [{category : '가수힌트',context : '코레사와',time : 35},{category : '초성힌트',context : 'ㅇㅇㅅㄱ',time : 25}],ans : ['연인실격','코이비토싯카쿠',],url : 'https://docs.google.com/uc?export=open&id=1-45HOCB4uNHZWk3MN3_Lo0XGPnli4oWD',duration : 45,genre : 'jpop'},
+                // 사상범
+                {title : '사상범 - 요루시카',hint : [{category : '가수힌트',context : '요루시카',time : 35},{category : '초성힌트',context : 'ㅅㅅㅂ',time : 25}],ans : ['사상범','시소우한',],url : 'https://docs.google.com/uc?export=open&id=1cYj1pftfUfz9YAYagmbPchehUuuEygcs',duration : 45,genre : 'jpop'},
+                // 봄도둑
+                {title : '봄도둑 - 요루시카',hint : [{category : '가수힌트',context : '요루시카',time : 35},{category : '초성힌트',context : 'ㅂㄷㄷ',time : 25}],ans : ['봄도둑','하루도로보우',],url : 'https://docs.google.com/uc?export=open&id=1eqCBTj1b5nH0H73fOLvLo0kxqWlOY_Cy',duration : 45,genre : 'jpop'},
+                // 하이드 앤 싴
+                {title : 'hide and seek - 히이나',hint : [{category : '가수 힌트',context : '히이나',time : 35},{category : '초성 힌트',context : 'ㅎㅇㄷ ㅇ ㅅㅋ',time : 25}],ans : ['하이드앤시크','하이드앤드시크','hideandseek','하이도앤도시크','하이드 앤 시크'],url : 'https://docs.google.com/uc?export=open&id=15CwUBxWdbDmLY5bOlBD3saHwRYSochL7',duration : 45,genre : 'jpop'},
+                // 밀크크라운
+                {title : '밀크크라운 온 소네치카 - nameless',hint : [{category : '가수 힌트',context : 'nameless',time : 35},{category : '초성 힌트',context : 'ㅁㅋㅋㄹㅇ ㅇ ㅅㄴㅊㅋ',time : 25}],ans : ['밀크크라운온소네치카','밀크크라운 온 소네치카',],url : 'https://docs.google.com/uc?export=open&id=1dBBZNHtHwCekTltk4stWJcgfbp7Ro-TS',duration : 45,genre : 'jpop'},
+                // 푸페피페
+                {title : '푸페피페 - 히이나',hint : [{category : '가수 힌트',context : '히이나',time : 35},{category : '초성 힌트',context : 'ㅍㅍㅍㅍ',time : 25}],ans : ['푸페피페',],url : 'https://docs.google.com/uc?export=open&id=1LjQ3xaauNA-kqGi7GynwKybvWLHJgCiS',duration : 45,genre : 'jpop'},
+                // 안녕 꽃도둑씨
+                {title : '안녕, 꽃도둑씨 - 히이나',hint : [{category : '가수 힌트',context : '히이나',time : 35},{category : '초성 힌트',context : 'ㅇㄴ, ㄲㄷㄷㅆ',time : 25}],ans : ['안녕꽃도둑씨','안녕 꽃도둑씨','사요나라하나도로보상','사요나라 하나도로보상',],url : 'https://docs.google.com/uc?export=open&id=1XpJegnbHhATUfUmsMjjjNw3ooEkgOpN9',duration : 45,genre : 'jpop'},
+                // 별무리 오케스트라
+                {title : '별무리 오케스트라 - 리노',hint : [{category : '가수 힌트',context : '리노',time : 35},{category : '초성 힌트',context : 'ㅂㅁㄹ ㅇㅋㅅㅌㄹ',time : 25}],ans : ['별들의오케스트라','별무리오케스트라','호시쿠즈오케스트라','별들의 오케스트라',],url : 'https://docs.google.com/uc?export=open&id=1WzLKhVW3F8BRxVYNXi7gMZl0kQAmPyvE',duration : 45,genre : 'jpop'},
+                // 로미오와 신데렐라
+                {title : '로미오와 신데렐라 - 하나땅',hint : [{category : '가수 힌트',context : '하나땅',time : 35},{category : '초성 힌트',context : 'ㄹㅁㅇㅇ ㅅㄷㄹㄹ',time : 25}],ans : ['로미오와신데렐라','로미오토신데렐라',],url : 'https://docs.google.com/uc?export=open&id=1GXoAUd7rcBy9r8pfbLLagCBZm2Bsyra2',duration : 45,genre : 'jpop'},
+                // 장난기 기능
+                {title : '장난기 기능 - 론',hint : [{category : '가수 힌트',context : '론',time : 35},{category : '초성 힌트',context : 'ㅈㅇㄱ ㄱㄴ',time : 25}],ans : ['오챠메키노','장난기기능','장난기 기능',],url : 'https://docs.google.com/uc?export=open&id=1aPghGLbnitggmAdn1joi19VZSMf4AKyw',duration : 45,genre : 'jpop'},
                 
                 
-
+                
                 
                 
                 
             ],
             animeSongName : [
+                // 멜리사
+                {title : '멜리사 - 강연금 1기 OP',hint : [{category : '애니 힌트',context : '강철의 연금술사',time : 35},{category : '초성 힌트',context : 'ㅁㄹㅅ',time : 25}],ans : ['멜리사',],url : 'https://docs.google.com/uc?export=open&id=1UMi0emPOfBb0vJrf4NOCjIHW0BVf7wJD',duration : 45,genre : '애니'},
+                // 스노하레
+                {title : "snow halation - µ's",hint : [{category : '가수 힌트',context :"µ's",time : 35},{category : '초성 힌트',context : 'ㅅㄴㅇ ㅎㄹㅇㅅ',time : 25}],ans : ['스노우할레이션','snowhalation',],url : 'https://docs.google.com/uc?export=open&id=1F58KUN4TRNemlqmvhRIN0W9js7YJI8AS',duration : 45,genre : '애니'},
                 // 피거라 피어나거라
                 {title : '피거라 피어나거라 - EGOIST',hint : [{category : '가수힌트',context : 'EGOIST',time : 35},{category : '초성힌트',context : 'ㅍㄱㄹ ㅍㅇㄴㄱㄹ',time : 25}],ans : ['피거라피어나거라','사카세야사카세','갑철성의카바네리',],url : 'https://docs.google.com/uc?export=open&id=1pG3DcmOuyWiqG7ZYnoIEcpLUlTieSBr9',duration : 45,genre : '애니'},
                 // 괴물
@@ -168,10 +202,29 @@ exports.module = () => {
                 {title : '노스텔직 레인폴 - CHiCO with HoneyWorks',hint : [{category : '가수힌트',context : 'CHiCO with HoneyWorks',time : 35},{category : '초성힌트',context : 'ㄴㅅㅌㅈ ㄹㅇㅍ',time : 25}],ans : ['노스텔직레인폴',],url : 'https://docs.google.com/uc?export=open&id=12cZBDjHRCVY96iyvw_sMuWNMZuq3pWZW',duration : 45,genre : '애니'},
                 // 슈퍼 어펙션
                 {title : 'Super Affection - 카니발 판타즘',hint : [{category : '애니힌트',context : '카니발 판타즘',time : 35},{category : '초성힌트',context : 'ㅅㅍ ㅇㅍㅅ',time : 25}],ans : ['슈퍼어펙션','슈퍼아펙션','superaffection',],url : 'https://docs.google.com/uc?export=open&id=1Jt-UkcfrAjhN4QFiZ9GSnl833CfLDk6B',duration : 45,genre : '애니'},
-
-
+                // 호화 호쾌 팬텀시프
+                {title : '호화 호쾌 팬텀시프 - 헬로 해피 월드',hint : [{category : '가수 힌트',context : '헬로 해피 월드',time : 35},{category : '힌트 카테고리2',context : 'ㅎㅎ ㅎㅋ ㅍㅌㅅㅍ',time : 25}],ans : ['고카고카이팬텀시프','호화호쾌팬텀시',],url : 'https://docs.google.com/uc?export=open&id=1tI60gsihzOxfot9ETxkhNZi9nKHPEFSR',duration : 45,genre : '애니'},
+                // 돌ㅇ가ㅏ는길
+                {title : '바케모노가타리 - 돌아가는길',hint : [{category : '애니 힌트',context : '바케모노가타리',time : 35},{category : '초성힌트',context : 'ㄷㅇㄱㄴ ㄱ',time : 25}],ans : ['돌아가는길','카에루미치',],url : 'https://docs.google.com/uc?export=open&id=1Mw8m04ZkOR2yj1AJAL0aGg10whqujDRa',duration : 45,genre : '애니'},
+                
+                
+                
             ],
             animeSong : [
+                // 빙과
+                {title : '상냥함의 이유 - 빙과',hint : [{category : '노래 힌트',context : '상냥함의 이유',time : 35},{category : '초성힌트',context : 'ㅂㄱ',time : 25}],ans : ['빙과','효카',],url : 'https://docs.google.com/uc?export=open&id=1ZPEXWj7L26Gn31SlxgwG3KwJDCH0gwW_',duration : 45,genre : '애니이름'},
+                // 마리나
+                {title : 'Eternal Blaze - 마법소녀 리리컬 나노하',hint : [{category : '노래 힌트',context : 'Eternal Blaze',time : 35},{category : '초성힌트',context : 'ㅁㅂㅅㄴ ㄹㄹㅋ ㄴㄴㅎ',time : 25}],ans : ['마리나','리리컬나노하','나노하','마법소녀리리컬나노하',],url : 'https://docs.google.com/uc?export=open&id=1hHPQesTvrcPzP3KVWAzDb8oIIuRmIafN',duration : 45,genre : '애니이름'},
+                // 금빛 모자이크
+                {title : 'Jumping - 금빛 모자이크',hint : [{category : '노래 힌트',context : 'Jumping',time : 35},{category : '초성힌트',context : 'ㄱㅂ ㅁㅈㅇㅋ',time : 25}],ans : ['금빛모자이크','금모','킨이로모자이크',],url : 'https://docs.google.com/uc?export=open&id=17oIZXSx_yRR_PubAP1gytLUmghsgpdX5',duration : 45,genre : '애니이름'},
+                // 꽃이피는 첫걸으
+                {title : '꽃의 색 - 꽃이 피는 첫걸음',hint : [{category : '노래 힌트',context : '꽃의 색',time : 35},{category : '초성힌트',context : 'ㄲㅇ ㅍㄴ ㅊㄱㅇ',time : 25}],ans : ['꽃이피는첫걸음','하나이로','하나사쿠이로하',],url : 'https://docs.google.com/uc?export=open&id=1KOxRFYPrZkk5tGTwVltvi-8vJehrE6lM',duration : 45,genre : '애니이름'},
+                // 워킹
+                {title : 'Someone else - Working!!',hint : [{category : '노래 힌트',context : 'Someone else',time : 35},{category : '초성힌트',context : 'ㅇㅋ',time : 25}],ans : ['워킹','워킹!','working!','working',],url : 'https://docs.google.com/uc?export=open&id=1vOJ5kTzjoFird_ilLMEFQeErFW73LjVZ',duration : 45,genre : '애니이름'},
+                // 변우속
+                {title : 'Baby Sweet Berry Love - 변태왕자와 웃지 않는 고양이',hint : [{category : '노래 힌트',context : 'Baby Sweet Berry Love',time : 35},{category : '초성힌트',context : 'ㅂㅌㅇㅈㅇ ㅇㅈ ㅇㄴ ㄱㅇㅇ',time : 25}],ans : ['변웃고','변태왕자와웃지않는고양이','헨타이오지토와라와나이네코','헨네코','토와나이','헨타이오지','변왕고','변왕웃고',],url : 'https://docs.google.com/uc?export=open&id=1IoINmSbZ0QcbrYbfmpwL3ghfR_kfXg8q',duration : 45,genre : '애니이름'},
+                // 겁페
+                {title : '겁쟁이의 불꽃 - 겁쟁이의 페달',hint : [{category : '노래 힌트',context : '겁쟁이의 불꽃',time : 35},{category : '초성힌트',context : 'ㄱㅈㅇ ㅍㄷ',time : 25}],ans : ['겁페','겁쟁이페달','요와무시페다루','요와페다',],url : 'https://docs.google.com/uc?export=open&id=12lBzbRI4yYm-zyJ1SWJpWamtDb8pqNFO',duration : 45,genre : '애니이름'},
                 // 사에카노
                 {title : '시원찮은 그녀를 위한 육성방법 - 계절을 안고서',hint : [{category : '노래 힌트',context : '계절을 안고서 - 야스노 키요노',time : 25},{category : '초성힌트',context : 'ㅅㅇㅊㅇ ㄱㄴㄹ ㅇㅎ ㅇㅅㅂㅂ',time : 15}],ans : ['사에카노','시원찮은 그녀를 위한 육성방법','사에나이','시원찮은그녀를위한육성방법','사에나이카노죠노소다테가타','사에나이 카노죠노 소다테카타'],url : 'https://docs.google.com/uc?export=open&id=1fUJfCOfe2dOJRy6TqjkwLtMtIyV_4IoI',duration : 35,genre : '애니이름'},
                 // 강연금
@@ -188,27 +241,43 @@ exports.module = () => {
                 {title : '노 게임 노 라이프 - This game',hint : [{category : '노래 힌트',context : 'This game - 스즈키 코노미',time : 45},{category : '초성힌트',context : 'ㄴ ㄱㅇ ㄴ ㄹㅇㅍ',time : 35}],ans : ['노 게임 노 라이프','노게임노라이프','노겜노라',],url : 'https://docs.google.com/uc?export=open&id=1f5SRrFwziJHSbPEfgl0zU1-MNke2LB5j',duration : 60,genre : '애니이름'},
                 // 초속 5cm
                 {title : '초속 5cm - one more time one more chance',hint : [{category : '노래 힌트',context : 'one more time one more chance - 야마자키 마사요시',time : 25},{category : '초성힌트',context : 'ㅊㅅ ㅇ ㅅㅊㅁㅌ',time : 15}],ans : ['초속 5cm','초속5cm','초속오센치미터',],url : 'https://docs.google.com/uc?export=open&id=1R10Vd5UbNEoNd-eA6al_NNXtZgERy-Lm',duration : 35,genre : '애니이름'},
+                // 케이온
+                {title : '천사를 만났어 - 케이온',hint : [{category : '노래 힌트',context : '천사를 만났어',time : 35},{category : '초성힌트',context : 'ㅋㅇㅇ',time : 25}],ans : ['케이온','kon'],url : 'https://docs.google.com/uc?export=open&id=1VIT3ELPi4ejEwH3X9Xy0XKR9eCb-L_XO',duration : 45,genre : '애니이름'},
+                // 니지동
+                {title : '무지개빛 Passions！ - 니지동',hint : [{category : '노래 힌트',context : '무지개빛 Passion!',time : 35},{category : '초성힌트',context : 'ㄹㅂㄹㅇㅂ ㄴㅈㄱㅅㅋ ㅎㅇ ㅅㅋ ㄷㅎㅎ',time : 25}],ans : ['러브라이브니지동','니지동','러브라이브니지가사키학원스쿨동호회','니지가사키',],url : 'https://docs.google.com/uc?export=open&id=17KZjSh0Iss8iwx_MGj7GymlUMA7pRVRR',duration : 45,genre : '애니이름'},
+                // 니지동
+                {title : 'NEO SKY, NEO MAP! - 니지동',hint : [{category : '노래 힌트',context : 'NEO SKY, NEO MAP!',time : 35},{category : '초성힌트',context : 'ㄹㅂㄹㅇㅂ ㄴㅈㄱㅅㅋ ㅎㅇ ㅅㅋ ㄷㅎㅎ',time : 25}],ans : ['러브라이브니지동','니지동','러브라이브니지가사키학원스쿨동호회','니지가사키',],url : 'https://docs.google.com/uc?export=open&id=1iQw33fv904Ujvq075ESjsq4QtZsJkA6U',duration : 45,genre : '애니이름'},
+                // 날아
+                {title : '괜찮아 - 날씨의 아이',hint : [{category : '노래 힌트',context : '괜찮아',time : 35},{category : '초성힌트',context : 'ㄴㅆㅇ ㅇㅇ',time : 25}],ans : ['날씨의아이','날아','텐키노코',],url : 'https://docs.google.com/uc?export=open&id=1sz2FHQKTGO4pBsFDdYL5PDfSHlZsa1lK',duration : 45,genre : '애니이름'},
+                // 목형
+                {title : '사랑을 한 것은 - 목소리의 형태',hint : [{category : '노래 힌트',context : '사랑을 한 것은',time : 35},{category : '초성힌트',context : 'ㅁㅅㄹㅇ ㅎㅌ',time : 25}],ans : ['목소리의형태','목형','코에노카타치',],url : 'https://docs.google.com/uc?export=open&id=1Qbe28YrXZsIaBdE73QNdKcmjpJweoPhT',duration : 45,genre : '애니이름'},
+                // 아이마스
+                {title : 'M@STERPIECE - 아이돌 마스터 빛의 저편으로',hint : [{category : '노래 힌트',context : 'M@STERPIECE',time : 35},{category : '초성힌트',context : 'ㅇㅇㄷ ㅁㅅㅌ',time : 25}],ans : ['아이마스','아이돌마스터','빛의저편으로','아이마스빛의저편으로','아이돌마스터빛의저편으로',],url : 'https://docs.google.com/uc?export=open&id=1dvoeGt_JnckDznvZ7l00K7fYF6EI7kyO',duration : 45,genre : '애니이름'},
+
 
             ],
             characterSong : [
                 //카토
-                {title : 'M♭ - 카토 메구미',hint : [{category : '내용',context : '2015년 작품, 개씹 오타쿠 새끼가 게임만들겠다고, 일반인 여자애 데리고 와서 지랄하는 내용',time : 25},{category : '초성 힌트',context : 'ㅋㅌ ㅁㄱㅁ',time : 15}],ans : ['카토 메구미','카토','메구미','카토메구미'],url : 'https://docs.google.com/uc?export=open&id=1C-ITlKLvJR3S1Zhfeg9XqqgfZKyO-wq6',duration : 35,genre : '캐릭터송'},
+                {title : 'M♭ - 카토 메구미',hint : [{category : '애니 힌트',context : '사에카노',time : 25},{category : '초성 힌트',context : 'ㅋㅌ ㅁㄱㅁ',time : 15}],ans : ['카토 메구미','카토','메구미','카토메구미'],url : 'https://docs.google.com/uc?export=open&id=1C-ITlKLvJR3S1Zhfeg9XqqgfZKyO-wq6',duration : 35,genre : '캐릭터송'},
                 // 렘
-                {title : 'Wishing - 렘',hint : [{category : '내용 힌트',context : '근데 나 이거 1쿨만 봄. 내용 요약해서 좀 알려줘',time : 45},{category : '초성 힌트',context : 'ㄹ',time : 15}],ans : ['렘',],url : 'https://docs.google.com/uc?export=open&id=14hSOfjPVCxsD-V48CD4_-_5C9B9gJz1i',duration : 50,genre : '캐릭터송'},
+                {title : 'Wishing - 렘',hint : [{category : '애니 힌트',context : '리제로',time : 45},{category : '초성 힌트',context : 'ㄹ',time : 15}],ans : ['렘',],url : 'https://docs.google.com/uc?export=open&id=14hSOfjPVCxsD-V48CD4_-_5C9B9gJz1i',duration : 50,genre : '캐릭터송'},
                 // 람
-                {title : '당신이 모르는 것 - 람',hint : [{category : '내용 힌트',context : '근데 나 1쿨만 봄. 내용 요약해서 좀 알려줘',time : 45},{category : '초성 힌트',context : 'ㄹ',time : 15}],ans : ['람',],url : 'https://docs.google.com/uc?export=open&id=1NOPpR6cE4_27oEBChRVUv35GrwQTVHZ7',duration : 50,genre : '캐릭터송'},
+                {title : '당신이 모르는 것 - 람',hint : [{category : '애니 힌트',context : '리제로',time : 45},{category : '초성 힌트',context : 'ㄹ',time : 15}],ans : ['람',],url : 'https://docs.google.com/uc?export=open&id=1NOPpR6cE4_27oEBChRVUv35GrwQTVHZ7',duration : 50,genre : '캐릭터송'},
                 // 에밀리아
-                {title : 'Door - 에밀리아',hint : [{category : '내용 힌트',context : '근데 나 1쿨만 봄. 내용 요약해서 좀 알려줘',time : 45},{category : '초성 힌트',context : 'ㅇㅁㄹㅇ',time : 15}],ans : ['에밀리아',],url : 'https://docs.google.com/uc?export=open&id=1M3v4jJeqSvjlzyKOlLi4mlG5LE1C3msR',duration : 50,genre : '캐릭터송'},
+                {title : 'Door - 에밀리아',hint : [{category : '애니 힌트',context : '리제로',time : 45},{category : '초성 힌트',context : 'ㅇㅁㄹㅇ',time : 15}],ans : ['에밀리아',],url : 'https://docs.google.com/uc?export=open&id=1M3v4jJeqSvjlzyKOlLi4mlG5LE1C3msR',duration : 50,genre : '캐릭터송'},
                 // 시로
                 {title : 'One self - 시로',hint : [{category : '내용 힌트',context : '디스피아',time : 45},{category : '초성 힌트',context : 'ㅅㄹ',time : 15}],ans : ['시로',],url : 'https://docs.google.com/uc?export=open&id=1skwcLt63Xmm6cUbI5Ldf0gBbFlLhu0YD',duration : 50,genre : '캐릭터송'},
                 // 카구야
-                {title : 'Check the answer - 시노미야 카구야',hint : [{category : '내용 힌트',context : '서로 고백안하려고 지랄 발광을 함',time : 45},{category : '초성 힌트',context : 'ㅅㄴㅁㅇ ㅋㄱㅇ',time : 15}],ans : ['시노미야','카구야','시노미야 카구야','시노미야카구야',],url : 'https://docs.google.com/uc?export=open&id=1buikiw1aXvxkpYRCvFOi6vz7o3JHZG-F',duration : 50,genre : '캐릭터송'},
+                {title : 'Check the answer - 시노미야 카구야',hint : [{category : '성우 힌트',context : '코가 아오이',time : 45},{category : '초성 힌트',context : 'ㅅㄴㅁㅇ ㅋㄱㅇ',time : 15}],ans : ['시노미야','카구야','시노미야 카구야','시노미야카구야',],url : 'https://docs.google.com/uc?export=open&id=1buikiw1aXvxkpYRCvFOi6vz7o3JHZG-F',duration : 50,genre : '캐릭터송'},
                 // 아쿠아
-                {title : 'Aqua illumination-아쿠아',hint : [{category : '내용 힌트',context : '이세계가는데 물건을 안집었음',time : 45},{category : '초성 힌트',context : 'ㅇㅋㅇ',time : 15}],ans : ['아쿠아',],url : 'https://docs.google.com/uc?export=open&id=157QnIM6QQ0TK8-9cixtjf-hMYXl3HDi5',duration : 50,genre : '캐릭터송'},
+                {title : 'Aqua illumination-아쿠아',hint : [{category : '애니 힌트',context : '코노스바',time : 45},{category : '초성 힌트',context : 'ㅇㅋㅇ',time : 15}],ans : ['아쿠아',],url : 'https://docs.google.com/uc?export=open&id=157QnIM6QQ0TK8-9cixtjf-hMYXl3HDi5',duration : 50,genre : '캐릭터송'},
                 // 치카
                 {title : '날개를 주고싶어-후지와라 치카',hint : [{category : '성우 힌트',context : '코하라 코노미',time : 45},{category : '초성 힌트',context : '후지와라 치카',time : 15}],ans : ['후지와라','치카','후지와라 치카','후지와라치카',],url : 'https://docs.google.com/uc?export=open&id=1BDnK-LMzZZDkcILnGl77onU5no0QG98B',duration : 50,genre : '캐릭터송'},
                 // 루카
                 {title : 'First Drop - halca',hint : [{category : '애니힌트',context : '여친, 빌리겠습니다',time : 35},{category : '초성힌트',context : 'ㅅㄹㅅㄴ ㄹㅋ',time : 25}],ans : ['루카','사라시나루카',],url : 'https://docs.google.com/uc?export=open&id=1dKJU8dqJN7zvXHSP5IKBcoaqX53sckrY',duration : 45,genre : '캐릭터'},
+                // 히후미
+                {title : 'New Game! - 타키모토 히후미',hint : [{category : '노래 힌트',context : '소지로의 노래',time : 35},{category : '초성힌트',context : 'ㅌㅋㅁㅌ ㅎㅎㅁ',time : 25}],ans : ['타키모토히후미','타키모토','히후미',],url : 'https://docs.google.com/uc?export=open&id=1rUerDjEDDqfhp-F_0iMIHSzReb9zz_5W',duration : 45,genre : '캐릭터'},
+
 
             ],
             girlIdol2020 : [
