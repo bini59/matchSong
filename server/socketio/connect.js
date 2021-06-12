@@ -37,7 +37,7 @@ module.exports = (app, socket)=>{
             app.io.in(data.title).emit("notice-skip", {num : skip[data.title].length})
         }
             
-        if(skip[data.title].length >= room.rooms[data.idx].users.length-1){
+        if((skip[data.title].length === room.rooms[data.idx].users.length-1) || (room.rooms[data.idx].users.length === 1)){
             room.rooms[data.idx].Song[room.rooms[data.idx].songN[0]]
             app.io.in(data.title).emit("skipped", {
                 data : "skip"
