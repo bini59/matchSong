@@ -14,6 +14,9 @@ const roomhandler = require("./socketio/connect");
 global.room = {
   rooms : []
 }
+global.clients = {
+  
+}
 
 
 const app = express();
@@ -60,6 +63,7 @@ app.io = io('', {
 
   
 app.io.on('connection', (socket)=>{
+  clients[socket.id] = socket.rooms
   roomhandler(app, socket);
 })
 

@@ -4,15 +4,31 @@ let usercolor = [
 
 let correct = {};
 let skip = {}
+let users = {}
 
 let gameStarted = false
 
+
+
 module.exports = (app, socket)=>{
 
-
+    // remove user
     socket.on("disconnect", (data)=>{
-        console.log("disconnected");
-        console.log(data)
+        let title = Array.from(clients[socket.id].keys())[1]        
+        let idx = room.rooms.findIndex(i => i.title === title)
+
+        let usrIdx = users[title].indexOf(socket.id)
+
+        room.rooms[idx].users.splice(usrIdx, 1)
+        users[title].splice(usrIdx, 1)
+
+        if(usrIdx === 0 && room.rooms[idx].users.length > 0){
+            room.rooms[idx].users[0].roomMaster = true;
+        }
+        app.io.in(title).emit("remove-user", room.rooms[idx]);
+        if(room.rooms[idx].users.length === 0){
+            room.rooms.splice(idx, 1)
+        }
     })
 
     socket.on("vote-skip", (data)=>{
@@ -21,7 +37,7 @@ module.exports = (app, socket)=>{
             app.io.in(data.title).emit("notice-skip", {num : skip[data.title].length})
         }
             
-        if(skip[data.title].length >= room.rooms[data.idx].users.length-2){
+        if(skip[data.title].length >= room.rooms[data.idx].users.length-1){
             room.rooms[data.idx].Song[room.rooms[data.idx].songN[0]]
             app.io.in(data.title).emit("skipped", {
                 data : "skip"
@@ -31,6 +47,8 @@ module.exports = (app, socket)=>{
 
     socket.on("send-chat", (data)=>{
         app.io.in(data.title).emit("receive-chat", data)
+
+        console.log(app.io.in(data.title).adapter.sids[0])
 
         room.rooms[data.idx].Song[room.rooms[data.idx].songN[0]].ans.map((i)=>{
             if(i===data.chat && !correct[data.title] && gameStarted){
@@ -65,12 +83,15 @@ module.exports = (app, socket)=>{
             gameStarted = true
         },4000)  
     })
+
     // join room
     socket.on("join-room", (data)=>{
         socket.join(data.title);
         // check answer
         correct[data.title] = false;
         skip[data.title] = [];
+        users[data.title] = []
+
     })
 
 
@@ -88,25 +109,11 @@ module.exports = (app, socket)=>{
 
         room.rooms[idx].users.push(user);
 
+        // test
+        users[data.room.title].push(socket.id)
+        //users[data.title].push([user.nickname, app.io.in(data.title)])
+
         app.io.in(data.room.title).emit("res-add-user", room.rooms[idx])
-    })
-
-    // Remove user    
-    socket.on("remove-user", (data)=>{
-        let idx = room.rooms.findIndex(i => i.title === data.room.title)
-        let usrIdx = room.rooms[idx].users.findIndex(i => i.nickname === data.username)
-        room.rooms[idx].users.splice(usrIdx, 1);
-
-        if(usrIdx === 0 && room.rooms[idx].users.length > 0){
-            room.rooms[idx].users[0].roomMaster = true;
-        }
-        console.log("disconnected : ", room.rooms[idx].users)
-
-        app.io.in(data.room.title).emit("remove-user", room.rooms[idx]);
-
-        if(room.rooms[idx].users.length === 0){
-            room.rooms.splice(idx, 1)
-        }
     })
 
 }

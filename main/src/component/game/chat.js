@@ -221,14 +221,7 @@ const Chat = (props)=>{
                     $('.gameStart')[0].style="display:none";
                 }}>게임 시작</button>: ""}
                 <Link to="/">
-                    <button className="gameExit" onClick={()=>{
-                        props.socket.emit("remove-user",{
-                            room : room,
-                            username : name
-                        })
-                        //go to home code
-                        props.socket.disconnect();
-                    }}>나가기</button>
+                    <button className="gameExit" onClick={()=>{props.socket.disconnect()}}>나가기</button>
                 </Link>
             </div>
             {user.nickname === "NONE" ? nameWindow : ""}

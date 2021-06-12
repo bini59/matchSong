@@ -107,10 +107,7 @@ const Game = (props)=>{
             {/* if socket, rendering Chat */}
             {socket ?
             <Chat 
-                room={room}
-                socket={socket} 
-                idx={idx} 
-                time={time}
+                room={room} socket={socket} idx={idx} time={time}
                 correct={()=>{setAnstrigger(true)}}
                 startGame={()=>{socket.emit("req-start-game", {title : room.title, idx : idx, first : -1})}}
                 FuncstartGame={(Room)=>{startGame(Room)}}
