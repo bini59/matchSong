@@ -64,6 +64,7 @@ const Game = (props)=>{
     const [onTimer, setTimer] = useState(false);
 
     const time = useTimer({onTimer : onTimer, room : room});
+    
 
     /*
         remove Ans
@@ -100,10 +101,7 @@ const Game = (props)=>{
                 />
             </div>
             <div className="hint">
-                <Hint 
-                    sec={time}
-                    hints={room.Song[room.songN[0]].hint}
-                />
+                {onTimer ? <Hint sec={time} hints={room.Song[room.songN[0]].hint}/> : ""}
             </div>
             {ansState ? ans : <div className="ans"></div>}
             {/* if socket, rendering Chat */}
