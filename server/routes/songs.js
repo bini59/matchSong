@@ -203,7 +203,7 @@ exports.module = () => {
                 // 슈퍼 어펙션
                 {title : 'Super Affection - 카니발 판타즘',hint : [{category : '애니힌트',context : '카니발 판타즘',time : 35},{category : '초성힌트',context : 'ㅅㅍ ㅇㅍㅅ',time : 25}],ans : ['슈퍼어펙션','슈퍼아펙션','superaffection',],url : 'https://docs.google.com/uc?export=open&id=1Jt-UkcfrAjhN4QFiZ9GSnl833CfLDk6B',duration : 45,genre : '애니'},
                 // 호화 호쾌 팬텀시프
-                {title : '호화 호쾌 팬텀시프 - 헬로 해피 월드',hint : [{category : '가수 힌트',context : '헬로 해피 월드',time : 35},{category : '힌트 카테고리2',context : 'ㅎㅎ ㅎㅋ ㅍㅌㅅㅍ',time : 25}],ans : ['고카고카이팬텀시프','호화호쾌팬텀시',],url : 'https://docs.google.com/uc?export=open&id=1tI60gsihzOxfot9ETxkhNZi9nKHPEFSR',duration : 45,genre : '애니'},
+                {title : '호화 호쾌 팬텀시프 - 헬로 해피 월드',hint : [{category : '가수 힌트',context : '헬로 해피 월드',time : 35},{category : '힌트 카테고리2',context : 'ㅎㅎ ㅎㅋ ㅍㅌㅅㅍ',time : 25}],ans : ['고카고카이팬텀시프','호화호쾌팬텀시프',],url : 'https://docs.google.com/uc?export=open&id=1tI60gsihzOxfot9ETxkhNZi9nKHPEFSR',duration : 45,genre : '애니'},
                 // 돌ㅇ가ㅏ는길
                 {title : '바케모노가타리 - 돌아가는길',hint : [{category : '애니 힌트',context : '바케모노가타리',time : 35},{category : '초성힌트',context : 'ㄷㅇㄱㄴ ㄱ',time : 25}],ans : ['돌아가는길','카에루미치',],url : 'https://docs.google.com/uc?export=open&id=1Mw8m04ZkOR2yj1AJAL0aGg10whqujDRa',duration : 45,genre : '애니'},
                 

@@ -34,7 +34,7 @@ const random = (num, g)=>{
 }
 
 router.post('/', (req, res)=>{
-    console.log(room)
+    
     res.json(JSON.stringify(room))
 })
 
@@ -61,7 +61,7 @@ router.post('/add', function(req, res, next) {
     })
     Room.Song.push(ending)
     room.rooms.push(Room);
-    console.log(room)
+
     res.json(JSON.stringify(room))
 });
 
