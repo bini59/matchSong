@@ -5,6 +5,7 @@ let usercolor = [
 let correct = {};
 let skip = {}
 let users = {}
+let color = {}
 
 let gameStarted = false
 
@@ -90,8 +91,10 @@ module.exports = (app, socket)=>{
         // check answer
         correct[data.title] = false;
         skip[data.title] = [];
-        if(!users[data.title])
+        if(!users[data.title]){
             users[data.title] = []
+            color[data.title] = 0
+        }
     })
 
 
@@ -101,7 +104,7 @@ module.exports = (app, socket)=>{
         let userN = room.rooms[idx].users.length
         let user = {
             nickname : data.username,
-            color : usercolor[userN],
+            color : usercolor[color[data.room.title]],
             roomMaster : false,
             score : 0
         }
@@ -111,6 +114,8 @@ module.exports = (app, socket)=>{
 
         // user id add
         users[room.rooms[idx].title].push(String(socket.id))
+
+        color[data.room.title] += 1;
 
 
         app.io.in(data.room.title).emit("res-add-user", room.rooms[idx])
