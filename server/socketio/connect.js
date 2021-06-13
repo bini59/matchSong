@@ -1,6 +1,6 @@
 let usercolor = [
     "red", "blue", "yellow", "green", "purple", "white", "chocolate", "cyan"
-  ]
+]
 
 let correct = {};
 let skip = {}
@@ -14,10 +14,11 @@ module.exports = (app, socket)=>{
 
     // remove user
     socket.on("disconnect", (data)=>{
-        let title = Array.from(clients[socket.id].keys())[1]        
+        let title = Array.from(clients[socket.id].keys())[1]
         let idx = room.rooms.findIndex(i => i.title === title)
 
-        let usrIdx = users[title].indexOf(socket.id)
+
+        let usrIdx = users[title].indexOf(String(socket.id))
 
         room.rooms[idx].users.splice(usrIdx, 1)
         users[title].splice(usrIdx, 1)
@@ -89,8 +90,8 @@ module.exports = (app, socket)=>{
         // check answer
         correct[data.title] = false;
         skip[data.title] = [];
-        users[data.title] = []
-
+        if(!users[data.title])
+            users[data.title] = []
     })
 
 
@@ -108,9 +109,9 @@ module.exports = (app, socket)=>{
 
         room.rooms[idx].users.push(user);
 
-        // test
-        users[data.room.title].push(socket.id)
-        //users[data.title].push([user.nickname, app.io.in(data.title)])
+        // user id add
+        users[room.rooms[idx].title].push(String(socket.id))
+
 
         app.io.in(data.room.title).emit("res-add-user", room.rooms[idx])
     })
