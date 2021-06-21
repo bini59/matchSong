@@ -42,7 +42,7 @@ const Game = (props)=>{
     // Set socket
     const [socket, setSocket] = useState(null);
     useEffect(()=>{
-        setSocket(socketio.connect("https://3001-orange-vicuna-9uo5wxk0.ws-us09.gitpod.io/"))
+        setSocket(socketio.connect("https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/"))
     }, [])
 
 
