@@ -150,7 +150,18 @@ exports.module = () => {
                 {title : '로미오와 신데렐라 - 하나땅',hint : [{category : '가수 힌트',context : '하나땅',time : 35},{category : '초성 힌트',context : 'ㄹㅁㅇㅇ ㅅㄷㄹㄹ',time : 25}],ans : ['로미오와신데렐라','로미오토신데렐라',],url : 'https://docs.google.com/uc?export=open&id=1GXoAUd7rcBy9r8pfbLLagCBZm2Bsyra2',duration : 45,genre : 'jpop'},
                 // 장난기 기능
                 {title : '장난기 기능 - 론',hint : [{category : '가수 힌트',context : '론',time : 35},{category : '초성 힌트',context : 'ㅈㄴㄱ ㄱㄴ',time : 25}],ans : ['오챠메키노','장난기기능','장난기 기능',],url : 'https://docs.google.com/uc?export=open&id=1aPghGLbnitggmAdn1joi19VZSMf4AKyw',duration : 45,genre : 'jpop'},
-                
+                // 드래곤 나이트
+                {title : 'Dragon Night - Sekai no owari',hint : [{category : '가수힌트',context : 'Sekai no owari',time : 35},{category : '초성힌트',context : 'ㄷㄹㄱ ㄴㅇㅌ',time : 25}],ans : ['드래곤나이트','dragonnight',],url : 'https://docs.google.com/uc?export=open&id=1BHhQ5x8OJt2y5ilp7ur4TU-VSeuQidB-',duration : 45,genre : 'jpop'},
+                // 귀여워지고싶어
+                {title : '귀여워지고싶어 - HoneyWorks',hint : [{category : '가수힌트',context : 'HoneyWorks',time : 35},{category : '초성힌트',context : 'ㄱㅇㅇㅈㄱ ㅅㅇ',time : 25}],ans : ['귀여워지고싶어','카와이쿠나리타이',],url : 'https://docs.google.com/uc?export=open&id=1J1P2smGInfuCFvpXaKutHJUhWSXZ6D80',duration : 45,genre : 'jpop'},
+                // 드라이 플라워
+                {title : '드라이플라워 - Yuuri',hint : [{category : '가수힌트',context : 'Yuuri',time : 35},{category : '초성힌트',context : 'ㄷㄹㅇㅍㄹㅇ',time : 25}],ans : ['드라이플라워',],url : 'https://docs.google.com/uc?export=open&id=1x8LTGyZTaLWtSb0M4ukGSwqNvr_Zmn-T',duration : 45,genre : 'jpop'},
+                // 군청
+                {title : '군청 - YOASOBI',hint : [{category : '가수힌트',context : 'YOASOBI',time : 35},{category : '초성힌트',context : 'ㄱㅊ',time : 25}],ans : ['군청','군조',],url : 'https://docs.google.com/uc?export=open&id=1M92rYr7DseH7n4YzoRrHB9uiAzZMbcYt',duration : 45,genre : 'jpop'},
+                // 앙코르
+                {title : '앙코르 - YOASOBI',hint : [{category : '가수힌트',context : 'YOASOBI',time : 35},{category : '초성힌트',context : 'ㅇㅋㄹ',time : 25}],ans : ['앙코르',],url : 'https://docs.google.com/uc?export=open&id=1ICb7hucJVqf0T0LU4iq44e0M0w_8Gexh',duration : 45,genre : 'jpop'},
+                // 하루카
+                {title : '하루카 - YOASOBI',hint : [{category : '가수힌트',context : 'YOASOBI',time : 35},{category : '초성힌트',context : 'ㅎㄹㅋ',time : 25}],ans : ['하루카',],url : 'https://docs.google.com/uc?export=open&id=1UnOoESdDzQKW2MFS7o2JVhU_Q1Cy8kcp',duration : 45,genre : 'jpop'},
                 
                 
                 
@@ -158,6 +169,12 @@ exports.module = () => {
                 
             ],
             animeSongName : [
+                // 싱크로나이저
+                {title : 'Synchrogazer - 미즈키 나나',hint : [{category : '가수힌트',context : '미즈키 나나',time : 35},{category : '초성힌트',context : 'ㅅㅋㄹㄱㅇㅈ',time : 25}],ans : ['싱크로게이져','싱크로게이저','synchrogazer',],url : 'https://docs.google.com/uc?export=open&id=1Wdr6lxKiimsd78NOKYbq2eJJeZ9IQSdJ',duration : 45,genre : '애니'},
+                // 생명선
+                {title : '생명선 - ReoNa',hint : [{category : '가수힌트',context : 'ReoNa',time : 35},{category : '초성힌트',context : 'ㅅㅁㅅ',time : 25}],ans : ['생명선','세이메이센',],url : 'https://docs.google.com/uc?export=open&id=1fiXJE6NphPuKOqQ7ac7O8tYZIqTZKZBp',duration : 45,genre : '애니'},
+                // 하늘에 노래하면
+                {title : '하늘에 노래하면 - amazarashi',hint : [{category : '가수힌트',context : 'amazarashi',time : 35},{category : '초성힌트',context : 'ㅎㄴㅇ ㄴㄹㅎㅁ',time : 25}],ans : ['하늘에노래하면','소라니우타에바',],url : 'https://docs.google.com/uc?export=open&id=1bCXD92kWyKfKLJjz85zBSiGOg9RhaIhO',duration : 45,genre : '애니'},
                 // 멜리사
                 {title : '멜리사 - 강연금 1기 OP',hint : [{category : '애니 힌트',context : '강철의 연금술사',time : 35},{category : '초성 힌트',context : 'ㅁㄹㅅ',time : 25}],ans : ['멜리사',],url : 'https://docs.google.com/uc?export=open&id=1UMi0emPOfBb0vJrf4NOCjIHW0BVf7wJD',duration : 45,genre : '애니'},
                 // 스노하레
@@ -274,9 +291,9 @@ exports.module = () => {
                 // 치카
                 {title : '날개를 주고싶어-후지와라 치카',hint : [{category : '성우 힌트',context : '코하라 코노미',time : 45},{category : '초성 힌트',context : '후지와라 치카',time : 15}],ans : ['후지와라','치카','후지와라 치카','후지와라치카',],url : 'https://docs.google.com/uc?export=open&id=1BDnK-LMzZZDkcILnGl77onU5no0QG98B',duration : 50,genre : '캐릭터송'},
                 // 루카
-                {title : 'First Drop - halca',hint : [{category : '애니힌트',context : '여친, 빌리겠습니다',time : 35},{category : '초성힌트',context : 'ㅅㄹㅅㄴ ㄹㅋ',time : 25}],ans : ['루카','사라시나루카',],url : 'https://docs.google.com/uc?export=open&id=1dKJU8dqJN7zvXHSP5IKBcoaqX53sckrY',duration : 45,genre : '캐릭터'},
+                {title : 'First Drop - halca',hint : [{category : '애니힌트',context : '여친, 빌리겠습니다',time : 35},{category : '초성힌트',context : 'ㅅㄹㅅㄴ ㄹㅋ',time : 25}],ans : ['루카','사라시나루카',],url : 'https://docs.google.com/uc?export=open&id=1dKJU8dqJN7zvXHSP5IKBcoaqX53sckrY',duration : 45,genre : '캐릭터송'},
                 // 히후미
-                {title : 'New Game! - 타키모토 히후미',hint : [{category : '노래 힌트',context : '소지로의 노래',time : 35},{category : '초성힌트',context : 'ㅌㅋㅁㅌ ㅎㅎㅁ',time : 25}],ans : ['타키모토히후미','타키모토','히후미',],url : 'https://docs.google.com/uc?export=open&id=1rUerDjEDDqfhp-F_0iMIHSzReb9zz_5W',duration : 45,genre : '캐릭터'},
+                {title : 'New Game! - 타키모토 히후미',hint : [{category : '노래 힌트',context : '소지로의 노래',time : 35},{category : '초성힌트',context : 'ㅌㅋㅁㅌ ㅎㅎㅁ',time : 25}],ans : ['타키모토히후미','타키모토','히후미',],url : 'https://docs.google.com/uc?export=open&id=1rUerDjEDDqfhp-F_0iMIHSzReb9zz_5W',duration : 45,genre : '캐릭터송'},
 
 
             ],

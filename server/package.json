@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "pm2 start ./bin/www --watch"
+    "start": "pm2 start ./bin/www --watch",
+    "test" : "pm2 log",
+    "stop" : "pm2 stop www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
