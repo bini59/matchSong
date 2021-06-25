@@ -1,4 +1,4 @@
 server/node_modules/
-server/routes/song.js
+server/routes/songs.js
 test/
 .gitignore
