@@ -2,12 +2,10 @@ const createError = require('http-errors');
 const express = require('express');
 const cors = require("cors");
 const path = require('path');
-const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const io = require("socket.io")
+const io = require("socket.io");
 
 const RoomRouter = require('./routes/room');
-const chatRouter = require("./routes/chat")
 
 const roomhandler = require("./socketio/connect");
 
@@ -26,11 +24,9 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../main/build')));
 
 app.use('/room', cors(),RoomRouter);
-app.use('/chat', chatRouter);
 app.get('/', (req,res)=>{
   res.sendFile(path.join(__dirname, '../main/build/index.html'))
 })
