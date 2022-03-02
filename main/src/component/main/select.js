@@ -48,7 +48,9 @@ const Select = (props)=>{
     
     //Genres
     const Genres = [
-        "노래 장르 1"
+        "JPOP",
+        "여돌(~2020)",
+        "여돌(2021~)"
     ]
 	
     useEffect(()=>{

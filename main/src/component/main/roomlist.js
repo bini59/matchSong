@@ -3,10 +3,8 @@ import {Link} from "react-router-dom";
 //Genres
 const Genres = [
     "JPOP",
-    "애니(노래이름)",
-    "애니(애니이름)",
-    "캐릭터송(캐릭터)",
-    "여돌(~2020)"
+    "여돌(~2020)",
+    "여돌(2021~)"
 ]  
 
 const roomList = (props)=>{

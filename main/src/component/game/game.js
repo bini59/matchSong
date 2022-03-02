@@ -23,13 +23,13 @@ import {
 import "../../scss/game.scss"
 import "../../scss/quiz.scss"
 
-const quizS = {
-    jpop : "노래 제목",
-    애니 : "노래 제목",
-    애니이름 : "애니 이름",
-    캐릭터송 : "캐릭터",
-    여돌2020 : "노래 제목"
-}
+// const quizS = {
+//     jpop : "노래 제목",
+//     애니 : "노래 제목",
+//     애니이름 : "애니 이름",
+//     캐릭터송 : "캐릭터",
+//     여돌2020 : "노래 제목"
+// }
 
 const Game = (props)=>{
     let {id} = useParams();
@@ -99,7 +99,8 @@ const Game = (props)=>{
         <div className="quiz">
             <div className="title">
                 <span className="remainSong">남은곡 ( {room.songN[1]-room.songN[0]} / {room.songN[1]} )</span><br/>
-                <span className="description"><span className="_1">음악</span>을 듣고 <span className="_2">{quizS[room.Song[room.songN[0]].genre]}</span>을 입력하세요</span><br/>
+                {/* <span className="description"><span className="_1">음악</span>을 듣고 <span className="_2">{quizS[room.Song[room.songN[0]].genre]}</span>을 입력하세요</span><br/> */}
+                <span className="description"><span className="_1">음악</span>을 듣고 <span className="_2">노래제목</span>을 입력하세요</span><br/>
                 <span className="remainSec">- {time}초 -</span><br/>
                 <ReactAudioPlayer 
                     src={room.Song[room.songN[0]].url}
