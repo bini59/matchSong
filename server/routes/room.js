@@ -21,7 +21,7 @@ const ending = {
     duration : 9999
 }
 
-const genre = ["jpop", "animeSongName", "animeSong", "characterSong", "girlIdol2020"]
+const genre = ["jpop", "girlIdol2020", "girlIdol2021"]
 
 const random = (num, g)=>{
     let arr = []
