@@ -5,6 +5,10 @@ const path = require('path');
 const logger = require('morgan');
 const io = require("socket.io");
 
+require("dotenv").config();
+const { ORIGIN } = process.env;
+
+
 const RoomRouter = require('./routes/room');
 
 const roomhandler = require("./socketio/connect");
@@ -53,7 +57,7 @@ app.use(function(err, req, res, next) {
 
 app.io = io('', {
   cors: {
-      origin: ["https://3000-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io"],
+      origin: [ORIGIN],
       methods:["GET","POST"]
   }
 });
