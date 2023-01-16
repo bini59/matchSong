@@ -17,12 +17,12 @@ const Main = (props)=>{
     // get Room list from redux Store 
     // first get from Store
     // rooms = []
-    const rooms = useSelector(selectRooms)
+  const rooms = useSelector(selectRooms)
 	
 	// fetch rooms from server
 	// when room dispatched, This effect run
 	useEffect(()=>{
-      const recipeUrl = "https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/room";
+      const recipeUrl = "/room";
       const requestMetadata = {
         method: 'POST',
         headers: {

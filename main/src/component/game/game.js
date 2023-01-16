@@ -23,6 +23,7 @@ import {
 import "../../scss/game.scss"
 import "../../scss/quiz.scss"
 
+
 // const quizS = {
 //     jpop : "노래 제목",
 //     애니 : "노래 제목",
@@ -32,7 +33,8 @@ import "../../scss/quiz.scss"
 // }
 
 const Game = (props)=>{
-    let {id} = useParams();
+    let { id } = useParams();
+    
 
     // set title
     useEffect(()=>{
@@ -42,7 +44,7 @@ const Game = (props)=>{
     // Set socket
     const [socket, setSocket] = useState(null);
     useEffect(()=>{
-        setSocket(socketio.connect("https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/"))
+        setSocket(socketio.connect("/"))
     }, [])
 
 

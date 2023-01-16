@@ -16,8 +16,10 @@ const Select = (props)=>{
     // For input genres
     const [genre, setGenre] = useState('');
 
+    const { ORIGIN } = process.env;
+
     const maxNum = async (genre)=>{
-        const recipeUrl = "https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/room/genres";
+        const recipeUrl = "/room/genres";
         const requestMetadata = {
             method: 'POST',
             headers: {
@@ -70,7 +72,7 @@ const Select = (props)=>{
     
 	// when Add room=> dispatch room
     const sendServer = (room)=>{
-        const recipeUrl = "https://3001-orange-vicuna-9uo5wxk0.ws-us08.gitpod.io/room/add";
+        const recipeUrl = "/room/add";
         const requestMetadata = {
             method: 'POST',
             headers: {
