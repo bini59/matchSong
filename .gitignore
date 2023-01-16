@@ -1,6 +1,0 @@
-server/node_modules/
-server/routes/songs.js
-test/
-.gitignore
-server/.env
-main/.env
